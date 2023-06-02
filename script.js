@@ -15,6 +15,13 @@ const formOpenBtn = document.querySelector("#form-open"),
 formOpenBtn.addEventListener("click", () => {home.classList.add("show");console.log('click');});
 formCloseBtn.addEventListener("click", () => home.classList.remove("show"));
 
+const urlParams = new URLSearchParams(window.location.search);
+const signup = urlParams.get('signup');
+if (signup === 'success') {
+  const message = document.createElement('p');
+  message.innerText = 'You have successfully signed up!';
+  document.body.appendChild(message);
+}
 
 //calender event functions
 function getCalenderDates(callback){

@@ -1,17 +1,11 @@
 <?php
-require 'config.php';
 require 'backup/google.php';
-// if(isset($_SESSION['email'])){
-//     header('Location: index.php?google-login=success');
-//     exit;
-// }
-?>
-<?php
+
 // Check if the user is logged in
-if (isset($_SESSION['name'])) {
-  // Display the welcome message
-  echo "Hello, " . $_SESSION['name'] . "!";
-}
+// if (isset($_SESSION['name'])) {
+//   // Display the welcome message
+//   echo "Hello, " . $_SESSION['name'] . "!";
+// }
 ?>
 
 <!DOCTYPE html>
@@ -20,24 +14,35 @@ if (isset($_SESSION['name'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
     <link rel="stylesheet" href="style.css" />
-    <title>EnQuire Calender by Dhwanish</title>
+    <title>Enquire Calender by Dhwanish</title>
 </head>
 <body>
     <!-- Header -->
     <header class="header">
+      <div class="enquire">
         <img src="./images/logo.png" alt="">
+        <span>ENQUIRE QUIZ CLUB<span>
+      </div>
+      <div class="menu">
         <?php
           // Check if the user is logged in
-        if (isset($_SESSION['email'])) { ?>
-           <button class="button" onclick="window.location.href = 'logout.php'">LogOut</button>
+        if (isset($_SESSION['email'])) {
+          echo "<span>Hello, {$_SESSION['name']}</span>"
+          ?>
+           <button class="button" onclick="window.location.href = 'logout.php'">LOGOUT</button>
         <?php
         }else{ ?>
-          <button class="button" id="form-open">LogIn</button>
+          <button class="button" id="form-open">LOGIN</button>
         <?php
         }
         ?>
+      </div>
     </header>
+
     <!-- Home -->
     <section class="home">
       <div class="form_container">
@@ -95,7 +100,7 @@ if (isset($_SESSION['name'])) {
           <a href="<?php echo $client->createAuthUrl(); ?>"><button id="google-button"><img src="images/google-logo.png">Sign in with Google</button></a>
           <div class="login_signup">Already have an account? <a href="#" id="login">Login</a></div>       
         </div>
-        <script>
+        <!-- <script>
           const urlParams = new URLSearchParams(window.location.search);
           const signup = urlParams.get('signup');
           if (signup === 'success') {
@@ -103,9 +108,61 @@ if (isset($_SESSION['name'])) {
             message.innerText = 'You have successfully signed up!';
             document.body.appendChild(message);
           }
-        </script>
+        </script> -->
       </div>
     </section>
+
+    <!-- Quiz Calendar -->
+    <section class="main-body">
+      <div class="calendars">
+        <!-- <div class="bod col-md-8"> -->
+          <div class="wrapper">
+            <header>
+              <p class="current-date"></p>
+            </header>
+            <div class="calendar">
+              <ul class="weeks">
+                <li>Sun</li>
+                <li>Mon</li>
+                <li>Tue</li>
+                <li>Wed</li>
+                <li>Thu</li>
+                <li>Fri</li>
+                <li>Sat</li>
+              </ul>
+              <ul class="days"></ul>
+            </div>
+          </div>
+        <!-- </div> -->
+        <!-- <div class="bod col-md-8"> -->
+        <div class="wrapper">
+            <header>
+              <p class="current-date2"></p>
+            </header>
+            <div class="calendar">
+              <ul class="weeks">
+                <li>Sun</li>
+                <li>Mon</li>
+                <li>Tue</li>
+                <li>Wed</li>
+                <li>Thu</li>
+                <li>Fri</li>
+                <li>Sat</li>
+              </ul>
+              <ul class="days2"></ul>
+            </div>
+          </div>
+        <!-- </div> -->
+      </div>
+      <div class="ad-section">
+        <div class="heading">
+          <span>POPULAR EVENTS</span>
+        </div>
+      </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <script src="script.js" defer></script>
 </body>
 </html>
