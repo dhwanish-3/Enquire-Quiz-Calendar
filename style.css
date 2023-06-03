@@ -18,6 +18,7 @@ body{
     margin-top: 0;
     display: flex;
     flex-direction: column;
+    gap: 2rem;
 }
 
 ::-webkit-scrollbar{
@@ -30,7 +31,6 @@ a{
 
 .button{
     padding: 0.5rem 1.5rem;
-    border: 2px solid transparent;
     display: flex;
     background: transparent;
     border-radius: 6px;
@@ -85,30 +85,30 @@ a{
 }
 
 .header .button{
-    border-color: white;
-    margin-right: 10%;
-    font-size: 1.0em;
+  border: 2px solid white;
+  margin-right: 10%;
+  font-size: 1.0em;
 }
 .header .button:active{
-    transform: scale(0.98);
+  transform: scale(0.98);
 }
 
 /* Home */
 .home {
-    position: relative;
-    width: 100%;
+  position: relative;
+  width: 100%;
 }
 
 .home::before {
-    content: "";
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    /* background-color: rgba(0, 0, 0, 0.6); */
-    z-index: 100;
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.5s ease-out;
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  /* background-color: rgba(0, 0, 0, 0.6); */
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s ease-out;
 }
 .home.show::before {
     opacity: 1;
@@ -274,11 +274,27 @@ a{
 .calendars{
   flex: 7;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 5rem;
+  margin-top: 1rem;
+  gap: 2rem;
+}
+
+.calendars header{
+  font-size: xx-large;
+  font-weight: bold;
+  color: var(--textColor);
+}
+
+.two-calendars{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   gap: 5rem;
 }
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 /* first and second month */
 .wrapper{
@@ -437,3 +453,49 @@ header .current-date2{
   flex-direction: column;
   gap: 0.3rem;
 }
+
+/* Category-buttons */
+.category-buttons{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  border: none;
+  border-radius: 20px;
+}
+
+.first-row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+.second-row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+.open{
+  background: red;
+}
+
+.school{
+  background: blue;
+}
+
+.college{
+  background: greenyellow;
+}
+
+.open-school{
+  background: linear-gradient(90deg,red,blue);
+}
+
+.open-college{
+  background: linear-gradient(90deg,red,greenyellow);
+}
+
+.school-college{
+  background: linear-gradient(90deg,blue,greenyellow);
+}
+

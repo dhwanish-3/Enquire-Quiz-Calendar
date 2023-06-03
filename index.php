@@ -115,43 +115,46 @@ require 'backup/google.php';
     <!-- Quiz Calendar -->
     <section class="main-body">
       <div class="calendars">
+        <header>Quiz Calendar</header>
         <!-- <div class="bod col-md-8"> -->
-          <div class="wrapper">
-            <header>
-              <p class="current-date"></p>
-            </header>
-            <div class="calendar">
-              <ul class="weeks">
-                <li>Sun</li>
-                <li>Mon</li>
-                <li>Tue</li>
-                <li>Wed</li>
-                <li>Thu</li>
-                <li>Fri</li>
-                <li>Sat</li>
-              </ul>
-              <ul class="days"></ul>
+          <div class="two-calendars">
+            <div class="wrapper">
+              <header>
+                <p class="current-date"></p>
+              </header>
+              <div class="calendar">
+                <ul class="weeks">
+                  <li>Sun</li>
+                  <li>Mon</li>
+                  <li>Tue</li>
+                  <li>Wed</li>
+                  <li>Thu</li>
+                  <li>Fri</li>
+                  <li>Sat</li>
+                </ul>
+                <ul class="days"></ul>
+              </div>
             </div>
-          </div>
-        <!-- </div> -->
-        <!-- <div class="bod col-md-8"> -->
-          <div class="wrapper">
-            <header>
-              <p class="current-date2"></p>
-            </header>
-            <div class="calendar">
-              <ul class="weeks">
-                <li>Sun</li>
-                <li>Mon</li>
-                <li>Tue</li>
-                <li>Wed</li>
-                <li>Thu</li>
-                <li>Fri</li>
-                <li>Sat</li>
-              </ul>
-              <ul class="days2"></ul>
+            <!-- </div> -->
+            <!-- <div class="bod col-md-8"> -->
+            <div class="wrapper">
+              <header>
+                <p class="current-date2"></p>
+              </header>
+              <div class="calendar">
+                <ul class="weeks">
+                  <li>Sun</li>
+                  <li>Mon</li>
+                  <li>Tue</li>
+                  <li>Wed</li>
+                  <li>Thu</li>
+                  <li>Fri</li>
+                  <li>Sat</li>
+                </ul>
+                <ul class="days2"></ul>
+              </div>
             </div>
-          </div>
+          </div>  
         <!-- </div> -->
       </div>
       <!-- Ads Section -->
@@ -177,9 +180,15 @@ require 'backup/google.php';
     </section>
     <section class="category-buttons">
       <div class="first-row">
-        <button class=""></button>
+        <button class="button  open">OPEN</button>
+        <button class="button  school">SCHOOL</button>
+        <button class="button  college">COLLEGE</button>
       </div>
-      <div class="second-row"></div>
+      <div class="second-row">
+      <button class="button  open-school">OPEN & SCHOOL</button>
+        <button class="button  open-college">OPEN & COLLEGE</button>
+        <button class="button  school-college">SCHOOL & COLLEGE</button>
+      </div>
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
