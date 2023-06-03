@@ -33,6 +33,7 @@ a{
     padding: 0.5rem 1.5rem;
     display: flex;
     background: transparent;
+    border: none;
     border-radius: 6px;
     font-weight: bold;
     cursor: pointer;
@@ -421,7 +422,7 @@ header .current-date2{
 }
 
 .ads-part img{
-  width: 10rem;
+  width: 16rem;
 }
 
 .poster{
@@ -459,7 +460,6 @@ header .current-date2{
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  border: none;
   border-radius: 20px;
 }
 

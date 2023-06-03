@@ -164,7 +164,7 @@ require 'backup/google.php';
         </div>
         <div class="poster">
           <span id="prev" class="material-symbols-rounded">chevron_left</span>
-          <img src="images/google-logo.png" alt="">
+          <img src="images/poster.jpg" alt="">
           <span id="next" class="material-symbols-rounded">chevron_right</span>
         </div>
         <div class="event-details">
