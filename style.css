@@ -267,19 +267,24 @@ a{
 }
 
 /* Quiz Calendar */
-.main-body .calendars{
+.main-body{
+  display: flex;
+}
+
+.calendars{
+  flex: 7;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 5rem;
-  gap: 3rem;
+  gap: 5rem;
 }
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 /* first and second month */
 .wrapper{
   width: 400px;
-  background: #fff;
-  border-radius: 10px;
+  background: white;
+  border-radius: 20px;
   box-shadow: 0 15px 40px rgba(0,0,0,0.12);
   justify-content: center;
   align-items: center;
@@ -380,4 +385,55 @@ header .current-date2{
 }
 .days2 li:not(.active):hover::before{
   background: #f2f2f2;
+}
+
+.ads-part{
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  background-color: white;
+  border-radius: 20px;
+  z-index: 1000;
+}
+
+.ads-part .heading{
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.ads-part img{
+  width: 10rem;
+}
+
+.poster{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.poster span{
+  height: 38px;
+  width: 38px;
+  margin: 0 1px;
+  cursor: pointer;
+  color: #878787;
+  text-align: center;
+  line-height: 38px;
+  font-size: 1.9rem;
+  user-select: none;
+  border-radius: 50%;
+}
+.poster span:last-child{
+  margin-right: -10px;
+}
+.poster span:hover{
+  background: #f2f2f2;
+}
+
+.event-details{
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
 }
