@@ -1,11 +1,5 @@
 <?php
 require 'backup/google.php';
-
-// Check if the user is logged in
-// if (isset($_SESSION['name'])) {
-//   // Display the welcome message
-//   echo "Hello, " . $_SESSION['name'] . "!";
-// }
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +44,7 @@ require 'backup/google.php';
         <!-- Login From -->
         <div class="form login_form">
           <form action="login.php" method="POST">
-            <h2>Login</h2>
+            <h2>LOGIN</h2>
             <div class="input_box">
               <input type="email" placeholder="Enter your email" required name="email"/>
               <i class="uil uil-envelope-alt email"></i>
@@ -67,7 +61,7 @@ require 'backup/google.php';
               </span>
               <a href="#" class="forgot_pw">Forgot password?</a>
             </div>
-            <button class="button">Login Now</button>      
+            <button class="button">LOGIN NOW</button>
           </form>
           <a href="<?php echo $client->createAuthUrl(); ?>"><button id="google-button"><img src="images/google-logo.png">Sign in with Google</button></a>
           <div class="login_signup">Don't have an account? <a href="#" id="signup">Signup</a></div>
@@ -76,7 +70,7 @@ require 'backup/google.php';
         <!-- Signup From -->
         <div class="form signup_form">
           <form action="signup.php" method="POST">
-            <h2>Signup</h2>
+            <h2>SIGNUP</h2>
             <div class="input_box">
               <i class="uil uil-user-circle name"></i>
               <input type="text" placeholder="Enter your name" required name="name"/>           
@@ -95,7 +89,7 @@ require 'backup/google.php';
               <i class="uil uil-lock password"></i>
               <i class="uil uil-eye-slash pw_hide"></i>
             </div>
-            <button class="button" onclick="return checkPasswords()">SignUp now</button>
+            <button class="button" onclick="return checkPasswords()">SIGNUP NOW</button>
           </form>
           <a href="<?php echo $client->createAuthUrl(); ?>"><button id="google-button"><img src="images/google-logo.png">Sign in with Google</button></a>
           <div class="login_signup">Already have an account? <a href="#" id="login">Login</a></div>       
@@ -156,11 +150,23 @@ require 'backup/google.php';
             </div>
           </div>  
         <!-- </div> -->
+        <section class="category-buttons">
+          <div class="first-row">
+            <button class="button  open">OPEN</button>
+            <button class="button  school">SCHOOL</button>
+            <button class="button  college">COLLEGE</button>
+          </div>
+          <div class="second-row">
+          <button class="button  open-school">OPEN & SCHOOL</button>
+            <button class="button  open-college">OPEN & COLLEGE</button>
+            <button class="button  school-college">SCHOOL & COLLEGE</button>
+          </div>
+        </section>
       </div>
       <!-- Ads Section -->
       <div class="ads-part">
         <div class="heading">
-          <span>POPULAR EVENTS</span>
+          <span>Popular Events</span>
         </div>
         <div class="poster">
           <span id="prev" class="material-symbols-rounded">chevron_left</span>
@@ -176,18 +182,6 @@ require 'backup/google.php';
           <span>Quiz Masters : BatMan & SuperMan</span>
           <span>Contact : 9876543210 </span>
         </div>
-      </div>
-    </section>
-    <section class="category-buttons">
-      <div class="first-row">
-        <button class="button  open">OPEN</button>
-        <button class="button  school">SCHOOL</button>
-        <button class="button  college">COLLEGE</button>
-      </div>
-      <div class="second-row">
-      <button class="button  open-school">OPEN & SCHOOL</button>
-        <button class="button  open-college">OPEN & COLLEGE</button>
-        <button class="button  school-college">SCHOOL & COLLEGE</button>
       </div>
     </section>
 

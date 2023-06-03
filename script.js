@@ -8,7 +8,7 @@ const formOpenBtn = document.querySelector("#form-open"),
   pwShowHide = document.querySelectorAll(".pw_hide");
   const daysTag = document.querySelector(".days"),
    daysTag2 = document.querySelector(".days2"),
-  currentDate = document.querySelector(".current-date"),
+  currentDate = document.querySelector(".two-calendars .wrapper .current-date"),
   currentDate2 = document.querySelector(".current-date2"),
   prevNextIcon = document.querySelectorAll(".icons span");
 

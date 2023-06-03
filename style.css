@@ -18,7 +18,6 @@ body{
     margin-top: 0;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
 }
 
 ::-webkit-scrollbar{
@@ -132,6 +131,9 @@ a{
     pointer-events: none;
     transition: all 0.4s ease-out;
 }
+.form_container .button{
+  margin-bottom: 10px;
+}
 .home.show .form_container {
     opacity: 1;
     pointer-events: auto;
@@ -140,6 +142,7 @@ a{
 .signup_form {
     display: none;
 }
+
 .form_container.active .signup_form {
     display: block;
 }
@@ -254,11 +257,12 @@ a{
     color: #000000;
     background-color: #ffffff;  
     height: 40px;
-    width: 270px;  
+    width: 270px;
+    transition: 300ms all;
 }
   
 #google-button:hover {
-    background-color: #7493c6;
+    transform: scale(1.1);
 }
   
 #google-button img {
@@ -270,6 +274,7 @@ a{
 /* Quiz Calendar */
 .main-body{
   display: flex;
+  margin-top: 0;
 }
 
 .calendars{
@@ -278,8 +283,8 @@ a{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 1rem;
   gap: 2rem;
+  margin-top: 2rem;
 }
 
 .calendars header{
@@ -413,16 +418,17 @@ header .current-date2{
   gap: 0.8rem;
   background-color: white;
   border-radius: 20px;
-  z-index: 1000;
+  padding: 1.3rem 0.5rem;
+  height: fit-content;
 }
 
 .ads-part .heading{
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: bold;
 }
 
 .ads-part img{
-  width: 16rem;
+  width: 17rem;
 }
 
 .poster{
@@ -452,15 +458,18 @@ header .current-date2{
 .event-details{
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  padding: 0.5rem 0rem;
+  padding-left: 1.5rem;
+  gap: 0.5rem;
+  font-family: "Poppins",sans-serif;
+  font-size: 1.1rem;
 }
 
 /* Category-buttons */
 .category-buttons{
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  border-radius: 20px;
+  gap: 1.5rem;
 }
 
 .first-row{
@@ -488,14 +497,14 @@ header .current-date2{
 }
 
 .open-school{
-  background: linear-gradient(90deg,red,blue);
+  background: linear-gradient(120deg,red,blue);
 }
 
 .open-college{
-  background: linear-gradient(90deg,red,greenyellow);
+  background: linear-gradient(120deg,red,greenyellow);
 }
 
 .school-college{
-  background: linear-gradient(90deg,blue,greenyellow);
+  background: linear-gradient(120deg,blue,greenyellow);
 }
 
