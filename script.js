@@ -149,7 +149,7 @@ function renderFrontEnd(listofEvents){
   function showPopUp(day,eventDetails) {
       const popUp = document.createElement("div");
       popUp.classList.add("pop-up");
-      console.log(eventDetails[0].imageUrl);
+      console.log(eventDetails[0]);
       popUp.innerHTML = PopupString(day,eventDetails);
       // Close the pop-up window when the close button is clicked
       popUp.querySelector(".close-btn").addEventListener("click", () => {
@@ -165,8 +165,7 @@ function renderFrontEnd(listofEvents){
           nonPopupElements.forEach((element) => {
             element.classList.remove("blur-effect");
           });
-          document.removeEventListener("click", outsideClickHandler);
-          
+          document.removeEventListener("click", outsideClickHandler);          
         }
       };
       setTimeout(() => {
