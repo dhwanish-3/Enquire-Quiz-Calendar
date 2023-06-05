@@ -194,14 +194,14 @@ require 'backup/google.php';
           <div class="slider">
             <label for="general">General</label>
             <div class="range-slider">
-              <div class="slider-line"></div>
+              <div class="slider-line" id="range-line1"></div>
             </div>
-            <div class="range-thumb">
+            <div class="range-thumb" id="range-thumb1">
               <div class="range-value">
-                <span class="value-number">10</span>
+                <span class="value-number" id="range-number1">10</span>
               </div>
             </div>
-            <input type="range" class="range-input" name="general" min="0" max="10" value="10" step="1">
+            <input type="range" class="range-input" id="range-input1" name="general" min="0" max="10" value="10" step="1">
           </div>
         </div>
       </div>     

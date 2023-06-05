@@ -257,25 +257,8 @@ function renderFrontEnd(listofEvents){
             }                
         });     
     }); 
-}
+  }
   rendernextCalendar();
-  // prevNextIcon.forEach(icon => {
-  //     // getting prev and next icons
-  //     icon.addEventListener("click", () => { // adding click event on both icons
-  //         // if clicked icon is previous icon then decrement current month by 1 else increment it by 1
-  //         currMonth = icon.id === "prev" ? currMonth - 1 : currMonth + 1;
-
-  //         if(currMonth < 0 || currMonth > 11) { // if current month is less than 0 or greater than 11
-  //             // creating a new date of current year & month and pass it as date value
-  //             date = new Date(currYear, currMonth, new Date().getDate());
-  //             currYear = date.getFullYear(); // updating current year with new date year
-  //             currMonth = date.getMonth(); // updating current month with new date month
-  //         } else {
-  //             date = new Date(); // pass the current date as date value
-  //         }
-  //         renderCalendar(); // calling renderCalendar function
-  //     });
-  // });
 }
 getCalenderDates(renderFrontEnd);
 
@@ -293,3 +276,22 @@ fileInput.addEventListener("change", function() {
 
   reader.readAsDataURL(this.files[0]);
 });
+
+// range-sliders
+for(let i=1;i<2;i++){
+  const rangeThumb = document.getElementById(`range-thumb${i}`),
+        rangeNumber = document.getElementById(`range-number${i}`),
+        rangeLine = document.getElementById(`range-line${i}`),
+        rangeInput = document.getElementById(`range-input${i}`);
+  console.log(rangeInput);
+  const rangeInputSlider = () =>{
+     rangeNumber.textContent = rangeInput.value;
+     const thumbPosition = (rangeInput.value / rangeInput.max),
+     space = rangeInput.offsetWidth - rangeThumb.offsetWidth
+     rangeThumb.style.left = (thumbPosition * space) + 'px'
+     rangeLine.style.width = rangeInput.value + '%'
+     rangeInput.addEventListener('input', rangeInputSlider)
+  }
+  
+  rangeInputSlider();
+}
