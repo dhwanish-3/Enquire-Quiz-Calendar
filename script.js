@@ -125,7 +125,7 @@ function renderFrontEnd(listofEvents){
       return "active2";
     }else if(eventTypes.includes("college")){
       return "active3";
-    }    
+    }
   }
   function PopupString(day,eventDetails){
     var popup=`<div class="backdrop"></div><div id="popContainer">
