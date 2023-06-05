@@ -1,9 +1,10 @@
 :root{
-  --gradient-color: ;
+  --grey: #707070;
   --textColor: white;
   --headerColor: #472867;
   --mainColor: #7d2ae8;
   --comboColor: #19e4ff;
+  --pink: #ff28f4;
 }
 /* Import Google font - Poppins */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
@@ -316,6 +317,8 @@ a{
   display: flex;
   justify-content: center;
   padding: 10px;
+  color: black;
+  /* z-index: 100; */
 }
 
 header .current-date{
@@ -639,6 +642,7 @@ header .current-date2{
   flex-direction: column;
   margin-top: 2rem;
   margin-left: 8rem;
+  margin-right: 8rem;
 }
 
 .fav-events .question{
@@ -648,4 +652,25 @@ header .current-date2{
 }
 .question span:nth-of-type(2){
   color: var(--comboColor);
+}
+
+.slider-container{
+  display: grid;
+  background-color: var(--textColor);
+  border-radius: 4rem;
+  place-items: center;
+}
+
+.slider{
+  width: 20rem;
+  background-color: #19e4ff;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  padding: 0.4rem;
+}
+
+.range-input{
+  width: 15rem;
+  color:#ff1919;
 }

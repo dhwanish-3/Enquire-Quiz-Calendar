@@ -169,9 +169,9 @@ require 'backup/google.php';
           <span>Popular Events</span>
         </div>
         <div class="poster">
-          <span id="prev" class="material-symbols-rounded">chevron_left</span>
+          <span id="prev" class="material-symbols-rounded">l</span>
           <img src="images/poster.jpg" alt="">
-          <span id="next" class="material-symbols-rounded">chevron_right</span>
+          <span id="next" class="material-symbols-rounded">r</span>
         </div>
         <div class="event-details">
           <span>Event : Mega Quiz</span>
@@ -189,7 +189,22 @@ require 'backup/google.php';
         <span>HARD TIME SORTING YOUR FAVOURITE </span>
         <span>QUIZ EVENTS ?</span>
       </div>
-      
+      <div class="slider-container">
+        <div class="sliders">
+          <div class="slider">
+            <label for="general">General</label>
+            <div class="range-slider">
+              <div class="slider-line"></div>
+            </div>
+            <div class="range-thumb">
+              <div class="range-value">
+                <span class="value-number">10</span>
+              </div>
+            </div>
+            <input type="range" class="range-input" name="general" min="0" max="10" value="10" step="1">
+          </div>
+        </div>
+      </div>     
     </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

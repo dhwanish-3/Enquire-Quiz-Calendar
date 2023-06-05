@@ -8,7 +8,7 @@ const formOpenBtn = document.querySelector("#form-open"),
   pwShowHide = document.querySelectorAll(".pw_hide");
   const daysTag = document.querySelector(".days"),
    daysTag2 = document.querySelector(".days2"),
-  currentDate = document.querySelector(".two-calendars .wrapper .current-date"),
+  currentDate = document.querySelector(".current-date"),
   currentDate2 = document.querySelector(".current-date2"),
   prevNextIcon = document.querySelectorAll(".icons span");
 
@@ -204,7 +204,7 @@ function renderFrontEnd(listofEvents){
       for (let i = lastDayofMonth; i < 6; i++) { // creating li of next month first days
           liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`
       }
-      currentDate.innerText = `${months[currMonth]} ${currYear}`; // passing current mon and yr as currentDate text
+      currentDate.textContent = `${months[currMonth]} ${currYear}`; // passing current mon and yr as currentDate text
       daysTag.innerHTML = liTag;
       const dayElements = daysTag.querySelectorAll('li');
       let i=1;
