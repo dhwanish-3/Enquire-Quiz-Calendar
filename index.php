@@ -190,9 +190,9 @@ require 'backup/google.php';
         <span>QUIZ EVENTS ?</span>
       </div>
       <div class="slider-container">
-        <div class="sliders">
+        <div class="range">
+          <label for="general">General</label>
           <div class="slider">
-            <label for="general">General</label>
             <div class="range-slider">
               <div class="slider-line" id="range-line1"></div>
             </div>
@@ -202,6 +202,16 @@ require 'backup/google.php';
               </div>
             </div>
             <input type="range" class="range-input" id="range-input1" name="general" min="0" max="10" value="10" step="1">
+          </div>
+          <div class="range">
+            <div class="sliderValue">
+              <span>5</span>
+            </div>
+            <div class="field">
+              <div class="value left">0</div>
+              <input type="range" min="0" max="10" value="5" steps="1">
+              <div class="value right">10</div>
+            </div>
           </div>
         </div>
       </div>     

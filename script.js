@@ -23,6 +23,20 @@ if (signup === 'success') {
   document.body.appendChild(message);
 }
 
+// range-sliders
+const slideValue = document.querySelector(".sliderValue span");
+const inputSlider = document.querySelector(".field input");
+inputSlider.oninput = (()=>{
+  let value = inputSlider.value;
+  slideValue.textContent = value;
+  slideValue.style.left = (value*10) + "%";
+  slideValue.classList.add("show");
+  inputSlider.style.backgroundImage=`linear-gradient(90deg,#19e4ff,#ff0000)`;
+});
+inputSlider.onblur = (()=>{
+  slideValue.classList.remove("show");
+});
+
 //calender event functions
 function getCalenderDates(callback){
   // Create a new XMLHttpRequest object
