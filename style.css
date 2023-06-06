@@ -225,7 +225,7 @@ a{
 .checkbox input {
     accent-color: var(--mainColor);
 }
-  .checkbox label {
+.checkbox label {
     font-size: 12px;
     cursor: pointer;
     user-select: none;
@@ -657,25 +657,47 @@ header .current-date2{
 
 .slider-container{
   display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   background-color: var(--textColor);
-  border-radius: 4rem;
+  border-radius: 3rem;
   place-items: center;
+  padding: 2rem 3rem;
+  column-gap: 2rem;
+  row-gap: 1rem;
+  width: fit-content;
 }
 
+.range label{
+  font-size: 1.1rem;
+  font-weight: 550;
+  color: var(--mainColor);
+  margin-left: 2rem;
+}
 .slider{
   display: flex;
   flex-direction: column;
   background-color: var(--grey);
   justify-content: center;
-  align-items: center;
-  border-radius: 20vmax;
+  align-items: flex-start;
+  border-radius: 10vmax;
   padding: 1rem 1.5rem;
   box-shadow: 0 0 7px rgba(0, 0, 0, 0.3);
 }
-
+.range-slider{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.range-slider span{
+  font-size: 1.1rem;
+  color: var(--mainColor);
+  font-weight: bold;
+}
 .range-value{
   position: relative;
-  height: 20px;
+  height: 10px;
   width: calc(var(--range-width) - 11px);
 }
 
@@ -699,7 +721,27 @@ header .current-date2{
   opacity: 0;
 }
 #value-number1.show{
-  transform: translate(-20%,-50%) rotate(-45deg) scale(1);
+  transform: translate(50%,-50%) rotate(-45deg) scale(1);
+  opacity: 1;
+}
+#value-number2.show{
+  transform: translate(50%,-50%) rotate(-45deg) scale(1);
+  opacity: 1;
+}
+#value-number3.show{
+  transform: translate(50%,-50%) rotate(-45deg) scale(1);
+  opacity: 1;
+}
+#value-number4.show{
+  transform: translate(50%,-50%) rotate(-45deg) scale(1);
+  opacity: 1;
+}
+#value-number5.show{
+  transform: translate(50%,-50%) rotate(-45deg) scale(1);
+  opacity: 1;
+}
+#value-number6.show{
+  transform: translate(50%,-50%) rotate(-45deg) scale(1);
   opacity: 1;
 }
 .value-number span{
@@ -711,99 +753,5 @@ header .current-date2{
   background-color: var(--mainColor);
   width: var(--range-width);
   border-radius: 10vmax;
-  height: 6px;
+  height: 9px;
 }
-
-/*other one*/
-/* @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-*{
-  font-family: "Poppins",sans-serif;
-}
-
-.range{
-  height: 80px;
-  width: 380px;
-  background: var(--grey);
-  border-radius: 10px;
-  padding: 0 65px 0 45px;
-  box-shadow: 2px 4px 8px rgba(0,0,0,0.1);
-}
-.sliderValue{
-  position: relative;
-  width: 100%;
-}
-.sliderValue span{
-  position: absolute;
-  height: 45px;
-  width: 45px;
-  transform: translateX(-70%) scale(0);
-  font-weight: 500;
-  top: -40px;
-  line-height: 55px;
-  z-index: 2;
-  color: var(--textColor);
-  transform-origin: bottom;
-  transition: transform 0.3s ease-in-out;
-}
-.sliderValue span.show{
-  transform: translateX(-70%) scale(1);
-}
-.sliderValue span:after{
-  position: absolute;
-  content: '';
-  height: 100%;
-  width: 100%;
-  background: var(--mainColor);
-  border: 3px solid var(--textColor);
-  z-index: -1;
-  left: 50%;
-  transform: translateX(-50%) rotate(45deg);
-  border-bottom-left-radius: 50%;
-  border-top-left-radius: 50%;
-  border-top-right-radius: 50%;
-}
-.field{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 20rem;
-  gap: 1rem;
-}
-.field .value{
-  font-size: 18px;
-  color: var(--mainColor);
-  font-weight: 600;
-}
-.range input{
-  appearance: none;
-  width: 100%;
-  height: 3px;
-  background: var(--comboColor);
-  border-radius: 5px;
-  outline: none;
-  border: none;
-  z-index: 101;
-}
-.range input::-webkit-slider-thumb{
-  -webkit-appearance: none;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--mainColor);
-  border: 1px solid var(--mainColor);
-  cursor: pointer;
-}
-.range input::-moz-range-thumb{
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--mainColor);
-  border: 1px solid var(--mainColor);
-  cursor: pointer;
-}
-.range input::-moz-range-progress{
-  background: var(--mainColor);
-} */
-

@@ -15,6 +15,7 @@ const formOpenBtn = document.querySelector("#form-open"),
 formOpenBtn.addEventListener("click", () => {home.classList.add("show");console.log('click');});
 formCloseBtn.addEventListener("click", () => home.classList.remove("show"));
 
+// last inside form-container
 const urlParams = new URLSearchParams(window.location.search);
 const signup = urlParams.get('signup');
 if (signup === 'success') {
@@ -24,28 +25,29 @@ if (signup === 'success') {
 }
 
 // range-sliders
-const slider=document.getElementById("value-number1");
-const sliderValue=document.getElementById("range-number1");
-const rangeInput=document.getElementById("range-input1");
-let rangeValue=5;
+for(let i=1;i<7;i++){
+  const slider=document.getElementById(`value-number${i}`);
+  const sliderValue=document.getElementById(`range-number${i}`);
+  const rangeInput=document.getElementById(`range-input${i}`);
+  let rangeValue=5;
 
-rangeInput.addEventListener("input",()=>{
+  rangeInput.addEventListener("input",()=>{
+    changeRangeValue(rangeInput);
+    slider.classList.add("show");
+  });
+  rangeInput.addEventListener("mouseleave" , ()=>{
+    slider.classList.remove("show");
+  })
+
+  const changeRangeValue=(range)=>{
+    rangeValue=range.value;
+    sliderValue.textContent=rangeValue;
+    slider.style.left=`${rangeValue*10}%`;
+    rangeInput.style.backgroundImage=`linear-gradient(90deg , var(--mainColor) ${rangeInput.value*10}%, #f1f1f1 ${rangeInput.value*10}%)`;
+  }
+
   changeRangeValue(rangeInput);
-  slider.classList.add("show");
-});
-rangeInput.addEventListener("mouseleave" , ()=>{
-  slider.classList.remove("show");
-})
-
-const changeRangeValue=(range)=>{
-  rangeValue=range.value;
-  sliderValue.textContent=rangeValue;
-  slider.style.left=`${rangeValue*10}%`;
-  rangeInput.style.backgroundImage=`linear-gradient(90deg , var(--mainColor) ${rangeInput.value*10}%, #f1f1f1 ${rangeInput.value*10}%)`;
 }
-
-changeRangeValue(rangeInput);
-
 //calender event functions
 function getCalenderDates(callback){
   // Create a new XMLHttpRequest object

@@ -94,15 +94,6 @@ require 'backup/google.php';
           <a href="<?php echo $client->createAuthUrl(); ?>"><button id="google-button"><img src="images/google-logo.png">Sign in with Google</button></a>
           <div class="login_signup">Already have an account? <a href="#" id="login">Login</a></div>       
         </div>
-        <!-- <script>
-          const urlParams = new URLSearchParams(window.location.search);
-          const signup = urlParams.get('signup');
-          if (signup === 'success') {
-            const message = document.createElement('p');
-            message.innerText = 'You have successfully signed up!';
-            document.body.appendChild(message);
-          }
-        </script> -->
       </div>
     </section>
 
@@ -192,10 +183,7 @@ require 'backup/google.php';
       <div class="slider-container">
         <div class="range">
           <label for="general">General</label>
-          <div class="slider">
-            <div class="range-slider">
-              <div class="slider-line" id="range-line1"></div>
-            </div>
+          <div class="slider">            
             <div class="range-thumb" id="range-thumb1">
               <div class="range-value">
                 <div class="value-number" id="value-number1">
@@ -203,16 +191,95 @@ require 'backup/google.php';
                 </div>
               </div>
             </div>
-            <input type="range" class="range-input" id="range-input1" name="general" min="0" max="10" value="5" step="1">
-          </div>
-          <div class="range">
-            <div class="sliderValue">
-              <span>5</span>
+            <div class="range-slider">
+              <span>0</span>
+              <input type="range" class="range-input" id="range-input1" name="general" min="0" max="10" value="5" step="1">
+              <span>10</span>
             </div>
-            <div class="field">
-              <div class="value left">0</div>
-              <input type="range" min="0" max="10" value="5" steps="1">
-              <div class="value right">10</div>
+          </div>
+        </div>
+        <div class="range">
+          <label for="sci-tech">Sci-Tech</label>
+          <div class="slider">            
+            <div class="range-thumb" id="range-thumb2">
+              <div class="range-value">
+                <div class="value-number" id="value-number2">
+                  <span id="range-number2">5</span>
+                </div>
+              </div>
+            </div>
+            <div class="range-slider">
+              <span>0</span>
+              <input type="range" class="range-input" id="range-input2" name="general" min="0" max="10" value="5" step="1">
+              <span>10</span>
+            </div>
+          </div>
+        </div>
+        <div class="range">
+          <label for="business">Business</label>
+          <div class="slider">            
+            <div class="range-thumb" id="range-thumb3">
+              <div class="range-value">
+                <div class="value-number" id="value-number3">
+                  <span id="range-number3">5</span>
+                </div>
+              </div>
+            </div>
+            <div class="range-slider">
+              <span>0</span>
+              <input type="range" class="range-input" id="range-input3" name="general" min="0" max="10" value="5" step="1">
+              <span>10</span>
+            </div>
+          </div>
+        </div>
+        <div class="range">
+          <label for="sci-tech-biz">Sci-Tech-Biz</label>
+          <div class="slider">            
+            <div class="range-thumb" id="range-thumb4">
+              <div class="range-value">
+                <div class="value-number" id="value-number4">
+                  <span id="range-number4">5</span>
+                </div>
+              </div>
+            </div>
+            <div class="range-slider">
+              <span>0</span>
+              <input type="range" class="range-input" id="range-input4" name="general" min="0" max="10" value="5" step="1">
+              <span>10</span>
+            </div>
+          </div>
+        </div>
+        <div class="range">
+          <label for="sports">Sports</label>
+          <div class="slider">            
+            <div class="range-thumb" id="range-thumb5">
+              <div class="range-value">
+                <div class="value-number" id="value-number5">
+                  <span id="range-number5">5</span>
+                </div>
+              </div>
+            </div>
+            <div class="range-slider">
+              <span>0</span>
+              <input type="range" class="range-input" id="range-input5" name="general" min="0" max="10" value="5" step="1">
+              <span>10</span>
+            </div>
+          </div>
+        </div>
+        <div class="range">
+          <label for="mela">Mela</label>
+          <div class="slider">            
+            <div class="range-thumb" id="range-thumb6">
+              <div class="range-value">
+                <div class="value-number" id="value-number6">
+                  <span id="range-number6">5</span>
+                </div>
+              </div>
+            </div>
+            <div class="range-slider">
+              <span>0</span>
+              <input type="range" class="range-input" id="range-input6" name="general" min="0" max="10" value="5" step="1">
+              <span>10</span>
             </div>
           </div>
         </div>
