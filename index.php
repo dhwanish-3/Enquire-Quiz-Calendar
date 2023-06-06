@@ -198,10 +198,12 @@ require 'backup/google.php';
             </div>
             <div class="range-thumb" id="range-thumb1">
               <div class="range-value">
-                <span class="value-number" id="range-number1">10</span>
+                <div class="value-number" id="value-number1">
+                  <span id="range-number1">5</span>
+                </div>
               </div>
             </div>
-            <input type="range" class="range-input" id="range-input1" name="general" min="0" max="10" value="10" step="1">
+            <input type="range" class="range-input" id="range-input1" name="general" min="0" max="10" value="5" step="1">
           </div>
           <div class="range">
             <div class="sliderValue">
@@ -218,7 +220,7 @@ require 'backup/google.php';
     </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <script src="script.js" defer></script>
 </body>
 </html>
