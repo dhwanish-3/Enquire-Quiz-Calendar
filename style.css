@@ -5,6 +5,7 @@
   --mainColor: #7d2ae8;
   --comboColor: #19e4ff;
   --pink: #ff28f4;
+  --range-width: 200px;
 }
 /* Import Google font - Poppins */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
@@ -667,15 +668,50 @@ header .current-date2{
   background-color: var(--grey);
   justify-content: center;
   align-items: center;
-  border-radius: 20px;
+  border-radius: 20vmax;
   padding: 1rem 1.5rem;
   box-shadow: 0 0 7px rgba(0, 0, 0, 0.3);
-  width: 10rem;
+}
+
+.range-value{
+  position: relative;
+  height: 20px;
+  width: calc(var(--range-width) - 11px);
+}
+
+.value-number{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  height: 45px;
+  width: 45px;
+  background-color: var(--mainColor);
+  border-radius: 50% 50% 50% 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  top: -20px;
+  transform: translate(-50%,-50%) rotate(-45deg) scale(0);
+  font-size: 1.1rem;
+  color: var(--textColor);
+  pointer-events: none;
+  transform-origin: bottom;
+  transition: transform 0.3s ease-in-out;
+  opacity: 0;
+}
+#value-number1.show{
+  transform: translate(-20%,-50%) rotate(-45deg) scale(1);
+  opacity: 1;
+}
+.value-number span{
+  transform: rotate(45deg);
 }
 
 .range-input{
   appearance: none;
   background-color: var(--mainColor);
+  width: var(--range-width);
+  border-radius: 10vmax;
+  height: 6px;
 }
 
 /*other one*/

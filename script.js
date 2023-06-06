@@ -24,18 +24,27 @@ if (signup === 'success') {
 }
 
 // range-sliders
-const slideValue = document.querySelector(".sliderValue span");
-const inputSlider = document.querySelector(".field input");
-inputSlider.oninput = (()=>{
-  let value = inputSlider.value;
-  slideValue.textContent = value;
-  slideValue.style.left = (value*10) + "%";
-  slideValue.classList.add("show");
-  inputSlider.style.backgroundImage=`linear-gradient(90deg,#19e4ff,#ff0000)`;
+const slider=document.getElementById("value-number1");
+const sliderValue=document.getElementById("range-number1");
+const rangeInput=document.getElementById("range-input1");
+let rangeValue=5;
+
+rangeInput.addEventListener("input",()=>{
+  changeRangeValue(rangeInput);
+  slider.classList.add("show");
 });
-inputSlider.onblur = (()=>{
-  slideValue.classList.remove("show");
-});
+rangeInput.addEventListener("mouseleave" , ()=>{
+  slider.classList.remove("show");
+})
+
+const changeRangeValue=(range)=>{
+  rangeValue=range.value;
+  sliderValue.textContent=rangeValue;
+  slider.style.left=`${rangeValue*10}%`;
+  rangeInput.style.backgroundImage=`linear-gradient(90deg , var(--mainColor) ${rangeInput.value*10}%, #f1f1f1 ${rangeInput.value*10}%)`;
+}
+
+changeRangeValue(rangeInput);
 
 //calender event functions
 function getCalenderDates(callback){
@@ -290,22 +299,3 @@ fileInput.addEventListener("change", function() {
 
   reader.readAsDataURL(this.files[0]);
 });
-
-// range-sliders
-for(let i=1;i<2;i++){
-  const rangeThumb = document.getElementById(`range-thumb${i}`),
-        rangeNumber = document.getElementById(`range-number${i}`),
-        rangeLine = document.getElementById(`range-line${i}`),
-        rangeInput = document.getElementById(`range-input${i}`);
-  console.log(rangeInput);
-  const rangeInputSlider = () =>{
-     rangeNumber.textContent = rangeInput.value;
-     const thumbPosition = (rangeInput.value / rangeInput.max),
-     space = rangeInput.offsetWidth - rangeThumb.offsetWidth
-     rangeThumb.style.left = (thumbPosition * space) + 'px'
-     rangeLine.style.width = rangeInput.value + '%'
-     rangeInput.addEventListener('input', rangeInputSlider)
-  }
-  
-  rangeInputSlider();
-}
