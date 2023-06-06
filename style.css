@@ -36,7 +36,7 @@ a{
     display: flex;
     background: transparent;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     font-weight: bold;
     cursor: pointer;
     justify-content: center;
@@ -69,12 +69,12 @@ a{
 }
 
 .header .enquire img{
-  width: 7rem;
+  width: 6rem;
 }
 
 .header .enquire span{
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 1.7rem;
   color:var(--textColor);
 }
 
@@ -90,7 +90,9 @@ a{
 .header .button{
   border: 2px solid white;
   margin-right: 10%;
-  font-size: 1.0em;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.3rem 1.5rem;
 }
 .header .button:active{
   transform: scale(0.98);
