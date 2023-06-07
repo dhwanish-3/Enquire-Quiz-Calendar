@@ -49,7 +49,16 @@ for(let i=1;i<7;i++){
   changeRangeValue(rangeInput);
 }
 
-
+// apply to add an event form
+const applicationForm=document.querySelector(".application-form");
+const applyButton=document.querySelector(".apply-button");
+const applyCloseButton=document.querySelector(".apply-close-button");
+applyButton.addEventListener("click",()=>{
+  applicationForm.classList.add("show");
+});
+applyCloseButton.addEventListener("click" , ()=>{
+  applicationForm.classList.remove("show");
+});
 
 //calender event functions
 function getCalenderDates(callback){
