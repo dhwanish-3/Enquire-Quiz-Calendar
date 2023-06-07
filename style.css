@@ -812,3 +812,12 @@ header .current-date2{
   opacity: 1;
   pointer-events: auto;
 }
+
+.application-form:first-child .heading{
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.application-form:first-child .instruction{
+  font-size: 0.9rem;
+  font-weight: 400;
+}
