@@ -92,7 +92,7 @@ a{
   margin-right: 10%;
   font-size: 0.9rem;
   font-weight: 500;
-  padding: 0.3rem 1.5rem;
+  padding: 0.5rem 1.5rem;
 }
 .header .button:active{
   transform: scale(0.98);
@@ -471,18 +471,18 @@ header .current-date2{
 
 /* Pop-up */
 .pop-up{
-  width: 450px;
+  width: fit-content;
   background:white;
-  border-radius: 12px;
-  position:absolute;
+  border-radius: 1.5rem;
+  position:fixed;
   left:50%;
   top: 50%;
   transform:translate(-50%,-50%) scale(1);
   text-align: center;
-  padding: 0 5px 5px;
-  color:#333;
+  padding: 0rem 1rem;
+  color:black;
   visibility: visible;
-  transition:transform 0.2s ,top 0.2s;
+  transition: transform 0.2s ,top 0.2s;
   z-index: 100;
   overflow: auto;
   max-height: 700px;
@@ -506,6 +506,8 @@ header .current-date2{
 }
 .pop-up .in_a_row{
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pop-up .flex{
@@ -513,36 +515,44 @@ header .current-date2{
 }
 
 .pop-up .h3{
-  font-size: 24px;
-  font-weight: 500;
-  margin:10px 0 0px;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 .pop-up img{
-  width: 400px;
+  width: 30rem;
 }
-
+#popContainer .event-details{
+  gap: 0.1rem;
+}
 .pop-up .close-btn {
   box-sizing: border-box;
   cursor: pointer;
-  /* margin-top: 5px; */
   font-size: 40px;
   font-weight: 500;
   border: none;
-  color: #000000;
-  height: 20px;
+  color: black;
   max-width: 40px;
   display: inline-block;
 }
 .pop-up .close-btn:hover {
-  color: #ff0000;
+  color: red;
 }
 
 .pop-up::-webkit-scrollbar {
   display: none;
 }
-.ads-part{
+
+.advertisement{
+  display: flex;
+  flex-direction: column;
   flex: 2;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.ads-part{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -561,6 +571,13 @@ header .current-date2{
 
 .ads-part img{
   width: 17rem;
+}
+
+.advertisement .apply-button{
+  background-color: var(--grey);
+  padding: 0.5rem 1.5rem;
+  font-weight: 600;
+  font-size: 1.2rem;
 }
 
 .poster{
@@ -595,8 +612,11 @@ header .current-date2{
   gap: 0.5rem;
   font-family: "Poppins",sans-serif;
   font-size: 1.1rem;
+  text-align: start;
 }
-
+.event-details span{
+  line-height: 25px;
+}
 /* Category-buttons */
 .category-buttons{
   display: flex;
@@ -646,6 +666,7 @@ header .current-date2{
   margin-top: 2rem;
   margin-left: 8rem;
   margin-right: 8rem;
+  gap: 1rem;
 }
 
 .fav-events .question{
@@ -657,14 +678,29 @@ header .current-date2{
   color: var(--comboColor);
 }
 
-.slider-container{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+.pop-up-form{
+  display: flex;
+  flex-direction: column;
   background-color: var(--textColor);
   border-radius: 3rem;
   place-items: center;
   padding: 2rem 3rem;
+  padding-bottom: 1rem;
+  width: fit-content;
+  gap: 2rem;
+}
+
+.go-button{
+  background-color: var(--mainColor);
+  padding: 0.5rem 1.5rem;
+  font-size: 1.2rem;
+}
+
+.slider-container{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  place-items: center;
   column-gap: 2rem;
   row-gap: 1rem;
   width: fit-content;

@@ -12,7 +12,7 @@ const formOpenBtn = document.querySelector("#form-open"),
   currentDate2 = document.querySelector(".current-date2"),
   prevNextIcon = document.querySelectorAll(".icons span");
 
-formOpenBtn.addEventListener("click", () => {home.classList.add("show");console.log('click');});
+formOpenBtn.addEventListener("click", () => {home.classList.add("show")});
 formCloseBtn.addEventListener("click", () => home.classList.remove("show"));
 
 // last inside form-container
@@ -48,6 +48,9 @@ for(let i=1;i<7;i++){
 
   changeRangeValue(rangeInput);
 }
+
+
+
 //calender event functions
 function getCalenderDates(callback){
   // Create a new XMLHttpRequest object
@@ -155,16 +158,20 @@ function renderFrontEnd(listofEvents){
   function PopupString(day,eventDetails){
     var popup=`<div class="backdrop"></div><div id="popContainer">
     <div class="in_a_row">
-    <h3 class="flex h3">${months[currMonth]} ${day}, ${currYear}</h3>
-    <div class="flex close-btn">&times;</div>
+      <h3 class="flex h3">${months[currMonth]} ${day}, ${currYear}</h3>
+      <div class="flex close-btn">&times;</div>
     </div>`;
     let i=0;
     while(i<eventDetails.length){
-      let loop=`<br><img src=${eventDetails[i].imageUrl}>
-      <p>Name:${eventDetails[i].name}</p>      
-      <p>Venue:${eventDetails[i].venue}</p>
-      <p>Quiz Masters:${eventDetails[i].masters}</p>
-      <br><hr>`;
+      let loop=`<img src=${eventDetails[i].imageUrl}>
+      <div class="event-details">
+      <p>Name : ${eventDetails[i].name}</p>      
+      <p>Venue : ${eventDetails[i].venue}</p>
+      <p>Type : ${eventDetails[i].type}</p>
+      <p>Category : ${eventDetails[i].category}</p>
+      <p>Quiz Masters : ${eventDetails[i].masters}</p>
+      <p>Contact : ${eventDetails[i].contact}</p>
+      <hr>`;
       popup=popup.concat(loop);
       i++;
     }

@@ -155,134 +155,142 @@ require 'backup/google.php';
         </section>
       </div>
       <!-- Ads Section -->
-      <div class="ads-part">
-        <div class="heading">
-          <span>Popular Events</span>
+      <section class="advertisement">
+        <div class="ads-part">
+          <div class="heading">
+            <span>Popular Events</span>
+          </div>
+          <div class="poster">
+            <span id="prev" class="material-symbols-rounded">l</span>
+            <img src="images/poster.jpg" alt="">
+            <span id="next" class="material-symbols-rounded">r</span>
+          </div>
+          <div class="event-details">
+            <span>Event : Mega Quiz</span>
+            <span>Date : 12-06-2023</span>
+            <span>Venue : GHSS Paivalike Nagar, Paivalike</span>
+            <span>Type : Sci-Tech-Biz Quiz</span>
+            <span>Category : School & College</span>
+            <span>Quiz Masters : BatMan & SuperMan</span>
+            <span>Contact : 9876543210 </span>
+          </div>
         </div>
-        <div class="poster">
-          <span id="prev" class="material-symbols-rounded">l</span>
-          <img src="images/poster.jpg" alt="">
-          <span id="next" class="material-symbols-rounded">r</span>
+        <div>
+          <button class="button apply-button">Apply for Event</button>
         </div>
-        <div class="event-details">
-          <span>Event : Mega Quiz</span>
-          <span>Date : 12-06-2023</span>
-          <span>Venue : GHSS Paivalike Nagar, Paivalike</span>
-          <span>Type : Sci-Tech-Biz Quiz</span>
-          <span>Category : School & College</span>
-          <span>Quiz Masters : BatMan & SuperMan</span>
-          <span>Contact : 9876543210 </span>
-        </div>
-      </div>
+      </section>
     </section>
     <section class="fav-events">
       <div class="question">
         <span>HARD TIME SORTING YOUR FAVOURITE </span>
         <span>QUIZ EVENTS ?</span>
       </div>
-      <div class="slider-container">
-        <div class="range">
-          <label for="general">General</label>
-          <div class="slider">            
-            <div class="range-thumb" id="range-thumb1">
-              <div class="range-value">
-                <div class="value-number" id="value-number1">
-                  <span id="range-number1">5</span>
+      <div class="pop-up-form">
+        <div class="slider-container">
+          <div class="range">
+            <label for="general">General</label>
+            <div class="slider">            
+              <div class="range-thumb" id="range-thumb1">
+                <div class="range-value">
+                  <div class="value-number" id="value-number1">
+                    <span id="range-number1">5</span>
+                  </div>
                 </div>
               </div>
+              <div class="range-slider">
+                <span>0</span>
+                <input type="range" class="range-input" id="range-input1" name="general" min="0" max="10" value="5" step="1">
+                <span>10</span>
+              </div>
             </div>
-            <div class="range-slider">
-              <span>0</span>
-              <input type="range" class="range-input" id="range-input1" name="general" min="0" max="10" value="5" step="1">
-              <span>10</span>
+          </div>
+          <div class="range">
+            <label for="sci-tech">Sci-Tech</label>
+            <div class="slider">            
+              <div class="range-thumb" id="range-thumb2">
+                <div class="range-value">
+                  <div class="value-number" id="value-number2">
+                    <span id="range-number2">5</span>
+                  </div>
+                </div>
+              </div>
+              <div class="range-slider">
+                <span>0</span>
+                <input type="range" class="range-input" id="range-input2" name="general" min="0" max="10" value="5" step="1">
+                <span>10</span>
+              </div>
+            </div>
+          </div>
+          <div class="range">
+            <label for="business">Business</label>
+            <div class="slider">            
+              <div class="range-thumb" id="range-thumb3">
+                <div class="range-value">
+                  <div class="value-number" id="value-number3">
+                    <span id="range-number3">5</span>
+                  </div>
+                </div>
+              </div>
+              <div class="range-slider">
+                <span>0</span>
+                <input type="range" class="range-input" id="range-input3" name="general" min="0" max="10" value="5" step="1">
+                <span>10</span>
+              </div>
+            </div>
+          </div>
+          <div class="range">
+            <label for="sci-tech-biz">Sci-Tech-Biz</label>
+            <div class="slider">            
+              <div class="range-thumb" id="range-thumb4">
+                <div class="range-value">
+                  <div class="value-number" id="value-number4">
+                    <span id="range-number4">5</span>
+                  </div>
+                </div>
+              </div>
+              <div class="range-slider">
+                <span>0</span>
+                <input type="range" class="range-input" id="range-input4" name="general" min="0" max="10" value="5" step="1">
+                <span>10</span>
+              </div>
+            </div>
+          </div>
+          <div class="range">
+            <label for="sports">Sports</label>
+            <div class="slider">            
+              <div class="range-thumb" id="range-thumb5">
+                <div class="range-value">
+                  <div class="value-number" id="value-number5">
+                    <span id="range-number5">5</span>
+                  </div>
+                </div>
+              </div>
+              <div class="range-slider">
+                <span>0</span>
+                <input type="range" class="range-input" id="range-input5" name="general" min="0" max="10" value="5" step="1">
+                <span>10</span>
+              </div>
+            </div>
+          </div>
+          <div class="range">
+            <label for="mela">Mela</label>
+            <div class="slider">            
+              <div class="range-thumb" id="range-thumb6">
+                <div class="range-value">
+                  <div class="value-number" id="value-number6">
+                    <span id="range-number6">5</span>
+                  </div>
+                </div>
+              </div>
+              <div class="range-slider">
+                <span>0</span>
+                <input type="range" class="range-input" id="range-input6" name="general" min="0" max="10" value="5" step="1">
+                <span>10</span>
+              </div>
             </div>
           </div>
         </div>
-        <div class="range">
-          <label for="sci-tech">Sci-Tech</label>
-          <div class="slider">            
-            <div class="range-thumb" id="range-thumb2">
-              <div class="range-value">
-                <div class="value-number" id="value-number2">
-                  <span id="range-number2">5</span>
-                </div>
-              </div>
-            </div>
-            <div class="range-slider">
-              <span>0</span>
-              <input type="range" class="range-input" id="range-input2" name="general" min="0" max="10" value="5" step="1">
-              <span>10</span>
-            </div>
-          </div>
-        </div>
-        <div class="range">
-          <label for="business">Business</label>
-          <div class="slider">            
-            <div class="range-thumb" id="range-thumb3">
-              <div class="range-value">
-                <div class="value-number" id="value-number3">
-                  <span id="range-number3">5</span>
-                </div>
-              </div>
-            </div>
-            <div class="range-slider">
-              <span>0</span>
-              <input type="range" class="range-input" id="range-input3" name="general" min="0" max="10" value="5" step="1">
-              <span>10</span>
-            </div>
-          </div>
-        </div>
-        <div class="range">
-          <label for="sci-tech-biz">Sci-Tech-Biz</label>
-          <div class="slider">            
-            <div class="range-thumb" id="range-thumb4">
-              <div class="range-value">
-                <div class="value-number" id="value-number4">
-                  <span id="range-number4">5</span>
-                </div>
-              </div>
-            </div>
-            <div class="range-slider">
-              <span>0</span>
-              <input type="range" class="range-input" id="range-input4" name="general" min="0" max="10" value="5" step="1">
-              <span>10</span>
-            </div>
-          </div>
-        </div>
-        <div class="range">
-          <label for="sports">Sports</label>
-          <div class="slider">            
-            <div class="range-thumb" id="range-thumb5">
-              <div class="range-value">
-                <div class="value-number" id="value-number5">
-                  <span id="range-number5">5</span>
-                </div>
-              </div>
-            </div>
-            <div class="range-slider">
-              <span>0</span>
-              <input type="range" class="range-input" id="range-input5" name="general" min="0" max="10" value="5" step="1">
-              <span>10</span>
-            </div>
-          </div>
-        </div>
-        <div class="range">
-          <label for="mela">Mela</label>
-          <div class="slider">            
-            <div class="range-thumb" id="range-thumb6">
-              <div class="range-value">
-                <div class="value-number" id="value-number6">
-                  <span id="range-number6">5</span>
-                </div>
-              </div>
-            </div>
-            <div class="range-slider">
-              <span>0</span>
-              <input type="range" class="range-input" id="range-input6" name="general" min="0" max="10" value="5" step="1">
-              <span>10</span>
-            </div>
-          </div>
-        </div>
+        <button class="button go-button">GO !</button>
       </div>     
     </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
