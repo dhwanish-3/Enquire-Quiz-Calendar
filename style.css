@@ -821,3 +821,16 @@ header .current-date2{
   font-size: 0.9rem;
   font-weight: 400;
 }
+
+.apply-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container{
+  width: 20rem;
+  border-radius: 2rem;
+  background-color: var(--grey);
+}

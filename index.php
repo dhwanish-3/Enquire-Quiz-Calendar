@@ -302,6 +302,7 @@ require 'backup/google.php';
         <form action="event_apply.php" method="POST">
           <div class="image-container">
             <img src="images/google-logo.png" alt="">
+            <span>Please click here to select poster for the event</span>
             <span>Your selected image file will appear here</span>
           </div>
         </form>
