@@ -795,3 +795,20 @@ header .current-date2{
 }
 
 /* Application form for events */
+.application-form{
+  position: fixed;
+  width: fit-content;
+}
+
+.application-form::before{
+  content: "";
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s ease-out;
+}
+
+.application-form .show{
+  opacity: 1;
+  pointer-events: auto;
+}
