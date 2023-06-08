@@ -957,3 +957,25 @@ header .current-date2{
   gap: 0.6rem;
 }
 
+.form-field{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 23rem;
+}
+.form-field input{
+  width: 23rem;
+  height: 2rem;
+  padding: 0px 8px;
+  border-radius: 0.5rem;
+  outline: none;
+  border: 2px solid var(--darkGrey);
+}
+
+.form-field input:focus{
+  border-color: var(--mainColor);
+}
+
+.apply-submit{
+  background-color: var(--mainColor);
+}
