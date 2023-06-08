@@ -12,10 +12,41 @@ const formOpenBtn = document.querySelector("#form-open"),
   currentDate2 = document.querySelector(".current-date2"),
   prevNextIcon = document.querySelectorAll(".icons span");
 
-formOpenBtn.addEventListener("click", () => {home.classList.add("show")});
-formCloseBtn.addEventListener("click", () => home.classList.remove("show"));
 
-// last inside form-container
+// sign-up and login form
+const authPopUp=document.querySelector(".home");
+const nonAuthPopupElements = document.querySelectorAll("body > *:not(.home)");
+const outsideClickHandlerforAuth = (event) => {
+  if (!authPopUp.contains(event.target) && event.target !== authPopUp) {
+    nonAuthPopupElements.forEach((element) => {
+      element.classList.remove("blur-effect");
+      home.classList.remove("show");
+    });
+    document.removeEventListener("click", outsideClickHandlerforAuth);          
+  }
+};
+
+formOpenBtn.addEventListener("click", () => {
+  nonAuthPopupElements.forEach((element) => {
+    element.classList.add("blur-effect");
+  });
+
+  setTimeout(() => {
+    document.addEventListener("click", outsideClickHandlerforAuth);
+  }, 100);
+  home.classList.add("show");
+});
+
+formCloseBtn.addEventListener("click", () => {
+  home.classList.remove("show");
+  document.removeEventListener("click", outsideClickHandlerforAuth);
+  nonAuthPopupElements.forEach((element) => {
+    element.classList.remove("blur-effect");
+  });
+});
+
+
+// last inside form-container for checking success of signup
 const urlParams = new URLSearchParams(window.location.search);
 const signup = urlParams.get('signup');
 if (signup === 'success') {
@@ -23,6 +54,7 @@ if (signup === 'success') {
   message.innerText = 'You have successfully signed up!';
   document.body.appendChild(message);
 }
+
 
 // range-sliders
 for(let i=1;i<7;i++){
@@ -37,7 +69,7 @@ for(let i=1;i<7;i++){
   });
   rangeInput.addEventListener("mouseleave" , ()=>{
     slider.classList.remove("show");
-  })
+  });
 
   const changeRangeValue=(range)=>{
     rangeValue=range.value;
@@ -53,12 +85,36 @@ for(let i=1;i<7;i++){
 const applicationForm=document.querySelector(".application-form");
 const applyButton=document.querySelector(".apply-button");
 const applyCloseButton=document.querySelector(".apply-close-button");
-applyButton.addEventListener("click",()=>{
+//dimming other parts
+const nonApplyPopupElements = document.querySelectorAll("body > *:not(.application-form)");
+const applyPopUp=document.querySelector(".application-form");
+const outsideClickHandlerforApply = (event) => {
+  if (!applyPopUp.contains(event.target) && event.target !== applyPopUp) {
+    nonApplyPopupElements.forEach((element) => {
+      element.classList.remove("blur-effect");
+      applicationForm.classList.remove("show");
+    });
+    document.removeEventListener("click", outsideClickHandlerforApply);          
+  }
+};
+applyButton.addEventListener("click",()=>{  
+  nonApplyPopupElements.forEach((element) => {
+    element.classList.add("blur-effect");
+  });
+  setTimeout(() => {
+    document.addEventListener("click", outsideClickHandlerforApply);
+  }, 100);
   applicationForm.classList.add("show");
 });
-applyCloseButton.addEventListener("click" , ()=>{
+
+applyCloseButton.addEventListener("click",()=>{
   applicationForm.classList.remove("show");
+  document.removeEventListener("click", outsideClickHandlerforApply);
+  nonApplyPopupElements.forEach((element) => {
+    element.classList.remove("blur-effect");
+  });
 });
+
 
 //calender event functions
 function getCalenderDates(callback){
@@ -165,22 +221,24 @@ function renderFrontEnd(listofEvents){
     }
   }
   function PopupString(day,eventDetails){
-    var popup=`<div class="backdrop"></div><div id="popContainer">
-    <div class="in_a_row">
-      <h3 class="flex h3">${months[currMonth]} ${day}, ${currYear}</h3>
-      <div class="flex close-btn">&times;</div>
-    </div>`;
+    var popup=`<div class="backdrop"></div>
+    <div id="popContainer">
+      <div class="in_a_row">
+        <h3 class="flex h3">${months[currMonth]} ${day}, ${currYear}</h3>
+        <div class="flex close-btn">&times;</div>
+      </div>`;
     let i=0;
     while(i<eventDetails.length){
       let loop=`<img src=${eventDetails[i].imageUrl}>
       <div class="event-details">
-      <p>Name : ${eventDetails[i].name}</p>      
-      <p>Venue : ${eventDetails[i].venue}</p>
-      <p>Type : ${eventDetails[i].type}</p>
-      <p>Category : ${eventDetails[i].category}</p>
-      <p>Quiz Masters : ${eventDetails[i].masters}</p>
-      <p>Contact : ${eventDetails[i].contact}</p>
-      <hr>`;
+        <p>Name : ${eventDetails[i].name}</p>      
+        <p>Venue : ${eventDetails[i].venue}</p>
+        <p>Type : ${eventDetails[i].type}</p>
+        <p>Category : ${eventDetails[i].category}</p>
+        <p>Quiz Masters : ${eventDetails[i].masters}</p>
+        <p>Contact : ${eventDetails[i].contact}</p>
+        <hr>
+      </div>`;
       popup=popup.concat(loop);
       i++;
     }
@@ -219,8 +277,7 @@ function renderFrontEnd(listofEvents){
       });
       document.body.appendChild(popUp);                  
   }
-  let index=0;
-  let fakeIndex=0;
+
   const renderCalendar = () => {
       let firstDayofMonth = new Date(currYear, currMonth, 1).getDay(), // getting first day of month
       lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(), // getting last date of month

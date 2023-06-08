@@ -63,7 +63,12 @@ require 'backup/google.php';
             </div>
             <button class="button">LOGIN NOW</button>
           </form>
-          <a href="<?php echo $client->createAuthUrl(); ?>"><button id="google-button"><img src="images/google-logo.png">Sign in with Google</button></a>
+          <a href="<?php echo $client->createAuthUrl(); ?>" class="no-line">
+            <button id="google-button">
+              <img src="images/google-logo.png">
+              Sign in with Google
+            </button>
+          </a>
           <div class="login_signup">Don't have an account? <a href="#" id="signup">Signup</a></div>
         </div>
 
@@ -91,7 +96,12 @@ require 'backup/google.php';
             </div>
             <button class="button" onclick="return checkPasswords()">SIGNUP NOW</button>
           </form>
-          <a href="<?php echo $client->createAuthUrl(); ?>"><button id="google-button"><img src="images/google-logo.png">Sign in with Google</button></a>
+          <a href="<?php echo $client->createAuthUrl(); ?>">
+            <button id="google-button">
+              <img src="images/google-logo.png">
+              Sign in with Google
+            </button>
+          </a>
           <div class="login_signup">Already have an account? <a href="#" id="login">Login</a></div>       
         </div>
       </div>
@@ -294,16 +304,23 @@ require 'backup/google.php';
       </div>     
     </section>
     <section class="application-form">
-      <div class="apply-containder">
-        <div>
-          <span class="heading">Application Form</span>
-          <span class="instruction">Please fill the form below to apply to add an event in our website</span>
+      <div class="backdrop"></div>
+      <div class="apply-container">
+        <div class="apply-top">
+          <div class="apply-header">
+            <span class="heading">Application Form</span>
+            <span class="instruction">Please fill the form below to apply to add an event in our website</span>
+          </div>
+          <button class="apply-close-button">&times;</button>
         </div>
         <form action="event_apply.php" method="POST">
-          <div class="image-container">
-            <img src="images/google-logo.png" alt="">
-            <span>Please click here to select poster for the event</span>
-            <span>Your selected image file will appear here</span>
+          <div class="super-row">
+            <div class="image-container">
+              <img src="images/google-logo.png" alt="">
+              <span>Please click here to select poster for the event</span>
+              <span>Your selected image file will appear here</span>
+            </div>
+            
           </div>
         </form>
       </div>

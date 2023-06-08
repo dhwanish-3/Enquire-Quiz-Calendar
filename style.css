@@ -1,5 +1,7 @@
 :root{
   --grey: #aeaeae;
+  --darkGrey: #868686;
+  --containerColor: #dedede;
   --textColor: white;
   --headerColor: #472867;
   --mainColor: #7d2ae8;
@@ -46,7 +48,7 @@ a{
     width: fit-content;
 }
 .button:hover{
-    transform: scale(1.05);
+    transform: scale(1.04);
 }
 
 .header{
@@ -128,8 +130,8 @@ a{
     transform: translate(-50%, -50%) scale(1.2);
     z-index: 101;
     background: white;
-    padding: 25px;
-    border-radius: 12px;
+    padding: 1.5rem;
+    border-radius: 1rem;
     box-shadow: rgba(0, 0, 0, 0.1);
     opacity: 0;
     pointer-events: none;
@@ -163,7 +165,7 @@ a{
     cursor: pointer;
 }
 .form_container h2 {
-    font-size: 22px;
+    font-size: 20px;
     color: #0b0217;
     text-align: center;
 }
@@ -173,6 +175,9 @@ a{
     width: 100%;
     height: 40px;
 }
+.signup_form .input_box{
+  margin-top: 15px;
+}
 .input_box input {
     height: 100%;
     width: 100%;
@@ -181,7 +186,7 @@ a{
     padding: 0 30px;
     color: #333;
     transition: all 0.2s ease;
-    border-bottom: 1.5px solid #aaaaaa;
+    border-bottom: 1.5px solid var(--darkGrey);
 }
 .input_box input:focus {
     border-color: var(--mainColor);
@@ -216,9 +221,10 @@ a{
     color: var(--mainColor);
     font-size: 12px;
 }
-.form_container a:hover {
+.form_container a:hover:not(.no-line) {
     text-decoration: underline;
 }
+
 .checkbox {
     display: flex;
     column-gap: 8px;
@@ -238,7 +244,10 @@ a{
     margin-top: 30px;
     width: 100%;
     padding: 10px 0;
-    border-radius: 10px;
+    border-radius: 0.7rem;
+}
+.form_container .button:hover{
+  transform: scale(1.02);
 }
 .login_signup {
     font-size: 12px;
@@ -246,27 +255,32 @@ a{
     margin-top: 15px;
 }
 
+.form .login_form a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #google-button {
     padding: 6px 24px;
-    border: 2px solid #d2c0c0;
-    background: transparent;
-    border-radius: 8px;
+    border: 1px solid var(--mainColor);
+    border-radius: 0.7rem;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Roboto', sans-serif;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 500;
-    color: #000000;
-    background-color: #ffffff;  
-    height: 40px;
-    width: 270px;
+    color: black;
+    background-color: var(--textColor);  
+    width: 100%;
     transition: 300ms all;
 }
-  
+
 #google-button:hover {
-    transform: scale(1.1);
+    transform: scale(1.03);
+    text-decoration: none;
 }
   
 #google-button img {
@@ -410,7 +424,7 @@ header .current-date2{
   background: blue;
 }
 .days li.active3::before{ /*college*/
-  background: rgb(81, 255, 81);
+  background: rgb(56, 206, 56);
 }
 .days li.active4::before{
   background: linear-gradient(45deg,red,rgb(81, 255, 81),blue);
@@ -485,7 +499,7 @@ header .current-date2{
   transition: transform 0.2s ,top 0.2s;
   z-index: 100;
   overflow: auto;
-  max-height: 700px;
+  max-height: 710px;
   -webkit-overflow-scrolling: touch; /* for smooth scrolling on iOS devices */
   -ms-overflow-style: none; /* to hide the scrollbar in IE and Edge */
   scrollbar-width: none; /* to hide the scrollbar in Firefox */
@@ -520,10 +534,20 @@ header .current-date2{
 }
 
 .pop-up img{
-  width: 30rem;
+  width: 28rem;
 }
 #popContainer .event-details{
-  gap: 0.1rem;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0rem;
+  padding-left: 1rem;
+  gap: 0.5rem;
+  font-family: "Poppins",sans-serif;
+  font-size: 1.1rem;
+  text-align: start;
+}
+#popContainer .event-details span{
+  line-height: 25px;
 }
 .pop-up .close-btn {
   box-sizing: border-box;
@@ -536,7 +560,7 @@ header .current-date2{
   display: inline-block;
 }
 .pop-up .close-btn:hover {
-  color: red;
+  color: var(--mainColor);;
 }
 
 .pop-up::-webkit-scrollbar {
@@ -574,7 +598,7 @@ header .current-date2{
 }
 
 .advertisement .apply-button{
-  background-color: var(--grey);
+  background-color: var(--darkGrey);
   padding: 0.5rem 1.5rem;
   font-weight: 600;
   font-size: 1.2rem;
@@ -608,7 +632,7 @@ header .current-date2{
   display: flex;
   flex-direction: column;
   padding: 0.5rem 0rem;
-  padding-left: 1.5rem;
+  padding-left: 1rem;
   gap: 0.5rem;
   font-family: "Poppins",sans-serif;
   font-size: 1.1rem;
@@ -796,41 +820,140 @@ header .current-date2{
 
 /* Application form for events */
 .application-form{
-  position: fixed;
-  width: fit-content;
+  position: relative;
+  width: 100%;
 }
 
 .application-form::before{
   content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
   z-index: 100;
   opacity: 0;
   pointer-events: none;
   transition: all 0.5s ease-out;
 }
 
-.application-form .show{
+.application-form .show::before{
   opacity: 1;
   pointer-events: auto;
 }
 
-.application-form:first-child .heading{
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-.application-form:first-child .instruction{
-  font-size: 0.9rem;
-  font-weight: 400;
-}
-
 .apply-container{
+  position: fixed;
+  max-width: 1000px;
+  width: fit-content;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%) scale(1.1);
+  z-index: 101;
+  background-color: white;
+  padding: 1rem 2rem 2rem 2rem;
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease-out;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 2rem;
+  overflow: auto;
+  max-height: 710px;
+  -webkit-overflow-scrolling: touch; /* for smooth scrolling on iOS devices */
+  -ms-overflow-style: none; /* to hide the scrollbar in IE and Edge */
+  scrollbar-width: none; /* to hide the scrollbar in Firefox */
+}
+
+.application-form.show .apply-container{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%,-50%) scale(1);
+}
+.apply-top{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.apply-header{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-right: 10rem;
+  margin-left: 10rem;
+}
+
+.apply-header .heading{
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.apply-header .instruction{
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--darkGrey);
+}
+.apply-close-button{
+  max-width: fit-content;
+  font-size: 2.8rem;
+  font-weight: 500;
+  background-color: transparent;
+  border: none;
+  color: black;
+}
+.apply-close-button:hover{
+  cursor: pointer;
+  color: var(--mainColor);;
+}
+
+.super-row{
+  display: flex;
+  gap: 2rem;
 }
 
 .image-container{
-  width: 20rem;
-  border-radius: 2rem;
-  background-color: var(--grey);
+  width: 25rem;
+  height: 25rem;
+  border-radius: 1.5rem;
+  background-color: var(--containerColor);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
+.image-container img{
+  width: 10rem;
+}
+.image-container span{
+  color: var(--darkGrey);
+}
+
+.apply-container form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.right-side{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.text-form-fields{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+}
+
