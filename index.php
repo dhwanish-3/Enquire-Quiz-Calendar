@@ -320,7 +320,32 @@ require 'backup/google.php';
               <span>Please click here to select poster for the event</span>
               <span>Your selected image file will appear here</span>
             </div>
-            
+            <div class="right-side">
+              <div class="text-form-fields">
+                <div class="form-field">
+                  <input type="text" placeholder="Enter event name" required name="name">
+                </div>
+                <div class="form-field">
+                  <input type="text" placeholder="Enter venue for the event" required name="venue">
+                </div>
+                <div class="form-field">
+                  <input type="date" placeholder="Enter date of the event" required name="date">
+                </div>
+                <div class="form-field">
+                  <input type="text" placeholder="Enter the quiz masters name" required name="quiz-masters">
+                </div>
+                <div class="form-field">
+                  <input type="number" placeholder="Enter the contact info" required name="contact">
+                </div>
+                <div class="form-field">
+                  <input type="number" placeholder="Enter the phone number of the applicant" required name="number">
+                </div>
+                <div class="form-field">
+                  <input type="url" placeholder="Enter link for online registration if any" name="link">
+                </div>
+              </div>
+              <button class="button apply-submit">SUBMIT</button>
+            </div>
           </div>
         </form>
       </div>
