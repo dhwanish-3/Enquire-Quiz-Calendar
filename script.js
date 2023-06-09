@@ -375,3 +375,23 @@ getCalenderDates(renderFrontEnd);
 //   reader.readAsDataURL(this.files[0]);
 // });
 
+const fileInput = document.getElementById('file-input');
+const fileContainer = document.querySelector('.image-container');
+const previewImage = document.getElementById('preview-image');
+const labelForFileInput=document.querySelector(".preview-label");
+
+fileInput.addEventListener('change', () => {
+  const selectedFile = fileInput.files[0];
+  
+  if (selectedFile) {
+    const reader = new FileReader();
+    
+    reader.addEventListener('load', () => {
+      previewImage.src = reader.result;
+    });
+    reader.readAsDataURL(selectedFile); // find use
+  } 
+  // else {
+  //   previewImage.src = previousImage;
+  // }
+});
