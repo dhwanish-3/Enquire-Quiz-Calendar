@@ -385,3 +385,6 @@ fileInput.addEventListener('change', () => {
   //   previewImage.src = previousImage;
   // }
 });
+
+// for multiple category selected in radios
+const radios=document.querySelector(".radio");

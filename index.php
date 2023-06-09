@@ -17,27 +17,27 @@ require 'backup/google.php';
     <title>Enquire Quiz Calender</title>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-      <div class="enquire">
-        <img src="./images/logo.png" alt="">
-        <span>ENQUIRE QUIZ CLUB<span>
-      </div>
-      <div class="menu">
-        <?php
-          // Check if the user is logged in
-        if (isset($_SESSION['email'])) {
-          echo "<span>Hello, {$_SESSION['name']}</span>"
-          ?>
-           <button class="button" onclick="window.location.href = 'logout.php'">LOGOUT</button>
-        <?php
-        }else{ ?>
-          <button class="button" id="form-open">LOGIN</button>
-        <?php
-        }
+  <!-- Header -->
+  <section class="header">
+    <div class="enquire">
+      <img src="./images/logo.png" alt="">
+      <span>ENQUIRE QUIZ CLUB<span>
+    </div>
+    <div class="menu">
+      <?php
+        // Check if the user is logged in
+      if (isset($_SESSION['email'])) {
+        echo "<span>Hello, {$_SESSION['name']}</span>"
         ?>
-      </div>
-    </header>
+          <button class="button" onclick="window.location.href = 'logout.php'">LOGOUT</button>
+      <?php
+      }else{ ?>
+        <button class="button" id="form-open">LOGIN</button>
+      <?php
+      }
+      ?>
+    </div>
+  </section>
 
     <!-- Home -->
     <section class="home">

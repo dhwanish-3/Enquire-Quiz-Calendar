@@ -19,14 +19,17 @@
   font-family: "Poppins", sans-serif;
 }
 body{
-    background: var(--mainColor);
-    margin-top: 0;
-    display: flex;
-    flex-direction: column;
+  background: var(--mainColor);
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar{
-    display: none;
+  display: none;
 }
 
 a{
@@ -34,35 +37,34 @@ a{
 }
 
 .button{
-    padding: 0.5rem 1.5rem;
-    display: flex;
-    background: transparent;
-    border: none;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    color:white;
-    transition: 300ms all;
-    width: fit-content;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  padding: 0.5rem 1.5rem;
+  display: flex;
+  background: transparent;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  color:var(--textColor);
+  transition: 300ms all;
+  width: fit-content;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 .button:hover{
-    transform: scale(1.04);
+  transform: scale(1.04);
 }
 
+/* Header */
 .header{
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    width: 100%;
-    height: auto;
-    gap:40%;
-    background-color: var(--headerColor);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  background-color: var(--headerColor);
 }
 
-.header .enquire{
+.enquire{
   position: relative;
   display: flex;
   background-color: transparent;
@@ -71,31 +73,27 @@ a{
   align-items: center;
 }
 
-.header .enquire img{
+.enquire img{
   width: 6rem;
 }
 
-.header .enquire span{
+.enquire span{
   font-weight: bold;
   font-size: 1.7rem;
   color:var(--textColor);
 }
 
-.header .menu{
+.menu{
   display: flex;
   gap: 1rem;
 }
-.header .menu span{
+.menu span{
   width: fit-content;
   color: var(--textColor);
 }
 
 .header .button{
   border: 2px solid white;
-  margin-right: 10%;
-  font-size: 0.9rem;
-  font-weight: 500;
-  padding: 0.5rem 1.5rem;
 }
 .header .button:active{
   transform: scale(0.98);
@@ -293,16 +291,17 @@ a{
 
 /* Quiz Calendar */
 .main-body{
+  width: 100%;
   display: flex;
-  margin-top: 0;
 }
 
 .calendars{
-  flex: 7;
+  flex: 11;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
   gap: 2rem;
   margin-top: 2rem;
 }
@@ -314,11 +313,10 @@ a{
 }
 
 .two-calendars{
+  width: 100%;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  gap: 5rem;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
@@ -489,13 +487,13 @@ header .current-date2{
   width: fit-content;
   background:white;
   border-radius: 1.5rem;
-  position:fixed;
-  left:50%;
+  position: fixed;
+  left: 50%;
   top: 50%;
   transform:translate(-50%,-50%) scale(1);
   text-align: center;
   padding: 0rem 1rem;
-  color:black;
+  color: black;
   visibility: visible;
   transition: transform 0.2s ,top 0.2s;
   z-index: 100;
@@ -571,9 +569,9 @@ header .current-date2{
 }
 
 .advertisement{
+  flex: 3;
   display: flex;
-  flex-direction: column;
-  flex: 2;
+  flex-direction: column;  
   justify-content: center;
   align-items: center;
   gap: 2rem;
@@ -692,10 +690,10 @@ header .current-date2{
 .fav-events{
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-top: 2rem;
-  margin-left: 8rem;
-  margin-right: 8rem;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .fav-events .question{
@@ -865,7 +863,7 @@ header .current-date2{
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  overflow: auto;
+  overflow: hidden; /* can be auto also */
   max-height: 710px;
   -webkit-overflow-scrolling: touch; /* for smooth scrolling on iOS devices */
   -ms-overflow-style: none; /* to hide the scrollbar in IE and Edge */
@@ -877,12 +875,14 @@ header .current-date2{
   pointer-events: auto;
   transform: translate(-50%,-50%) scale(1);
 }
+
 .apply-top{
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
+
 .apply-header{
   display: flex;
   flex-direction: column;
@@ -1119,3 +1119,49 @@ input[type="file"]{
   font-size: 1rem;
 }
 
+@media screen and (max-width:700px){
+  .button{
+    padding: 0.4rem 0.7rem;
+    font-size: 0.7rem;
+  }
+  .button:hover{
+    transform: scale(1.02);
+  }
+  .enquire img{
+    width: 4rem;
+  }
+  .enquire span{
+    font-size: 1rem;
+  }
+  .menu span{
+    font-size: 0.5rem;
+  }
+  .main-body{
+    flex-direction: column;
+  }
+
+  .form_container{
+    max-width: 280px;
+    transform: translate(-25%,-0%) scale(1.1);
+  }
+  .two-calendars{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .slider-container{
+    grid-template-columns: repeat(1,1fr);
+    grid-template-rows: repeat(6,1fr);
+  }
+
+  .apply-container{
+    max-width: 300px;
+    max-height: 700px;
+    overflow-x: hidden;
+  }
+  .super-row{
+    flex-direction: column;
+  }
+}
