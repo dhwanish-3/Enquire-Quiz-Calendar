@@ -26,17 +26,18 @@ const outsideClickHandlerforAuth = (event) => {
   }
 };
 
-formOpenBtn.addEventListener("click", () => {
-  nonAuthPopupElements.forEach((element) => {
-    element.classList.add("blur-effect");
+if(formOpenBtn!==null){
+  formOpenBtn.addEventListener("click", () => {
+    nonAuthPopupElements.forEach((element) => {
+      element.classList.add("blur-effect");
+    });
+
+    setTimeout(() => {
+      document.addEventListener("click", outsideClickHandlerforAuth);
+    }, 100);
+    home.classList.add("show");
   });
-
-  setTimeout(() => {
-    document.addEventListener("click", outsideClickHandlerforAuth);
-  }, 100);
-  home.classList.add("show");
-});
-
+}
 formCloseBtn.addEventListener("click", () => {
   home.classList.remove("show");
   document.removeEventListener("click", outsideClickHandlerforAuth);

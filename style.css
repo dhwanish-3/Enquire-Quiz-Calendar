@@ -140,6 +140,10 @@ a{
 }
 .form_container .button{
   margin-bottom: 10px;
+  box-shadow: none;
+}
+.form_container .in_a_row{
+  gap: 5rem;
 }
 .home.show .form_container {
     opacity: 1;
@@ -157,17 +161,14 @@ a{
     display: none;
 }
 .form_close {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    color: #0b0217;
-    font-size: 22px;
-    opacity: 0.7;
+    color: black;
+    width: 1rem;
+    font-size: 1.3rem;
     cursor: pointer;
 }
 .form_container h2 {
-    font-size: 20px;
-    color: #0b0217;
+    font-size: 1.3rem;
+    color: black;
     text-align: center;
 }
 .input_box {
@@ -518,9 +519,9 @@ header .current-date2{
   filter: brightness(0.5);
   pointer-events: none; /* Prevent interactions with the blurred elements */
 }
-.pop-up .in_a_row{
+.in_a_row{
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
 }
 
@@ -964,6 +965,7 @@ input[type="file"]{
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
   height: 100%;
   width: 100%;
   gap: 2rem;
@@ -973,6 +975,8 @@ input[type="file"]{
   display: flex;
   flex-direction: column;
   justify-content: center;
+  cursor: none;
+  pointer-events: none;
 }
 .preview-label.dont-show span{
   display: none;
@@ -1114,5 +1118,4 @@ input[type="file"]{
 #apply-ad label{
   font-size: 1rem;
 }
-
 

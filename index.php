@@ -8,12 +8,13 @@ require 'backup/google.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- the following stylesheet has the icons in the login signup form form_container -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
     <!-- the following bootstrap has conflicts with style.css -->
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
     <link rel="stylesheet" href="style.css" />
-    <title>Enquire Calender by Dhwanish</title>
+    <title>Enquire Quiz Calender</title>
 </head>
 <body>
     <!-- Header -->
@@ -41,11 +42,14 @@ require 'backup/google.php';
     <!-- Home -->
     <section class="home">
       <div class="form_container">
-        <i class="uil uil-times form_close"></i>
+        
         <!-- Login From -->
         <div class="form login_form">
           <form action="login.php" method="POST">
-            <h2>LOGIN</h2>
+            <div class="in_a_row">
+              <h2>LOGIN</h2>
+              <i class="uil uil-times form_close"></i>
+            </div>
             <div class="input_box">
               <input type="email" placeholder="Enter your email" required name="email"/>
               <i class="uil uil-envelope-alt email"></i>
@@ -76,7 +80,10 @@ require 'backup/google.php';
         <!-- Signup From -->
         <div class="form signup_form">
           <form action="signup.php" method="POST">
-            <h2>SIGNUP</h2>
+            <div class="in_a_row">
+              <h2>SIGNUP</h2>
+              <i class="uil uil-times form_close"></i>
+            </div>
             <div class="input_box">
               <i class="uil uil-user-circle name"></i>
               <input type="text" placeholder="Enter your name" required name="name"/>           
@@ -97,7 +104,7 @@ require 'backup/google.php';
             </div>
             <button class="button" onclick="return checkPasswords()">SIGNUP NOW</button>
           </form>
-          <a href="<?php echo $client->createAuthUrl(); ?>">
+          <a href="<?php echo $client->createAuthUrl(); ?>" class="no-line">
             <button id="google-button">
               <img src="images/google-logo.png">
               Sign in with Google
