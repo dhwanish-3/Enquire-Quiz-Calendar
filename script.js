@@ -361,20 +361,6 @@ function renderFrontEnd(listofEvents){
 getCalenderDates(renderFrontEnd);
 
 // for showing the selected image
-// const fileInput = document.querySelector("#image");
-// const previewImage = document.querySelector("#previewImage");
-
-// fileInput.addEventListener("change", function() {
-//   const reader = new FileReader();
-
-//   reader.addEventListener("load", function() {
-//     previewImage.src = reader.result;
-//     previewImage.style.display = "block";
-//   });
-
-//   reader.readAsDataURL(this.files[0]);
-// });
-
 const fileInput = document.getElementById('file-input');
 const fileContainer = document.querySelector('.image-container');
 const previewImage = document.getElementById('preview-image');
@@ -388,9 +374,12 @@ fileInput.addEventListener('change', () => {
     
     reader.addEventListener('load', () => {
       previewImage.src = reader.result;
+      previewImage.style.display = "block";
+      labelForFileInput.setAttribute('for','none');
+      labelForFileInput.classList.add("dont-show");
     });
-    reader.readAsDataURL(selectedFile); // find use
-  } 
+    reader.readAsDataURL(selectedFile); // main thing
+  }
   // else {
   //   previewImage.src = previousImage;
   // }
