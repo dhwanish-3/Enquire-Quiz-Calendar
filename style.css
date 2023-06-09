@@ -1,6 +1,6 @@
 :root{
   --grey: #aeaeae;
-  --darkGrey: #868686;
+  --darkGrey: #6a6a6a;
   --containerColor: #dedede;
   --textColor: white;
   --headerColor: #472867;
@@ -46,6 +46,7 @@ a{
     color:white;
     transition: 300ms all;
     width: fit-content;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 .button:hover{
     transform: scale(1.04);
@@ -237,7 +238,7 @@ a{
     font-size: 12px;
     cursor: pointer;
     user-select: none;
-    color: #0b0217;
+    color: black;
 }
 .form_container .button {
     background: var(--mainColor);
@@ -325,7 +326,7 @@ a{
   width: 400px;
   background: white;
   border-radius: 20px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
   justify-content: center;
   align-items: center;
   padding: 10px;
@@ -335,16 +336,15 @@ a{
   justify-content: center;
   padding: 10px;
   color: black;
-  /* z-index: 100; */
 }
 
 header .current-date{
   font-size: 1.45rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 header .current-date2{
   font-size: 1.45rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 .calendar{
   padding: 10px;
@@ -362,7 +362,7 @@ header .current-date2{
   margin-bottom: 20px;
 }
 .calendar li{
-  color: #333;
+  color: black;
   width: calc(100% / 7);
   font-size: 1.07rem;
 }
@@ -535,6 +535,7 @@ header .current-date2{
 
 .pop-up img{
   width: 28rem;
+  border-radius: 1rem;
 }
 #popContainer .event-details{
   display: flex;
@@ -545,6 +546,7 @@ header .current-date2{
   font-family: "Poppins",sans-serif;
   font-size: 1.1rem;
   text-align: start;
+  text-transform:capitalize;
 }
 #popContainer .event-details span{
   line-height: 25px;
@@ -594,7 +596,8 @@ header .current-date2{
 }
 
 .ads-part img{
-  width: 17rem;
+  width: 18rem;
+  border-radius: 1rem;
 }
 
 .advertisement .apply-button{
@@ -637,6 +640,7 @@ header .current-date2{
   font-family: "Poppins",sans-serif;
   font-size: 1.1rem;
   text-align: start;
+  text-transform:capitalize;
 }
 .event-details span{
   line-height: 25px;
@@ -915,16 +919,48 @@ header .current-date2{
   gap: 2rem;
 }
 
+.left-side{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.left-side .button{
+  background-color: var(--textColor);
+  border: 2px solid var(--mainColor);
+  color: var(--mainColor);
+  padding: 0.3rem 1rem;
+  box-shadow: none;
+}
+
 .image-container{
-  width: 25rem;
-  height: 25rem;
+  width: 24rem;
+  height: 24rem;
   border-radius: 1.5rem;
   background-color: var(--containerColor);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 2rem;
+}
+
+/* when no image selected */
+.preview-label{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  gap: 2rem;
+}
+
+/* Hide the input element */
+input[type="file"]{
+  display: none;
 }
 .image-container img{
   width: 10rem;
@@ -945,8 +981,9 @@ header .current-date2{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  gap: 1rem;
+  align-items: flex-start;
+  gap: 0.6rem;
+  color: var(--darkGrey);
 }
 
 .text-form-fields{
@@ -974,8 +1011,94 @@ header .current-date2{
 
 .form-field input:focus{
   border-color: var(--mainColor);
+  color: var(--mainColor);
 }
 
+.right-side .apply-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
 .apply-submit{
   background-color: var(--mainColor);
+  padding: 0.6rem 1.8rem;
 }
+
+/* radios */
+.radios{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap:1rem;
+}
+.radio{
+  display: inline-flex;
+  border-radius: 2rem;
+  overflow: hidden;
+  border: 2px solid var(--mainColor);
+}
+
+.radio-input{
+  display: none;
+}
+
+.radio-label{
+  padding: 0.3rem 1.1rem;
+  background-color: var(--textColor);
+  cursor: pointer;
+  transition: ease-out 0.4s;
+  color: var(--darkGrey);
+}
+
+.radio-label:not(:last-of-type){
+  border-right: 2px solid var(--mainColor);
+}
+
+.radio-input:checked + .radio-label{
+  background-color: var(--mainColor);
+  color: var(--textColor);
+}
+
+/* drop-down */
+.drop-down{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 3rem;
+}
+
+.select-drop{
+  padding: 0.3rem 2rem;
+  background-color: var(--textColor);
+  border-radius: 2rem;
+  color: var(--darkGrey);
+  cursor: pointer;
+  border: 2px solid var(--mainColor);
+  font-size: 1.1rem;
+  /* for arrow-down */
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://w3.org/2000/svg" width="100" height="50"><polygon points="0,0 100,0 50,50" style="fill:%23666666;"/></svg>');
+}
+
+.select-drop:focus,
+.select-drop:hover{
+  outline: none;
+  border: 2px solid var(--mainColor);
+}
+
+#apply-ad{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  column-gap: 8px;
+}
+#apply-ad input{
+  width: 16px;
+}
+#apply-ad label{
+  font-size: 1rem;
+}
+
+

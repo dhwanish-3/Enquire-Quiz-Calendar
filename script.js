@@ -353,7 +353,7 @@ function renderFrontEnd(listofEvents){
               // console.log(listofEvents[day-1]["date"]);
               showPopUp(day,JSON.parse(listofEvents[1][day-1]["events"]));
             }                
-        });     
+        });
     }); 
   }
   rendernextCalendar();
@@ -361,16 +361,17 @@ function renderFrontEnd(listofEvents){
 getCalenderDates(renderFrontEnd);
 
 // for showing the selected image
-const fileInput = document.querySelector("#image");
-const previewImage = document.querySelector("#previewImage");
+// const fileInput = document.querySelector("#image");
+// const previewImage = document.querySelector("#previewImage");
 
-fileInput.addEventListener("change", function() {
-  const reader = new FileReader();
+// fileInput.addEventListener("change", function() {
+//   const reader = new FileReader();
 
-  reader.addEventListener("load", function() {
-    previewImage.src = reader.result;
-    previewImage.style.display = "block";
-  });
+//   reader.addEventListener("load", function() {
+//     previewImage.src = reader.result;
+//     previewImage.style.display = "block";
+//   });
 
-  reader.readAsDataURL(this.files[0]);
-});
+//   reader.readAsDataURL(this.files[0]);
+// });
+

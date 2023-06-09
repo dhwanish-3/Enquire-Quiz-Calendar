@@ -315,10 +315,16 @@ require 'backup/google.php';
         </div>
         <form action="event_apply.php" method="POST">
           <div class="super-row">
-            <div class="image-container">
-              <img src="images/google-logo.png" alt="">
-              <span>Please click here to select poster for the event</span>
-              <span>Your selected image file will appear here</span>
+            <div class="left-side">
+              <div class="image-container">
+                <input type="file" id="file-input">
+                <label for="file-input" class="preview-label">
+                  <img id="preview-image" src="images/preview.png" alt="Preview">
+                  <!-- <span>Please click here to select poster for the event</span> -->
+                  <span>Your selected image file will appear here</span>
+                </label>
+              </div>
+              <label for="file-input" class="button select-file">Select Poster</label>
             </div>
             <div class="right-side">
               <div class="text-form-fields">
@@ -329,13 +335,13 @@ require 'backup/google.php';
                   <input type="text" placeholder="Enter venue for the event" required name="venue">
                 </div>
                 <div class="form-field">
-                  <input type="date" placeholder="Enter date of the event" required name="date">
+                  <input type="text" onfocus="(this.type='date')" onblur="if(!this.value) this.type='text'" placeholder="Enter date of the event" required name="date">
                 </div>
                 <div class="form-field">
                   <input type="text" placeholder="Enter the quiz masters name" required name="quiz-masters">
                 </div>
                 <div class="form-field">
-                  <input type="number" placeholder="Enter the contact info" required name="contact">
+                  <input type="text" placeholder="Enter the contact info" required name="contact">
                 </div>
                 <div class="form-field">
                   <input type="number" placeholder="Enter the phone number of the applicant" required name="number">
@@ -344,12 +350,41 @@ require 'backup/google.php';
                   <input type="url" placeholder="Enter link for online registration if any" name="link">
                 </div>
               </div>
-              <button class="button apply-submit">SUBMIT</button>
+              <div class="radios">
+                <span>Category :</span>
+                <div class="radio">
+                  <input class="radio-input" type="checkbox" value="open" name="category" id="radio1">
+                  <label class="radio-label" for="radio1">Open</label>
+                  <input class="radio-input" type="checkbox" value="school" name="category" id="radio2">
+                  <label class="radio-label" for="radio2">School</label>
+                  <input class="radio-input" type="checkbox" value="college" name="category" id="radio3">
+                  <label class="radio-label" for="radio3">College</label>
+                </div>
+              </div>
+              <div class="drop-down">
+                <span>Type :</span>
+                <select class="select-drop" name="type" id="type">
+                  <option disabled selected value="general">General</option>
+                  <option value="sci-tech">Sci-Tech</option>
+                  <option value="business">Business</option>
+                  <option value="sci-biz-tech">sci-biz-tech</option>
+                  <option value="sports">sports</option>
+                  <option value="mela">mela</option>
+                </select>
+              </div>
+              <div class="checkbox" id="apply-ad">
+                <input type="checkbox" value="1" name="apply-ad" id="apply-ad-input" />
+                <label for="apply-ad-input">Apply for ad</label>
+              </div>
+              <div class="apply-button">
+                <button class="button apply-submit">SUBMIT</button>
+              </div>
             </div>
           </div>
         </form>
       </div>
     </section>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
