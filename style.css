@@ -577,21 +577,14 @@ header .current-date{
 }
 .poster span{
   height: 38px;
-  width: 38px;
-  margin: 0 1px;
+  width: 38px;  
   cursor: pointer;
-  color: #878787;
+  color: var(--darkGrey);
   text-align: center;
   line-height: 38px;
   font-size: 1.9rem;
   user-select: none;
   border-radius: 50%;
-}
-.poster span:last-child{
-  margin-right: -10px;
-}
-.poster span:hover{
-  background: #f2f2f2;
 }
 
 .event-details{
@@ -1130,7 +1123,7 @@ input[type="file"]{
 
   /* Pop up */
   .pop-up{
-    width: 95%;
+    width: 92%;
   }
   .pop-up img{
     width: 90%;
@@ -1174,10 +1167,10 @@ input[type="file"]{
     grid-template-rows: repeat(6,1fr);
   }
   .range-value{
-    width: 9.3rem;
+    width: 11.3rem;
   }
   .range-input{
-    width: 10rem;
+    width: 12rem;
   }
 
   /* Application -form */

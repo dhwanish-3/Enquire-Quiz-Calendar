@@ -388,3 +388,9 @@ fileInput.addEventListener('change', () => {
 
 // for multiple category selected in radios
 const radios=document.querySelector(".radio");
+const checkboxes = form.elements["category"];
+  
+  // Iterate through all checkboxes
+  for (let i = 0; i < checkboxes.length; i++) {
+    checkboxes[i].checked = true; // Set the 'checked' property to true
+  }
