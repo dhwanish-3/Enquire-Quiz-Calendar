@@ -123,7 +123,7 @@ require 'backup/google.php';
           <div class="two-calendars">
             <div class="wrapper">
               <header>
-                <p class="current-date"></p>
+                <p class="current-date" id="current-date1"></p>
               </header>
               <div class="calendar">
                 <ul class="weeks">
@@ -135,14 +135,14 @@ require 'backup/google.php';
                   <li>Fri</li>
                   <li>Sat</li>
                 </ul>
-                <ul class="days"></ul>
+                <ul class="days" id="days1"></ul>
               </div>
             </div>
             <!-- </div> -->
             <!-- <div class="bod col-md-8"> -->
             <div class="wrapper">
               <header>
-                <p class="current-date2"></p>
+                <p class="current-date" id="current-date2"></p>
               </header>
               <div class="calendar">
                 <ul class="weeks">
@@ -154,18 +154,18 @@ require 'backup/google.php';
                   <li>Fri</li>
                   <li>Sat</li>
                 </ul>
-                <ul class="days2"></ul>
+                <ul class="days" id="days2"></ul>
               </div>
             </div>
           </div>  
         <!-- </div> -->
         <section class="category-buttons">
-          <div class="first-row">
+          <div class="buttons-row">
             <button class="button  open">OPEN</button>
             <button class="button  school">SCHOOL</button>
             <button class="button  college">COLLEGE</button>
           </div>
-          <div class="second-row">
+          <div class="buttons-row">
           <button class="button  open-school">OPEN & SCHOOL</button>
             <button class="button  open-college">OPEN & COLLEGE</button>
             <button class="button  school-college">SCHOOL & COLLEGE</button>
@@ -373,11 +373,11 @@ require 'backup/google.php';
                 <span>Type :</span>
                 <select class="select-drop" name="type" id="type">
                   <option disabled selected value="general">General</option>
-                  <option value="sci-tech">Sci-Tech</option>
+                  <option value="scitech">Sci-Tech</option>
                   <option value="business">Business</option>
-                  <option value="sci-biz-tech">sci-biz-tech</option>
-                  <option value="sports">sports</option>
-                  <option value="mela">mela</option>
+                  <option value="scitechbiz">Sci-biz-tech</option>
+                  <option value="sports">Sports</option>
+                  <option value="mela">Mela</option>
                 </select>
               </div>
               <div class="checkbox" id="apply-ad">
@@ -392,6 +392,7 @@ require 'backup/google.php';
         </form>
       </div>
     </section>
+    <section class="footer"></section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

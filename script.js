@@ -6,10 +6,10 @@ const formOpenBtn = document.querySelector("#form-open"),
   signupBtn = document.querySelector("#signup"),
   loginBtn = document.querySelector("#login"),
   pwShowHide = document.querySelectorAll(".pw_hide");
-  const daysTag = document.querySelector(".days"),
-   daysTag2 = document.querySelector(".days2"),
-  currentDate = document.querySelector(".current-date"),
-  currentDate2 = document.querySelector(".current-date2"),
+  const daysTag = document.querySelector("#days1"),
+   daysTag2 = document.querySelector("#days2"),
+  currentDate = document.querySelector("#current-date1"),
+  currentDate2 = document.querySelector("#current-date2"),
   prevNextIcon = document.querySelectorAll(".icons span");
 
 
