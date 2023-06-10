@@ -187,7 +187,7 @@ require 'backup/google.php';
             <span>Event : Mega Quiz</span>
             <span>Date : 12-06-2023</span>
             <span>Venue : GHSS Paivalike Nagar, Paivalike</span>
-            <span>Type : Sci-Tech-Biz Quiz</span>
+            <span>Type : Sci-Biz-Tech Quiz</span>
             <span>Category : School & College</span>
             <span>Quiz Masters : BatMan & SuperMan</span>
             <span>Contact : 9876543210 </span>
