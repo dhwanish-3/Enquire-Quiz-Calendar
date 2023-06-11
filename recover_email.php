@@ -10,7 +10,7 @@ if(isset($_POST['submit'])){
         $subject="Reset Password";
         $token=$userdata['token'];
         $body="Hi, $username Click here to update your password\n
-        http://localhost/enquireCalendardhwanish/reset_password.php?token=$token ";
+        http://localhost/enquirecalendardhwanish/reset_password.php?token=$token ";
         $sender_email="From: dhwani333sh@gmail.com";
 
         if(mail($email, $subject, $body , $sender_email)){

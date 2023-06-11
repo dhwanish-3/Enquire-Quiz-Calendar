@@ -1153,18 +1153,19 @@ input[type="file"]{
   }
   /* fav-events */
   .fav-events{
-    padding: 0rem 1rem;
+    padding: 0rem;
   }
   .fav-events .question{
     text-align: center;
   }
   .pop-up-form{
     padding: 1rem 1.5rem;
-    width: 95%;
+    width: fit-content;
   }
   .slider-container{
     grid-template-columns: repeat(1,1fr);
     grid-template-rows: repeat(6,1fr);
+    padding: 1rem;
   }
   .range-value{
     width: 11.3rem;
@@ -1202,7 +1203,7 @@ input[type="file"]{
   }
 
   .image-container{
-    width: 95%;
+    width: 85%;
     height: 20rem;
     gap: 1rem;
   }
@@ -1220,7 +1221,7 @@ input[type="file"]{
     align-items: center;
   }
   .form-field{
-    width: 95%;
+    width: 85%;
   }
   .radios{
     justify-content: center;
@@ -1239,13 +1240,7 @@ input[type="file"]{
     font-size: 0.8rem;
   }
   .select-drop{
-    padding: 0.2rem 0.7rem;
+    padding: 0.1rem 0.1rem;
     font-size: 0.9rem;
-  }
-}
-
-@media screen and (max-width:320px) {
-  .pop-up-form{
-    padding: 0;
   }
 }
