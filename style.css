@@ -1244,3 +1244,19 @@ input[type="file"]{
     font-size: 0.9rem;
   }
 }
+
+@media screen and (max-width:350px) {
+  .pop-up-form{
+    padding: 0.5rem 0.5rem;
+    padding-bottom: 2rem;
+  }
+  .slider-container{
+    padding-bottom:0rem;
+  }
+  .range-value{
+    width: 8.4rem;
+  }
+  .range-input{
+    width: 9rem;
+  }
+}
