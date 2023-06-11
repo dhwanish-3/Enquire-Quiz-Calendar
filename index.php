@@ -372,7 +372,7 @@ require 'backup/google.php';
               <div class="drop-down">
                 <span>Type :</span>
                 <select class="select-drop" name="type" id="type">
-                  <option disabled selected value="general">General</option>
+                  <option selected value="general">General</option>
                   <option value="scitech">Sci-Tech</option>
                   <option value="business">Business</option>
                   <option value="scitechbiz">Sci-biz-tech</option>

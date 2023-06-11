@@ -378,6 +378,7 @@ fileInput.addEventListener('change', () => {
       previewImage.style.display = "block";
       labelForFileInput.setAttribute('for','none');
       labelForFileInput.classList.add("dont-show");
+      console.log(reader.result);
     });
     reader.readAsDataURL(selectedFile); // main thing
   }
