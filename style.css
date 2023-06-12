@@ -12,7 +12,6 @@
 }
 /* Import Google font - Poppins */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -337,7 +336,6 @@ a{
   align-items: center;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 /* first and second month */
 .wrapper{
   width: 400px;
@@ -509,7 +507,6 @@ header .current-date{
   padding: 0.5rem 0rem;
   padding-left: 1rem;
   gap: 0.5rem;
-  font-family: "Poppins",sans-serif;
   font-size: 1.1rem;
   text-align: start;
   text-transform:capitalize;
@@ -597,7 +594,6 @@ header .current-date{
   padding: 0.5rem 0rem;
   padding-left: 1rem;
   gap: 0.5rem;
-  font-family: "Poppins",sans-serif;
   font-size: 1.1rem;
   text-align: start;
   text-transform:capitalize;
