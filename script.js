@@ -166,7 +166,7 @@ function checkPasswords() {
   var password1 = document.getElementById("password1").value;
   var password2 = document.getElementById("password2").value;
   if (password1 != password2) {
-    alert("Passwords do not match!");
+    alert("Passwords do not match!"); // needs to be modified
     return false;
   }
   return true;
@@ -177,8 +177,8 @@ function getInterestList(category,interest,listofEvents){
   let j=0;
   let interestedEvents=new Array();
   for(let a=0;a<interest.length;a++){
-    for(let i=0;i<listofEvents.length && j<10;i++){
-      let events=JSON.parse(listofEvents[i]["events"]);
+    for(let i=0;i<listofEvents[0].length && j<10;i++){
+      let events=JSON.parse(listofEvents[0][i]["events"]);
       for(let x=0;x<events.length && j<10;x++){
         if(events[x].category==category && events[x].type==interest[a]){
           interestedEvents.push(events[x]);

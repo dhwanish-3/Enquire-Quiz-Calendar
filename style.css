@@ -99,6 +99,8 @@ a{
 
 .menu{
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 1rem;
 }
 .menu span{
@@ -666,7 +668,6 @@ header .current-date{
   border-radius: 3rem;
   place-items: center;
   padding: 2rem 3rem;
-  padding-bottom: 1rem;
   width: fit-content;
   gap: 2rem;
 }

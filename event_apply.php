@@ -1,15 +1,18 @@
 <?php
-  require 'config.php';
+  require 'backup/config.php';
   $name = $_POST["name"];
   $date = $_POST["date"];
   $venue = $_POST["venue"];
-  $category = $_POST["category"];
   $type = $_POST["type"];
   $quiz_masters = $_POST["quiz_masters"] ?? 0;
   $contact = $_POST["contact"];
   $link = $_POST["link"];
   $apply_ad = $_POST["apply_ad"] ?? 0;
   $number = $_POST["number"]; // applicants phoneNumber
+  $open=$_POST['open'];
+  $school=$_POST['school'];
+  $college=$_POST['college'];
+  echo "<script> alert('$open$school$college'); </script>";
   if($_FILES["image"]["error"] == 4){
     echo
     "<script> alert('Image Does Not Exist'); </script>"
@@ -20,17 +23,17 @@
     $fileName = $_FILES["image"]["name"];
     $fileSize = $_FILES["image"]["size"];
     $tmpName = $_FILES["image"]["tmp_name"];
-    // $validImageExtension = ['jpg', 'jpeg', 'png'];
-    // $imageExtension = explode('.', $fileName);
-    // $imageExtension = strtolower(end($imageExtension));
-    // if ( !in_array($imageExtension, $validImageExtension) ){
-    //   echo $imageExtension;
-    //   echo "<script>
-    //     alert('Invalid Image Extension');
-    //   </script>";
-    //   // header('Location: index.php?invalid_image');
-    // }
-     if($fileSize > 10000000){
+    $validImageExtension = ['jpg', 'jpeg', 'png'];
+    $imageExtension = explode('.', $fileName);
+    $imageExtension = strtolower(end($imageExtension));
+    if ( !in_array($imageExtension, $validImageExtension) ){
+      echo $imageExtension;
+      echo "<script>
+        alert('Invalid Image Extension');
+      </script>";
+      header('Location: index.php?invalid_image');
+    }
+    if($fileSize > 10000000){
       echo
       "
       <script>
@@ -44,8 +47,8 @@
       $newImageName .= '.' . $imageExtension;
 
       move_uploaded_file($tmpName, 'posters/' . $newImageName);
-      $query = "INSERT INTO request_event(date,name,venue,imageUrl,category,type,quiz_masters,contact,link,applicants_phone,apply_ad) VALUES('$date', '$name', '$venue','$newImageName','$category','$type','$quiz_masters','$contact','$link','$number','$apply_ad')";
-      mysqli_query($conn, $query);
+      // $query = "INSERT INTO request_event(date,name,venue,imageUrl,category,type,quiz_masters,contact,link,applicants_phone,apply_ad) VALUES('$date', '$name', '$venue','$newImageName','$category','$type','$quiz_masters','$contact','$link','$number','$apply_ad')";
+      // mysqli_query($conn, $query);
       echo
       "
       <script>

@@ -161,14 +161,14 @@ require 'backup/google.php';
         <!-- </div> -->
         <section class="category-buttons">
           <div class="buttons-row">
-            <button class="button  open">OPEN</button>
-            <button class="button  school">SCHOOL</button>
-            <button class="button  college">COLLEGE</button>
+            <button class="button open">OPEN</button>
+            <button class="button school">SCHOOL</button>
+            <button class="button college">COLLEGE</button>
           </div>
           <div class="buttons-row">
-          <button class="button  open-school">OPEN & SCHOOL</button>
-            <button class="button  open-college">OPEN & COLLEGE</button>
-            <button class="button  school-college">SCHOOL & COLLEGE</button>
+          <button class="button open-school">OPEN & SCHOOL</button>
+            <button class="button open-college">OPEN & COLLEGE</button>
+            <button class="button school-college">SCHOOL & COLLEGE</button>
           </div>
         </section>
       </div>
@@ -257,7 +257,7 @@ require 'backup/google.php';
             </div>
           </div>
           <div class="range">
-            <label for="sci-tech-biz">Sci-Tech-Biz</label>
+            <label for="sci-tech-biz">Sci-Biz-Tech</label>
             <div class="slider">            
               <div class="range-thumb" id="range-thumb4">
                 <div class="range-value">
@@ -308,7 +308,18 @@ require 'backup/google.php';
             </div>
           </div>
         </div>
-        <button class="button go-button">GO !</button>
+        <div class="radios">
+          <span>Category :</span>
+          <div class="radio">
+            <input class="radio-input" type="checkbox" value="1" name="open" id="radio1">
+            <label class="radio-label" for="radio1">Open</label>
+            <input class="radio-input" type="checkbox" value="1" name="school" id="radio2">
+            <label class="radio-label" for="radio2">School</label>
+            <input class="radio-input" type="checkbox" value="1" name="college" id="radio3">
+            <label class="radio-label" for="radio3">College</label>
+          </div>
+        </div>
+        <button class="button go-button" onclick="submitPopUpForm()">GO !</button>
       </div>     
     </section>
     <section class="application-form">
@@ -346,7 +357,7 @@ require 'backup/google.php';
                   <input type="text" onfocus="(this.type='date')" onblur="if(!this.value) this.type='text'" placeholder="Enter date of the event" required name="date">
                 </div>
                 <div class="form-field">
-                  <input type="text" placeholder="Enter the quiz masters name" required name="quiz-masters">
+                  <input type="text" placeholder="Enter the quiz masters name" required name="quiz_masters">
                 </div>
                 <div class="form-field">
                   <input type="text" placeholder="Enter the contact info" required name="contact">
