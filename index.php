@@ -311,12 +311,12 @@ require 'backup/google.php';
         <div class="radios">
           <span>Category :</span>
           <div class="radio">
-            <input class="radio-input" type="checkbox" value="1" name="open" id="radio1">
-            <label class="radio-label" for="radio1">Open</label>
-            <input class="radio-input" type="checkbox" value="1" name="school" id="radio2">
-            <label class="radio-label" for="radio2">School</label>
-            <input class="radio-input" type="checkbox" value="1" name="college" id="radio3">
-            <label class="radio-label" for="radio3">College</label>
+            <input class="radio-input" type="checkbox" value="1" name="open" id="radio-open">
+            <label class="radio-label" for="radio-open">Open</label>
+            <input class="radio-input" type="checkbox" value="1" name="school" id="radio-school">
+            <label class="radio-label" for="radio-school">School</label>
+            <input class="radio-input" type="checkbox" value="1" name="college" id="radio-college">
+            <label class="radio-label" for="radio-college">College</label>
           </div>
         </div>
         <button class="button go-button" onclick="submitPopUpForm()">GO !</button>
