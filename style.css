@@ -774,6 +774,11 @@ header .current-date{
   height: 9px;
 }
 
+.pop-up-form .radios span{
+  color: var(--mainColor);
+  font-weight: 550;
+}
+
 /* Application form for events */
 .application-form{
   position: relative;

@@ -195,12 +195,13 @@ const submitPopUpForm=()=>{
   const general=document.getElementById("range-input1").value;
   const scitech=document.getElementById("range-input2").value;
   const business=document.getElementById("range-input3").value;
-  const scitechBiz=document.getElementById("range-input6").value;
+  const scitechbiz=document.getElementById("range-input6").value;
   const sports=document.getElementById("range-input5").value;
   const mela=document.getElementById("range-input6").value;
-  const open=document.getElementById("radio1").checked;
-  const school=document.getElementById("radio2").checked;
-  const college=document.getElementById("radio3").checked;
+  let categoryArray=[{"general":general},{"scitech":scitech},{"business":business},{"scitechbiz":scitechbiz},{"sports":sports},{"mela":mela}];
+  const open=document.getElementById("radio-open").checked;
+  const school=document.getElementById("radio-school").checked;
+  const college=document.getElementById("radio-college").checked;
   let category="open";
   if(open && school && college) category="open";
   else if(open && school) category="open-school";
