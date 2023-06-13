@@ -10,8 +10,13 @@ require 'backup/google.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- the following stylesheet has the icons in the login signup form form_container -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+    <!-- the following 3 lines are for getting Varela-Round font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <!-- the following bootstrap has conflicts with style.css -->
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"> -->
+    <!-- this is for material-symbols-rounded -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
     <link rel="stylesheet" href="style.css"/>
     <title>Enquire Quiz Calender</title>
@@ -179,9 +184,9 @@ require 'backup/google.php';
             <span>Popular Events</span>
           </div>
           <div class="poster">
-            <span id="prev" class="material-symbols-rounded">l</span>
+            <span id="prev" class="material-symbols-rounded">chevron_left</span>
             <img src="images/poster.jpg" alt="">
-            <span id="next" class="material-symbols-rounded">r</span>
+            <span id="next" class="material-symbols-rounded">chevron_right</span>
           </div>
           <div class="event-details">
             <span>Event : Mega Quiz</span>
@@ -404,7 +409,7 @@ require 'backup/google.php';
       </div>
     </section>
     <section class="footer"></section>
-
+    <!-- these are for carousel -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
