@@ -4,15 +4,23 @@
   $date = $_POST["date"];
   $venue = $_POST["venue"];
   $type = $_POST["type"];
-  $quiz_masters = $_POST["quiz_masters"] ?? 0;
+  $quiz_masters = $_POST["quiz_masters"];
   $contact = $_POST["contact"];
   $link = $_POST["link"];
+  $rules = $_POST["rules"];
   $apply_ad = $_POST["apply_ad"] ?? 0;
   $number = $_POST["number"]; // applicants phoneNumber
-  $open=$_POST['open'];
-  $school=$_POST['school'];
-  $college=$_POST['college'];
-  echo "<script> alert('$open$school$college'); </script>";
+  $open = $_POST['open'] ?? 0;
+  $school = $_POST['school'] ?? 0;
+  $college = $_POST['college'] ?? 0;
+  $category = "open";
+  if($open && $school && $college) $category = "open";
+  else if($open && $school) $category = "open-school";
+  else if($open && $college) $category = "open-college";
+  else if($school && $college) $category = "school-college";
+  else if($school) $category = "school";
+  else if($college) $category = "college";
+  // echo "<script> alert('$category'); </script>";
   if($_FILES["image"]["error"] == 4){
     echo
     "<script> alert('Image Does Not Exist'); </script>"
@@ -33,7 +41,7 @@
       </script>";
       header('Location: index.php?invalid_image');
     }
-    if($fileSize > 10000000){
+    if($fileSize > 5000000){
       echo
       "
       <script>
@@ -45,15 +53,14 @@
     else{
       $newImageName = uniqid();
       $newImageName .= '.' . $imageExtension;
-
-      move_uploaded_file($tmpName, 'posters/' . $newImageName);
-      // $query = "INSERT INTO request_event(date,name,venue,imageUrl,category,type,quiz_masters,contact,link,applicants_phone,apply_ad) VALUES('$date', '$name', '$venue','$newImageName','$category','$type','$quiz_masters','$contact','$link','$number','$apply_ad')";
-      // mysqli_query($conn, $query);
+      $filePath = 'posters/'.$newImageName;
+      move_uploaded_file($tmpName, $filePath);
+      $query = "INSERT INTO request_event(date,name,venue,imageUrl,category,type,quiz_masters,contact,link,rules,applicants_phone,apply_ad) VALUES('$date', '$name', '$venue','$filePath','$category','$type','$quiz_masters','$contact','$link','$rules','$number','$apply_ad')";
+      mysqli_query($conn, $query);
       echo
       "
       <script>
         alert('Successfully Applied');
-        // document.location.href = 'data.php';
       </script>
       ";
       header('Location: index.php?successfully_applied');

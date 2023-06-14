@@ -14,6 +14,7 @@ require 'backup/google.php';
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800&family=Varela+Round&display=swap" rel="stylesheet">
     <!-- the following bootstrap has conflicts with style.css -->
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"> -->
     <!-- this is for material-symbols-rounded -->
@@ -55,21 +56,26 @@ require 'backup/google.php';
               <h2>LOGIN</h2>
               <i class="uil uil-times form_close"></i>
             </div>
+            <?php
+              if(isset($_SESSION['login-msg'])){
+                echo "<span class='session-msg'>{$_SESSION['login-msg']}</span>";
+              }
+            ?>
             <div class="input_box">
-              <input type="email" placeholder="Enter your email" required name="email"/>
+              <input type="email" placeholder="Enter your email" required name="email" value="<?php if(isset($_COOKIE['email'])) echo $_COOKIE['email'];?>"/>
               <i class="uil uil-envelope-alt email"></i>
             </div>
             <div class="input_box">
-              <input type="password" placeholder="Enter your password" required name="password"/>
+              <input type="password" placeholder="Enter your password" required name="password" value="<?php if(isset($_COOKIE['password'])) echo $_COOKIE['password'];?>"/>
               <i class="uil uil-lock password"></i>
               <i class="uil uil-eye-slash pw_hide"></i>
             </div>
             <div class="option_field">
               <span class="checkbox">
-                <input type="checkbox" id="check" />
+                <input type="checkbox" id="check" name="remember"/>
                 <label for="check">Remember me</label>
               </span>
-              <a href="#" class="forgot_pw">Forgot password?</a>
+              <a href="forgot_password.php" class="forgot_pw">Forgot password?</a>
             </div>
             <button class="button">LOGIN NOW</button>
           </form>
@@ -89,6 +95,11 @@ require 'backup/google.php';
               <h2>SIGNUP</h2>
               <i class="uil uil-times form_close"></i>
             </div>
+            <?php
+              if(isset($_SESSION['signup-msg'])){
+                echo "<span class='session-msg'>{$_SESSION['signup-msg']}</span>";
+              }
+            ?>
             <div class="input_box">
               <i class="uil uil-user-circle name"></i>
               <input type="text" placeholder="Enter your name" required name="name"/>           
@@ -98,16 +109,16 @@ require 'backup/google.php';
               <i class="uil uil-envelope-alt email"></i>
             </div>
             <div class="input_box">
-              <input type="password" placeholder="Create password" required id="password1" name="password" />
+              <input type="password" placeholder="Create password" required id="password1" name="password"/>
               <i class="uil uil-lock password"></i>
               <i class="uil uil-eye-slash pw_hide"></i>
             </div>
             <div class="input_box">
-              <input type="password" placeholder="Confirm password" required id="password2" />
+              <input type="password" placeholder="Confirm password" required id="password2" name="cpassword"/>
               <i class="uil uil-lock password"></i>
               <i class="uil uil-eye-slash pw_hide"></i>
             </div>
-            <button class="button" onclick="return checkPasswords()">SIGNUP NOW</button>
+            <button class="button">SIGNUP NOW</button>
           </form>
           <a href="<?php echo $client->createAuthUrl(); ?>" class="no-line">
             <button id="google-button">
@@ -124,7 +135,6 @@ require 'backup/google.php';
     <section class="main-body">
       <div class="calendars">
         <header>Quiz Calendar</header>
-        <!-- <div class="bod col-md-8"> -->
           <div class="two-calendars">
             <div class="wrapper">
               <header>
@@ -143,8 +153,6 @@ require 'backup/google.php';
                 <ul class="days" id="days1"></ul>
               </div>
             </div>
-            <!-- </div> -->
-            <!-- <div class="bod col-md-8"> -->
             <div class="wrapper">
               <header>
                 <p class="current-date" id="current-date2"></p>
@@ -162,8 +170,7 @@ require 'backup/google.php';
                 <ul class="days" id="days2"></ul>
               </div>
             </div>
-          </div>  
-        <!-- </div> -->
+          </div>
         <section class="category-buttons">
           <div class="buttons-row">
             <button class="button open">OPEN</button>
@@ -207,7 +214,26 @@ require 'backup/google.php';
       <div class="question">
         <span>HARD TIME SORTING YOUR FAVOURITE </span>
         <span>QUIZ EVENTS ?</span>
-      </div>
+      </div>      
+      <?php
+      // getting the data if user has logged in
+        $category=null;
+        $general=5;
+        $scitech=5;
+        $business=5;
+        $scitechbiz=5;
+        $sports=5;
+        $mela=5;
+        if(isset($_SESSION['general'])){
+          $general=$_SESSION['general'];
+          $scitech=$_SESSION['scitech'];
+          $business=$_SESSION['business'];
+          $scitechbiz=$_SESSION['scitechbiz'];
+          $sports=$_SESSION['sports'];
+          $mela=$_SESSION['mela'];
+          $category=$_SESSION['category'];
+        }
+      ?>
       <div class="pop-up-form">
         <div class="slider-container">
           <div class="range">
@@ -216,13 +242,13 @@ require 'backup/google.php';
               <div class="range-thumb" id="range-thumb1">
                 <div class="range-value">
                   <div class="value-number" id="value-number1">
-                    <span id="range-number1">5</span>
+                    <span id="range-number1"></span>
                   </div>
                 </div>
               </div>
               <div class="range-slider">
                 <span>0</span>
-                <input type="range" class="range-input" id="range-input1" name="general" min="0" max="10" value="5" step="1">
+                <input type="range" class="range-input" id="range-input1" name="general" min="0" max="10" value="<?php echo $general; ?>" step="1">
                 <span>10</span>
               </div>
             </div>
@@ -239,7 +265,7 @@ require 'backup/google.php';
               </div>
               <div class="range-slider">
                 <span>0</span>
-                <input type="range" class="range-input" id="range-input2" name="general" min="0" max="10" value="5" step="1">
+                <input type="range" class="range-input" id="range-input2" name="scitech" min="0" max="10" value="<?php echo $scitech; ?>" step="1">
                 <span>10</span>
               </div>
             </div>
@@ -256,7 +282,7 @@ require 'backup/google.php';
               </div>
               <div class="range-slider">
                 <span>0</span>
-                <input type="range" class="range-input" id="range-input3" name="general" min="0" max="10" value="5" step="1">
+                <input type="range" class="range-input" id="range-input3" name="business" min="0" max="10" value="<?php echo $business; ?>" step="1">
                 <span>10</span>
               </div>
             </div>
@@ -273,7 +299,7 @@ require 'backup/google.php';
               </div>
               <div class="range-slider">
                 <span>0</span>
-                <input type="range" class="range-input" id="range-input4" name="general" min="0" max="10" value="5" step="1">
+                <input type="range" class="range-input" id="range-input4" name="scitechbiz" min="0" max="10" value="<?php echo $scitechbiz; ?>" step="1">
                 <span>10</span>
               </div>
             </div>
@@ -290,7 +316,7 @@ require 'backup/google.php';
               </div>
               <div class="range-slider">
                 <span>0</span>
-                <input type="range" class="range-input" id="range-input5" name="general" min="0" max="10" value="5" step="1">
+                <input type="range" class="range-input" id="range-input5" name="sports" min="0" max="10" value="<?php echo $sports; ?>" step="1">
                 <span>10</span>
               </div>
             </div>
@@ -307,7 +333,7 @@ require 'backup/google.php';
               </div>
               <div class="range-slider">
                 <span>0</span>
-                <input type="range" class="range-input" id="range-input6" name="general" min="0" max="10" value="5" step="1">
+                <input type="range" class="range-input" id="range-input6" name="mela" min="0" max="10" value="<?php echo $mela; ?>" step="1">
                 <span>10</span>
               </div>
             </div>
@@ -337,17 +363,17 @@ require 'backup/google.php';
           </div>
           <button class="apply-close-button">&times;</button>
         </div>
-        <form action="event_apply.php" method="POST">
+        <form action="event_apply.php" method="POST" enctype="multipart/form-data">
           <div class="super-row">
             <div class="left-side">
               <div class="image-container">
-                <input type="file" id="file-input">
+                <input type="file" id="file-input" name="image">
                 <label for="file-input" class="preview-label">
                   <img id="preview-image" src="images/preview.png" alt="Preview">
-                  <!-- <span>Please click here to select poster for the event</span> -->
                   <span>Your selected image file will appear here</span>
                 </label>
               </div>
+              <label for="file-input" class="select-image">Please select an image</label>
               <label for="file-input" class="button select-file">Select Poster</label>
             </div>
             <div class="right-side">
@@ -368,20 +394,23 @@ require 'backup/google.php';
                   <input type="text" placeholder="Enter the contact info" required name="contact">
                 </div>
                 <div class="form-field">
-                  <input type="number" placeholder="Enter the phone number of the applicant" required name="number">
+                  <input type="text" placeholder="Enter the phone number of the applicant" required name="number">
                 </div>
                 <div class="form-field">
                   <input type="url" placeholder="Enter link for online registration if any" name="link">
+                </div>
+                <div class="form-field">
+                  <input type="text" placeholder="Enter any extra details/rules for participation" name="rules">
                 </div>
               </div>
               <div class="radios">
                 <span>Category :</span>
                 <div class="radio">
-                  <input class="radio-input" type="checkbox" value="open" name="category" id="radio1">
+                  <input class="radio-input" type="checkbox" value="1" name="open" id="radio1">
                   <label class="radio-label" for="radio1">Open</label>
-                  <input class="radio-input" type="checkbox" value="school" name="category" id="radio2">
+                  <input class="radio-input" type="checkbox" value="1" name="school" id="radio2">
                   <label class="radio-label" for="radio2">School</label>
-                  <input class="radio-input" type="checkbox" value="college" name="category" id="radio3">
+                  <input class="radio-input" type="checkbox" value="1" name="college" id="radio3">
                   <label class="radio-label" for="radio3">College</label>
                 </div>
               </div>
@@ -397,11 +426,11 @@ require 'backup/google.php';
                 </select>
               </div>
               <div class="checkbox" id="apply-ad">
-                <input type="checkbox" value="1" name="apply-ad" id="apply-ad-input" />
+                <input type="checkbox" value="1" name="apply_ad" id="apply-ad-input" />
                 <label for="apply-ad-input">Apply for ad</label>
               </div>
               <div class="apply-button">
-                <button class="button apply-submit">SUBMIT</button>
+                <button class="button apply-submit" onclick="return imageNotNull();">SUBMIT</button>
               </div>
             </div>
           </div>

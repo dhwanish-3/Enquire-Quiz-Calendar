@@ -1,11 +1,16 @@
 <?php
     require 'backup/config.php';
-	$email = $_POST['email'];
-	$password = $_POST['password'];
+	$email = mysqli_real_escape_string($conn,$_POST['email']);
+	$password = mysqli_real_escape_string($conn,$_POST['password']);
     $check = $conn->query("SELECT * FROM user_details WHERE email = '{$email}'");
     if($check->num_rows>0){
         $row = mysqli_fetch_assoc($check);
-        if($row['password']==$password){
+        $pass_decode=password_verify($password,$row['password']);
+        if($pass_decode){
+            if(isset($_POST['remember'])){
+                setcookie('email',$email,time()+86400);
+                setcookie('password',$password,time()+86400);
+            }
             $_SESSION['name']=$row['name'];
             $_SESSION['email']=$email;
             $_SESSION['category']=$row['category'];
@@ -20,11 +25,13 @@
         }
         else{
             $conn->close();
+            $_SESSION['login-msg']="Password is incorrect";
             header("Location: index.php?login=password_is_incorrect");
         }
     }
     else{
         $conn->close();
+        $_SESSION['login-msg']="Account not found";
         header("Location: index.php?login=no_account_found");
     }
 ?>

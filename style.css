@@ -6,12 +6,15 @@
   --headerColor: #472867;
   --mainColor: #7d2ae8;
   --comboColor: #19e4ff;
-  --pink: #ff28f4;
   --footerColor: #3a3a3a;
-  --range-width: 200px;
+  --range-width: 199px;
+  --collegeColor: #00de34;
+  --openColor: red;
+  --schoolColor: blue;
 }
 /* Import Google font - Poppins */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+/* Import Google font - Varela-Round */
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 * {
   margin: 0;
@@ -91,7 +94,7 @@ a{
 .enquire img{
   width: 6rem;
 }
-
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@800&family=Varela+Round&display=swap');
 .enquire span{
   font-weight: bold;
   font-size: 1.7rem;
@@ -154,12 +157,27 @@ a{
     pointer-events: none;
     transition: all 0.4s ease-out;
 }
+.form_container form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.session-msg{
+  text-align: center;
+  background-color: var(--mainColor);
+  color: var(--textColor);
+  border-radius: 5px;
+  font-size: 0.7rem;
+  padding: 0.3rem 0.5rem; 
+}
 .form_container .button{
   margin-bottom: 10px;
   box-shadow: none;
 }
 .form_container .in_a_row{
   gap: 5rem;
+  margin-left: 30%;
 }
 .home.show .form_container {
     opacity: 1;
@@ -181,6 +199,9 @@ a{
     width: 1rem;
     font-size: 1.3rem;
     cursor: pointer;
+    /* background-color: #707070;
+    width: 20px;
+    height: 20px; */
 }
 .form_container h2 {
     font-size: 1.3rem;
@@ -231,6 +252,7 @@ a{
 }
 .option_field {
     margin-top: 14px;
+    gap: 3rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -297,7 +319,7 @@ a{
 }
 
 #google-button:hover {
-    transform: scale(1.03);
+    transform: scale(1.02);
     text-decoration: none;
 }
   
@@ -327,7 +349,7 @@ a{
 .calendars header{
   font-size: xx-large;
   font-weight: bold;
-  font-family: 'Varela Round', sans-serif;
+  font-family: 'Nunito', sans-serif;
   color: var(--textColor);
 }
 
@@ -340,7 +362,7 @@ a{
 
 /* first and second month */
 .wrapper{
-  width: 400px;
+  width: 380px;
   background: white;
   border-radius: 1.5rem;
   box-shadow: 0 15px 40px rgba(0,0,0,0.3);
@@ -418,32 +440,32 @@ header .current-date{
   content: "";
   left: 50%;
   top: 50%;
-  height: 45px;
-  width: 45px;
+  height: 40px;
+  width: 40px;
   z-index: -1;
   border-radius: 30%;
   transform: translate(-50%, -50%);
 }
 .days li.active::before{ /*open*/
-  background: red;
+  background: var(--openColor);
 }
 .days li.active2::before{ /*school*/
-  background: blue;
+  background: var(--schoolColor);
 }
 .days li.active3::before{ /*college*/
-  background: rgb(56, 206, 56);
+  background: var(--collegeColor);
 }
 .days li.active4::before{
-  background: linear-gradient(45deg,red,rgb(81, 255, 81),blue);
+  background: linear-gradient(45deg,var(--openColor),var(--collegeColor),var(--schoolColor));
 }
 .days li.active5::before{
-  background: linear-gradient(45deg,red,blue);
+  background: linear-gradient(45deg,var(--openColor),var(--schoolColor));
 }
 .days li.active6::before{
-  background: linear-gradient(45deg,red,rgb(81, 255, 81));
+  background: linear-gradient(45deg,var(--openColor),var(--collegeColor));
 }
 .days li.active7::before{
-  background: linear-gradient(45deg,blue,rgb(81, 255, 81));
+  background: linear-gradient(45deg,var(--schoolColor),var(--collegeColor));
 }
 .days li:not(.active):not(.active2):not(.active3)::not(.active4):not(.active5):not(.active6):not(.active7)hover::before{
   background: #f2f2f2;
@@ -618,27 +640,27 @@ header .current-date{
 }
 
 .open{
-  background: red;
+  background: var(--openColor);
 }
 
 .school{
-  background: blue;
+  background: var(--schoolColor);
 }
 
 .college{
-  background: greenyellow;
+  background: var(--collegeColor);
 }
 
 .open-school{
-  background: linear-gradient(120deg,red,blue);
+  background: linear-gradient(120deg,var(--openColor),var(--schoolColor));
 }
 
 .open-college{
-  background: linear-gradient(120deg,red,greenyellow);
+  background: linear-gradient(120deg,var(--openColor),var(--collegeColor));
 }
 
 .school-college{
-  background: linear-gradient(120deg,blue,greenyellow);
+  background: linear-gradient(120deg,var(--schoolColor),var(--collegeColor));
 }
 /* fav- events */
 .fav-events{
@@ -811,8 +833,8 @@ header .current-date{
   transform: translate(-50%,-50%) scale(1.1);
   z-index: 101;
   background-color: white;
-  padding: 1rem 2rem 2rem 2rem;
-  border-radius: 1rem;
+  padding: 1rem 3rem 2rem 3rem;
+  border-radius: 2rem;
   box-shadow: rgba(0, 0, 0, 0.1);
   opacity: 0;
   pointer-events: none;
@@ -821,7 +843,7 @@ header .current-date{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
   overflow: hidden; /* can be auto also */
   max-height: 710px;
   -webkit-overflow-scrolling: touch; /* for smooth scrolling on iOS devices */
@@ -876,7 +898,7 @@ header .current-date{
 
 .super-row{
   display: flex;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 .left-side{
@@ -917,6 +939,19 @@ input[type="file"]{
 .image-container span{
   color: var(--darkGrey);
   text-align: center;
+}
+
+/* image selected or not */
+.select-image{
+  display: none;
+  background-color: var(--mainColor);
+  color: var(--textColor);
+  padding: 0.3rem 0.6rem;
+  font-size: 0.9rem;
+  border-radius: 10px;
+}
+.select-image.show{
+  display: block;
 }
 
 /* when no image selected */
@@ -978,10 +1013,10 @@ input[type="file"]{
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 22rem;
+  width: fit-content;
 }
 .form-field input{
-  width: 22rem;
+  width: 24rem;
   height: 2rem;
   padding: 0px 8px;
   border-radius: 0.5rem;
@@ -1047,11 +1082,11 @@ input[type="file"]{
   display: flex;
   justify-content: start;
   align-items: center;
-  gap: 2.6rem;
+  gap: 4rem;
 }
 
 .select-drop{
-  padding: 0.3rem 1rem;
+  padding: 0.3rem 0.8rem;
   background-color: var(--textColor);
   border-radius: 2rem;
   color: var(--darkGrey);

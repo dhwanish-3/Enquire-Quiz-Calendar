@@ -6,8 +6,8 @@ const formOpenBtn = document.querySelector("#form-open"),
   signupBtn = document.querySelector("#signup"),
   loginBtn = document.querySelector("#login"),
   pwShowHide = document.querySelectorAll(".pw_hide");
-  const daysTag = document.querySelector("#days1"),
-   daysTag2 = document.querySelector("#days2"),
+const daysTag = document.querySelector("#days1"),
+  daysTag2 = document.querySelector("#days2"),
   currentDate = document.querySelector("#current-date1"),
   currentDate2 = document.querySelector("#current-date2"),
   prevNextIcon = document.querySelectorAll(".icons span");
@@ -22,7 +22,7 @@ const outsideClickHandlerforAuth = (event) => {
       element.classList.remove("blur-effect");
       home.classList.remove("show");
     });
-    document.removeEventListener("click", outsideClickHandlerforAuth);          
+    document.removeEventListener("click", outsideClickHandlerforAuth);
   }
 };
 
@@ -46,16 +46,32 @@ formCloseBtn.addEventListener("click", () => {
   });
 });
 
+// to show signup - login form
+signupBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  formContainer.classList.add("active");
+});
+loginBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  formContainer.classList.remove("active");
+});
 
-// last inside form-container for checking success of signup
+// for showing msg in signup - login container
 const urlParams = new URLSearchParams(window.location.search);
-const signup = urlParams.get('signup');
-if (signup === 'success') {
-  const message = document.createElement('p');
-  message.innerText = 'You have successfully signed up!';
-  document.body.appendChild(message);
+const signup = urlParams.get('signup')
+if (signup!=null && formOpenBtn!=null){
+  if(signup != 'success') {
+    formOpenBtn.click();
+    signupBtn.click();
+  }
 }
 
+const login = urlParams.get('login');
+if(login!=null && formOpenBtn!=null){
+  if(login!='success'){
+    formOpenBtn.click();
+  }
+}
 
 // range-sliders
 for(let i=1;i<7;i++){
@@ -82,6 +98,7 @@ for(let i=1;i<7;i++){
   changeRangeValue(rangeInput);
 }
 
+
 // apply to add an event application form
 const applicationForm=document.querySelector(".application-form");
 const applyButton=document.querySelector(".apply-button");
@@ -95,7 +112,7 @@ const outsideClickHandlerforApply = (event) => {
       element.classList.remove("blur-effect");
       applicationForm.classList.remove("show");
     });
-    document.removeEventListener("click", outsideClickHandlerforApply);          
+    document.removeEventListener("click", outsideClickHandlerforApply);
   }
 };
 applyButton.addEventListener("click",()=>{  
@@ -140,6 +157,7 @@ function getCalenderDates(callback){
   xhr.send();
 }
 
+// password show and hide
 pwShowHide.forEach((icon) => {
   icon.addEventListener("click", () => {
     let getPwInput = icon.parentElement.querySelector("input");
@@ -153,24 +171,16 @@ pwShowHide.forEach((icon) => {
   });
 });
 
-signupBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  formContainer.classList.add("active");
-});
-loginBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  formContainer.classList.remove("active");
-});
+// function checkPasswords() {-+-
+//   var password1 = document.getElementById("password1").value;
+//   var password2 = document.getElementById("password2").value;
+//   if (password1 != password2) {
+//     alert("Passwords do not match!"); // needs to be modified
+//     return false;
+//   }
+//   return true;
+// }
 
-function checkPasswords() {
-  var password1 = document.getElementById("password1").value;
-  var password2 = document.getElementById("password2").value;
-  if (password1 != password2) {
-    alert("Passwords do not match!"); // needs to be modified
-    return false;
-  }
-  return true;
-}
 
 // getting interested events
 function getInterestList(category,interest,listofEvents){
@@ -287,7 +297,7 @@ function renderFrontEnd(listofEvents){
           nonPopupElements.forEach((element) => {
             element.classList.remove("blur-effect");
           });
-          document.removeEventListener("click", outsideClickHandler);          
+          document.removeEventListener("click", outsideClickHandler);
         }
       };
       setTimeout(() => {
@@ -298,7 +308,7 @@ function renderFrontEnd(listofEvents){
       nonPopupElements.forEach((element) => {
         element.classList.add("blur-effect");
       });
-      document.body.appendChild(popUp);                  
+      document.body.appendChild(popUp);
   }
 
   const renderCalendar = () => {
@@ -316,10 +326,6 @@ function renderFrontEnd(listofEvents){
           let dayToday=`${currYear}-${currMonth}-${i}`;
           console.log(listofEvents[0][i-1]["date"]);
           var isToday=listofEvents[0][i-1]["date"]=="null"?"":getColor(JSON.parse(listofEvents[0][i-1]["date"]));
-          index=i;
-          fakeIndex=i;
-          // let isToday = i === date.getDate() && currMonth === new Date().getMonth() 
-          //             && currYear === new Date().getFullYear() ? "active" : "";          
           liTag += `<li class="${isToday}">${i}</li>`;
       }
       for (let i = lastDayofMonth; i < 6; i++) { // creating li of next month first days
@@ -330,14 +336,14 @@ function renderFrontEnd(listofEvents){
       const dayElements = daysTag.querySelectorAll('li');
       let i=1;
       dayElements.forEach(dayElement => {
-          dayElement.addEventListener('click', () => {              
+          dayElement.addEventListener('click', () => {
               const day = dayElement.innerText;
               if(listofEvents[0][day-1]["date"]!='null'){
                 // console.log(listofEvents[day-1]["date"]);
                 showPopUp(day,JSON.parse(listofEvents[0][day-1]["events"]));
-              }                
+              }
           });
-          i++;        
+          i++;
       }); 
   }
   renderCalendar();
@@ -358,9 +364,8 @@ function renderFrontEnd(listofEvents){
         console.log(listofEvents[1][i-1]["date"]);
         var isToday=listofEvents[1][i-1]["date"]=="null"?"":getColor(JSON.parse(listofEvents[1][i-1]["date"]));
         // let isToday = i === date.getDate() && currMonth === new Date().getMonth() 
-        //             && currYear === new Date().getFullYear() ? "active" : "";          
+        //             && currYear === new Date().getFullYear() ? "active" : "";
         liTag += `<li class="${isToday}">${i}</li>`;
-        index++;
     }
     for (let i = lastDayofMonth; i < 6; i++) { // creating li of next month first days
         liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`
@@ -369,13 +374,13 @@ function renderFrontEnd(listofEvents){
     daysTag2.innerHTML = liTag;
     const dayElements = daysTag2.querySelectorAll('li');
     dayElements.forEach(dayElement => {
-        dayElement.addEventListener('click', () => {              
+        dayElement.addEventListener('click', () => {
             const day = dayElement.innerText;
             console.log(day);
             if(listofEvents[1][day-1]["date"]!='null'){
               // console.log(listofEvents[day-1]["date"]);
               showPopUp(day,JSON.parse(listofEvents[1][day-1]["events"]));
-            }                
+            }
         });
     }); 
   }
@@ -409,11 +414,12 @@ fileInput.addEventListener('change', () => {
   // }
 });
 
-// for multiple category selected in radios
-const radios=document.querySelector(".radio");
-const checkboxes = radios.elements["category"];
-  
-  // Iterate through all checkboxes
-  for (let i = 0; i < checkboxes.length; i++) {
-    console.log(checkboxes[i].checked);// Set the 'checked' property to true
+// checking image selected or not
+const selectImage=document.querySelector(".select-image");
+const leftSide=document.querySelector(".left-side");
+const imageNotNull=()=>{
+  const selectedFile = fileInput.files[0];
+  if(selectedFile==null){
+    selectImage.classList.add("show");
   }
+}
