@@ -1,5 +1,5 @@
 <?php
-    require 'backup/config.php';
+    require '../backup/config.php';
 	$email = mysqli_real_escape_string($conn,$_POST['email']);
 	$password = mysqli_real_escape_string($conn,$_POST['password']);
     $check = $conn->query("SELECT * FROM user_details WHERE email = '{$email}'");
@@ -21,17 +21,17 @@
             $_SESSION['sports']=$row['sports'];
             $_SESSION['mela']=$row['mela'];
             $conn->close();
-            header("Location: index.php?login=success");
+            header("Location: ../index.php?login=success");
         }
         else{
             $conn->close();
             $_SESSION['login-msg']="Password is incorrect";
-            header("Location: index.php?login=password_is_incorrect");
+            header("Location: ../index.php?login=password_is_incorrect");
         }
     }
     else{
         $conn->close();
         $_SESSION['login-msg']="Account not found";
-        header("Location: index.php?login=no_account_found");
+        header("Location: ../index.php?login=no_account_found");
     }
 ?>

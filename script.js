@@ -140,7 +140,7 @@ function getCalenderDates(callback){
   var xhr = new XMLHttpRequest();
 
   // Set up the request
-  xhr.open('GET', 'events.php',true);
+  xhr.open('GET', 'events/events.php',true);
   // Set up the callback function
   xhr.onload = function() {
     // Check if the request was successful

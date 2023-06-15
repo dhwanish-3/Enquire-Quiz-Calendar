@@ -1,5 +1,5 @@
 <?php
-require 'backup/config.php';
+require '../backup/config.php';
 if(isset($_POST['submit'])){
     $email=mysqli_real_escape_string($conn,$_POST['email']);
     $emailQuery="SELECT * FROM user_details WHERE email='$email'";
@@ -10,17 +10,17 @@ if(isset($_POST['submit'])){
         $subject="Reset Password";
         $token=$userdata['token'];
         $body="Hi, $username Click here to update your password\n
-        http://localhost/enquirecalendardhwanish/reset_password.php?token=$token ";
+        http://localhost/enquirecalendardhwanish/update_password.php?token=$token ";
         $sender_email="From: dhwani333sh@gmail.com";
 
         if(mail($email, $subject, $body , $sender_email)){
-            $_SESSION['msg']="check your mail to reset your password";
-            header('location:index.php');
+            $_SESSION['forgot-msg']="check your mail to update your password";
         }else{
-            echo "Failed to send mail... Check the email entered and try again...";
+            $_SESSION['forgot-msg']="Failed to send mail...\nCheck the email entered and try again.";
         }
     }else{
-        echo "Account not found";
+        $_SESSION['forgot-msg']="Account not found";
     }
 }
+header('Location: ../forgot_password.php');
 ?>

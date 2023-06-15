@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require 'config.php';
+    require '../backup/config.php';
     $interestedEvents=array();
     if(isset($_POST["go"])){
         if(isset($_SESSION["email"])){
@@ -14,6 +14,7 @@
             $category=$_SESSION["category"];
             $submit=$conn->query("UPDATE user_details SET general = '{$general}', scitech='{$scitech}', business='{$business}, scitechbiz='{$scitechbiz}', sports='{$sports}', mela='{$mela}' WHERE email='{$email}'");
             $conn->close();
+            header("Location: ../index.php");
         }
     }
 ?>

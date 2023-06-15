@@ -1,4 +1,11 @@
 <?php
+session_start();
+ob_start();
+if(isset($_GET['token'])){
+    $_SESSION['token']=$_GET['token'];
+}else{
+    $_SESSION['update-msg']="Could not get token for verification";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Forgot Password</title>
+    <title>Update Password</title>
 </head>
 <style>
     body{
@@ -51,18 +58,20 @@
 </style>
 <body>
     <div class="container">
-        <header>Recover Your Account</header>
-        <span>Please fill your email id properly</span>
+        <header>Update Password</header>
         <?php
-        if(isset($_SESSION['forgot-msg'])){
-            echo "<span class='session-msg'>{$_SESSION['forgot-msg']}</span>";
+        if(isset($_SESSION['update-msg'])){
+            echo "<span class='session-msg'>{$_SESSION['update-msg']}</span>";
         }
         ?>
-        <form action="auth/recover_email.php">
+        <form action="auth/reset_password.php">
             <div class="form-field">
-                <input type="email" placeholder="Email address" required name="email">
-            </div>            
-            <button class="button go-button" name="submit">Send Mail</button>
+                <input type="password" placeholder="New password" required name="password">
+            </div>
+            <div class="form-field">
+                <input type="password" placeholder="Confirm password" required name="cpassword">
+            </div>
+            <button class="button go-button" name="submit">Update</button>
         </form>
         <div class="poster">
             <span>Don't have an account?</span>

@@ -1,5 +1,5 @@
 <?php
-  require 'backup/config.php';
+  require '../backup/config.php';
   $name = $_POST["name"];
   $date = $_POST["date"];
   $venue = $_POST["venue"];
@@ -25,7 +25,7 @@
     echo
     "<script> alert('Image Does Not Exist'); </script>"
     ;
-    header('Location: index.php?image_does_not_exist');
+    header('Location: ../index.php?image_does_not_exist');
   }
   else{
     $fileName = $_FILES["image"]["name"];
@@ -39,7 +39,7 @@
       echo "<script>
         alert('Invalid Image Extension');
       </script>";
-      header('Location: index.php?invalid_image');
+      header('Location: ../index.php?invalid_image');
     }
     if($fileSize > 5000000){
       echo
@@ -48,13 +48,14 @@
         alert('Image Size Is Too Large');
       </script>
       ";
-      header('Location: index.php?image_too_large');
+      header('Location: ../index.php?image_too_large');
     }
     else{
       $newImageName = uniqid();
       $newImageName .= '.' . $imageExtension;
       $filePath = 'posters/'.$newImageName;
-      move_uploaded_file($tmpName, $filePath);
+      $newPath='../'.$filePath;
+      move_uploaded_file($tmpName, $newPath);
       $query = "INSERT INTO request_event(date,name,venue,imageUrl,category,type,quiz_masters,contact,link,rules,applicants_phone,apply_ad) VALUES('$date', '$name', '$venue','$filePath','$category','$type','$quiz_masters','$contact','$link','$rules','$number','$apply_ad')";
       mysqli_query($conn, $query);
       echo
@@ -63,7 +64,7 @@
         alert('Successfully Applied');
       </script>
       ";
-      header('Location: index.php?successfully_applied');
+      header('Location: ../index.php?successfully_applied');
     }
   }
 ?>

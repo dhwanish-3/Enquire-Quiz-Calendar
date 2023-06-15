@@ -1,5 +1,5 @@
 <?php
-    require 'backup/config.php';
+    require '../backup/config.php';
 	$name = mysqli_real_escape_string($conn,$_POST['name']);
 	$email = mysqli_real_escape_string($conn,$_POST['email']);
 	$pass = mysqli_real_escape_string($conn,$_POST['password']);
@@ -7,7 +7,7 @@
 	if($pass!=$confirmPassword){
 		$conn->close();
 		$_SESSION['signup-msg']="Passwords didn't match";
-		header("Location: index.php?signup=passwords_dont_match");
+		header("Location: ../index.php?signup=passwords_dont_match");
 	}
 	$password = password_hash($pass,PASSWORD_BCRYPT);
 	$token = bin2hex(random_bytes(15));
@@ -16,7 +16,7 @@
 	if($check->num_rows>0){
 		$conn->close();
 		$_SESSION['signup-msg']="Email already in use";
-		header("Location: index.php?signup=email_already_in_use");
+		header("Location: ../index.php?signup=email_already_in_use");
 	}
 	else{
 		$stmt = $conn->prepare("INSERT INTO user_details(name,email,password,token) VALUES(?, ?, ?, ?)");
@@ -28,6 +28,6 @@
 		$_SESSION['token'] = $token;
 		$stmt->close();
 		$conn->close();
-		header("Location: index.php?signup=success");
+		header("Location: ../index.php?signup=success");
 	}
 ?>

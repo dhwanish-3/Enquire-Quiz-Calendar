@@ -51,7 +51,7 @@ require 'backup/google.php';
         
         <!-- Login From -->
         <div class="form login_form">
-          <form action="login.php" method="POST">
+          <form action="auth/login.php" method="POST">
             <div class="in_a_row">
               <h2>LOGIN</h2>
               <i class="uil uil-times form_close"></i>
@@ -90,7 +90,7 @@ require 'backup/google.php';
 
         <!-- Signup From -->
         <div class="form signup_form">
-          <form action="signup.php" method="POST">
+          <form action="auth/signup.php" method="POST">
             <div class="in_a_row">
               <h2>SIGNUP</h2>
               <i class="uil uil-times form_close"></i>
