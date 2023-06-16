@@ -479,7 +479,7 @@ header .current-date{
   position: fixed;
   left: 50%;
   top: 50%;
-  transform:translate(-50%,-50%) scale(1);
+  transform: translate(-50%,-50%) scale(1);
   text-align: center;
   padding: 0rem 1rem;
   color: black;
@@ -1082,7 +1082,7 @@ input[type="file"]{
   display: flex;
   justify-content: start;
   align-items: center;
-  gap: 4rem;
+  gap: 5rem;
 }
 
 .select-drop{

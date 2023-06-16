@@ -35,7 +35,7 @@ require 'backup/google.php';
       if (isset($_SESSION['email'])) {
         echo "<span>Hello, {$_SESSION['name']}</span>"
         ?>
-          <button class="button" onclick="window.location.href = 'logout.php'">LOGOUT</button>
+          <button class="button" onclick="window.location.href = 'auth/logout.php'">LOGOUT</button>
       <?php
       }else{ ?>
         <button class="button" id="form-open">LOGIN</button>
@@ -59,6 +59,7 @@ require 'backup/google.php';
             <?php
               if(isset($_SESSION['login-msg'])){
                 echo "<span class='session-msg'>{$_SESSION['login-msg']}</span>";
+                unset($_SESSION['login-msg']);
               }
             ?>
             <div class="input_box">
@@ -93,11 +94,12 @@ require 'backup/google.php';
           <form action="auth/signup.php" method="POST">
             <div class="in_a_row">
               <h2>SIGNUP</h2>
-              <i class="uil uil-times form_close"></i>
+              <i id="signup-form-close" class="uil uil-times form_close"></i>
             </div>
             <?php
               if(isset($_SESSION['signup-msg'])){
                 echo "<span class='session-msg'>{$_SESSION['signup-msg']}</span>";
+                unset($_SESSION['signup-msg']);
               }
             ?>
             <div class="input_box">
@@ -186,6 +188,8 @@ require 'backup/google.php';
       </div>
       <!-- Ads Section -->
       <section class="advertisement">
+        <div class="carousel-inner">
+          <div class="carousel-item active"></div>
         <div class="ads-part">
           <div class="heading">
             <span>Popular Events</span>
@@ -205,6 +209,7 @@ require 'backup/google.php';
             <span>Contact : 9876543210 </span>
           </div>
         </div>
+        </div>
         <div>
           <button class="button apply-button">Apply for Event</button>
         </div>
@@ -218,6 +223,9 @@ require 'backup/google.php';
       <?php
       // getting the data if user has logged in
         $category=null;
+        $open=0;
+        $school=0;
+        $college=0;
         $general=5;
         $scitech=5;
         $business=5;
@@ -232,6 +240,9 @@ require 'backup/google.php';
           $sports=$_SESSION['sports'];
           $mela=$_SESSION['mela'];
           $category=$_SESSION['category'];
+          if($category=="open") $open=1;
+          else if($category=="school") $school=1;
+          else if($category=="college") $college=1;
         }
       ?>
       <div class="pop-up-form">

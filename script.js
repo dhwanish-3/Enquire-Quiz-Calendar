@@ -12,7 +12,7 @@ const daysTag = document.querySelector("#days1"),
   currentDate2 = document.querySelector("#current-date2"),
   prevNextIcon = document.querySelectorAll(".icons span");
 
-
+let GloballistofEvents=new Array();
 // sign-up and login form
 const authPopUp=document.querySelector(".home");
 const nonAuthPopupElements = document.querySelectorAll("body > *:not(.home)");
@@ -45,6 +45,16 @@ formCloseBtn.addEventListener("click", () => {
     element.classList.remove("blur-effect");
   });
 });
+const signUpFormClose=document.getElementById("signup-form-close");
+if(signUpFormClose!=null){
+  signUpFormClose.addEventListener("click", () => {
+    home.classList.remove("show");
+    document.removeEventListener("click", outsideClickHandlerforAuth);
+    nonAuthPopupElements.forEach((element) => {
+      element.classList.remove("blur-effect");
+    });
+  });
+}
 
 // to show signup - login form
 signupBtn.addEventListener("click", (e) => {
@@ -72,6 +82,15 @@ if(login!=null && formOpenBtn!=null){
     formOpenBtn.click();
   }
 }
+
+const sessionMsg = document.querySelector('.session-msg');
+  
+  // Check if the element exists and set a timeout to remove it after 5 seconds
+  if (sessionMsg) {
+    setTimeout(() => {
+      sessionMsg.remove();
+    }, 5000);
+  }
 
 // range-sliders
 for(let i=1;i<7;i++){
@@ -171,16 +190,64 @@ pwShowHide.forEach((icon) => {
   });
 });
 
-// function checkPasswords() {-+-
-//   var password1 = document.getElementById("password1").value;
-//   var password2 = document.getElementById("password2").value;
-//   if (password1 != password2) {
-//     alert("Passwords do not match!"); // needs to be modified
-//     return false;
-//   }
-//   return true;
-// }
-
+// pop-up of sorted events
+function SortedPopupString(eventDetails){
+    var popup=`<div class="backdrop"></div>
+    <div id="popContainer">
+      <div class="in_a_row">
+        <h3 class="flex h3">Sorted Events</h3>
+        <div class="flex close-btn">&times;</div>
+      </div>`;
+    let i=0;
+    while(i<eventDetails.length){
+      let loop=`<img src=${eventDetails[i].imageUrl}>
+      <div class="event-details">
+        <p>Name : ${eventDetails[i].name}</p>
+        <p>Date : ${eventDetails[i].date}</p>
+        <p>Venue : ${eventDetails[i].venue}</p>
+        <p>Type : ${eventDetails[i].type}</p>
+        <p>Category : ${eventDetails[i].category}</p>
+        <p>Quiz Masters : ${eventDetails[i].masters}</p>
+        <p>Contact : ${eventDetails[i].contact}</p>
+        <hr>
+      </div>`;
+      popup=popup.concat(loop);
+      i++;
+    }
+    popup=popup.concat(`</div`);
+    return popup;
+  }
+  function showSortedPopUp(eventDetails) {
+      const popUp = document.createElement("div");
+      popUp.classList.add("pop-up");
+      popUp.innerHTML = SortedPopupString(eventDetails);
+      // Close the pop-up window when the close button is clicked
+      popUp.querySelector(".close-btn").addEventListener("click", () => {
+          popUp.remove();
+          document.removeEventListener("click", outsideClickHandler);
+          nonPopupElements.forEach((element) => {
+            element.classList.remove("blur-effect");
+          });
+      });
+      const outsideClickHandler = (event) => {
+        if (!popUp.contains(event.target)&& event.target !== popUp) {
+          popUp.remove();
+          nonPopupElements.forEach((element) => {
+            element.classList.remove("blur-effect");
+          });
+          document.removeEventListener("click", outsideClickHandler);
+        }
+      };
+      setTimeout(() => {
+        document.addEventListener("click", outsideClickHandler);
+      }, 100);
+      //dimming
+      const nonPopupElements = document.querySelectorAll("body > *:not(.pop-up)");
+      nonPopupElements.forEach((element) => {
+        element.classList.add("blur-effect");
+      });
+      document.body.appendChild(popUp);
+  }
 
 // getting interested events
 function getInterestList(category,interest,listofEvents){
@@ -189,12 +256,26 @@ function getInterestList(category,interest,listofEvents){
   for(let a=0;a<interest.length;a++){
     for(let i=0;i<listofEvents[0].length && j<10;i++){
       let events=JSON.parse(listofEvents[0][i]["events"]);
-      for(let x=0;x<events.length && j<10;x++){
-        if(events[x].category==category && events[x].type==interest[a]){
-          interestedEvents.push(events[x]);
-          j++;
+      if(events!=null){
+        for(let x=0;x<events.length && j<10;x++){
+          let eventCategory=events[x].category;
+          if((category==events[x].category || category.contains(events[x].category) || events[x].category.contains(category) ) && events[x].type==interest[a]){
+            interestedEvents.push(events[x]);
+            j++;
+          }
         }
-      }    
+      }
+    }
+    for(let i=0;i<listofEvents[1].length && j<10;i++){
+      let events=JSON.parse(listofEvents[1][i]["events"]);
+      if(events!=null){
+        for(let x=0;x<events.length && j<10;x++){
+          if(events[x].category==category && events[x].type==interest[a]){
+            interestedEvents.push(events[x]);
+            j++;
+          }
+        }
+      }
     }
   }
   return interestedEvents;
@@ -209,6 +290,7 @@ const submitPopUpForm=()=>{
   const sports=document.getElementById("range-input5").value;
   const mela=document.getElementById("range-input6").value;
   let categoryArray=[{"general":general},{"scitech":scitech},{"business":business},{"scitechbiz":scitechbiz},{"sports":sports},{"mela":mela}];
+  let array=["general","scitech","business","mela","sports","scitechbiz"];
   const open=document.getElementById("radio-open").checked;
   const school=document.getElementById("radio-school").checked;
   const college=document.getElementById("radio-college").checked;
@@ -219,11 +301,14 @@ const submitPopUpForm=()=>{
   else if(school && college) category="school-college";
   else if(school) category="school";
   else if(college) category="college";
-  console.log(category);
+  var interests=getInterestList(category,array,GloballistofEvents);
+  // console.log(interests);
+  showSortedPopUp(interests);
 }
 
 // rendering calender
 function renderFrontEnd(listofEvents){
+  GloballistofEvents=listofEvents;
   // getting new date, current year and month
   let date = new Date(),
   currYear = date.getFullYear(),
@@ -281,7 +366,6 @@ function renderFrontEnd(listofEvents){
   function showPopUp(day,eventDetails) {
       const popUp = document.createElement("div");
       popUp.classList.add("pop-up");
-      console.log(eventDetails[0]);
       popUp.innerHTML = PopupString(day,eventDetails);
       // Close the pop-up window when the close button is clicked
       popUp.querySelector(".close-btn").addEventListener("click", () => {
@@ -339,7 +423,6 @@ function renderFrontEnd(listofEvents){
           dayElement.addEventListener('click', () => {
               const day = dayElement.innerText;
               if(listofEvents[0][day-1]["date"]!='null'){
-                // console.log(listofEvents[day-1]["date"]);
                 showPopUp(day,JSON.parse(listofEvents[0][day-1]["events"]));
               }
           });
@@ -363,8 +446,6 @@ function renderFrontEnd(listofEvents){
         let dayToday=`${currYear}-${currMonth}-${i}`;
         console.log(listofEvents[1][i-1]["date"]);
         var isToday=listofEvents[1][i-1]["date"]=="null"?"":getColor(JSON.parse(listofEvents[1][i-1]["date"]));
-        // let isToday = i === date.getDate() && currMonth === new Date().getMonth() 
-        //             && currYear === new Date().getFullYear() ? "active" : "";
         liTag += `<li class="${isToday}">${i}</li>`;
     }
     for (let i = lastDayofMonth; i < 6; i++) { // creating li of next month first days
@@ -378,7 +459,6 @@ function renderFrontEnd(listofEvents){
             const day = dayElement.innerText;
             console.log(day);
             if(listofEvents[1][day-1]["date"]!='null'){
-              // console.log(listofEvents[day-1]["date"]);
               showPopUp(day,JSON.parse(listofEvents[1][day-1]["events"]));
             }
         });
