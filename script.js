@@ -75,7 +75,6 @@ if (signup!=null && formOpenBtn!=null){
     signupBtn.click();
   }
 }
-
 const login = urlParams.get('login');
 if(login!=null && formOpenBtn!=null){
   if(login!='success'){
@@ -84,13 +83,12 @@ if(login!=null && formOpenBtn!=null){
 }
 
 const sessionMsg = document.querySelector('.session-msg');
-  
-  // Check if the element exists and set a timeout to remove it after 5 seconds
-  if (sessionMsg) {
-    setTimeout(() => {
-      sessionMsg.remove();
-    }, 5000);
-  }
+// Check if the element exists and set a timeout to remove it after 5 seconds
+if (sessionMsg) {
+  setTimeout(() => {
+    sessionMsg.remove();
+  }, 5000);
+}
 
 // range-sliders
 for(let i=1;i<7;i++){
@@ -155,7 +153,6 @@ applyCloseButton.addEventListener("click",()=>{
 
 //calender event functions
 function getCalenderDates(callback){
-  // Create a new XMLHttpRequest object
   var xhr = new XMLHttpRequest();
 
   // Set up the request
@@ -190,64 +187,67 @@ pwShowHide.forEach((icon) => {
   });
 });
 
+
+
 // pop-up of sorted events
 function SortedPopupString(eventDetails){
-    var popup=`<div class="backdrop"></div>
-    <div id="popContainer">
-      <div class="in_a_row">
-        <h3 class="flex h3">Sorted Events</h3>
-        <div class="flex close-btn">&times;</div>
-      </div>`;
-    let i=0;
-    while(i<eventDetails.length){
-      let loop=`<img src=${eventDetails[i].imageUrl}>
-      <div class="event-details">
-        <p>Name : ${eventDetails[i].name}</p>
-        <p>Date : ${eventDetails[i].date}</p>
-        <p>Venue : ${eventDetails[i].venue}</p>
-        <p>Type : ${eventDetails[i].type}</p>
-        <p>Category : ${eventDetails[i].category}</p>
-        <p>Quiz Masters : ${eventDetails[i].masters}</p>
-        <p>Contact : ${eventDetails[i].contact}</p>
-        <hr>
-      </div>`;
-      popup=popup.concat(loop);
-      i++;
-    }
-    popup=popup.concat(`</div`);
-    return popup;
+  var popup=`<div class="backdrop"></div>
+  <div id="popContainer">
+    <div class="in_a_row">
+      <h3 class="flex h3">Sorted Events</h3>
+      <div class="flex close-btn">&times;</div>
+    </div>`;
+  let i=0;
+  while(i<eventDetails.length){
+    let loop=`<img src=${eventDetails[i].imageUrl}>
+    <div class="event-details">
+      <p>Name : ${eventDetails[i].name}</p>
+      <p>Date : ${eventDetails[i].date}</p>
+      <p>Venue : ${eventDetails[i].venue}</p>
+      <p>Type : ${eventDetails[i].type}</p>
+      <p>Category : ${eventDetails[i].category}</p>
+      <p>Quiz Masters : ${eventDetails[i].masters}</p>
+      <p>Contact : ${eventDetails[i].contact}</p>
+      <hr>
+    </div>`;
+    popup=popup.concat(loop);
+    i++;
   }
-  function showSortedPopUp(eventDetails) {
-      const popUp = document.createElement("div");
-      popUp.classList.add("pop-up");
-      popUp.innerHTML = SortedPopupString(eventDetails);
-      // Close the pop-up window when the close button is clicked
-      popUp.querySelector(".close-btn").addEventListener("click", () => {
-          popUp.remove();
-          document.removeEventListener("click", outsideClickHandler);
-          nonPopupElements.forEach((element) => {
-            element.classList.remove("blur-effect");
-          });
-      });
-      const outsideClickHandler = (event) => {
-        if (!popUp.contains(event.target)&& event.target !== popUp) {
-          popUp.remove();
-          nonPopupElements.forEach((element) => {
-            element.classList.remove("blur-effect");
-          });
-          document.removeEventListener("click", outsideClickHandler);
-        }
-      };
-      setTimeout(() => {
-        document.addEventListener("click", outsideClickHandler);
-      }, 100);
-      //dimming
-      const nonPopupElements = document.querySelectorAll("body > *:not(.pop-up)");
+  popup=popup.concat(`</div`);
+  return popup;
+}
+
+function showSortedPopUp(eventDetails) {
+  const popUp = document.createElement("div");
+  popUp.classList.add("pop-up");
+  popUp.innerHTML = SortedPopupString(eventDetails);
+  // Close the pop-up window when the close button is clicked
+  popUp.querySelector(".close-btn").addEventListener("click", () => {
+      popUp.remove();
+      document.removeEventListener("click", outsideClickHandler);
       nonPopupElements.forEach((element) => {
-        element.classList.add("blur-effect");
+        element.classList.remove("blur-effect");
       });
-      document.body.appendChild(popUp);
-  }
+  });
+  const outsideClickHandler = (event) => {
+    if (!popUp.contains(event.target)&& event.target !== popUp) {
+      popUp.remove();
+      nonPopupElements.forEach((element) => {
+        element.classList.remove("blur-effect");
+      });
+      document.removeEventListener("click", outsideClickHandler);
+    }
+  };
+  setTimeout(() => {
+    document.addEventListener("click", outsideClickHandler);
+  }, 100);
+  //dimming
+  const nonPopupElements = document.querySelectorAll("body > *:not(.pop-up)");
+  nonPopupElements.forEach((element) => {
+    element.classList.add("blur-effect");
+  });
+  document.body.appendChild(popUp);
+}
 
 // getting interested events
 function getInterestList(category,interest,listofEvents){
@@ -258,8 +258,7 @@ function getInterestList(category,interest,listofEvents){
       let events=JSON.parse(listofEvents[0][i]["events"]);
       if(events!=null){
         for(let x=0;x<events.length && j<10;x++){
-          let eventCategory=events[x].category;
-          if((category==events[x].category || category.contains(events[x].category) || events[x].category.contains(category) ) && events[x].type==interest[a]){
+          if((category==events[x].category || category.includes(events[x].category) || events[x].category.includes(category)) && events[x].type==interest[a]){
             interestedEvents.push(events[x]);
             j++;
           }
@@ -270,7 +269,7 @@ function getInterestList(category,interest,listofEvents){
       let events=JSON.parse(listofEvents[1][i]["events"]);
       if(events!=null){
         for(let x=0;x<events.length && j<10;x++){
-          if(events[x].category==category && events[x].type==interest[a]){
+          if((category==events[x].category || category.includes(events[x].category) || events[x].category.includes(category)) && events[x].type==interest[a]){
             interestedEvents.push(events[x]);
             j++;
           }
@@ -289,8 +288,19 @@ const submitPopUpForm=()=>{
   const scitechbiz=document.getElementById("range-input6").value;
   const sports=document.getElementById("range-input5").value;
   const mela=document.getElementById("range-input6").value;
+
   let categoryArray=[{"general":general},{"scitech":scitech},{"business":business},{"scitechbiz":scitechbiz},{"sports":sports},{"mela":mela}];
-  let array=["general","scitech","business","mela","sports","scitechbiz"];
+  categoryArray.sort((a, b) => {
+    const aMaxValue = Math.max(...Object.values(a));
+    const bMaxValue = Math.max(...Object.values(b));    
+    return bMaxValue - aMaxValue;
+  });
+  const resultArray = categoryArray.map(item => {
+    const key = Object.keys(item)[0];
+    return key;
+  });  
+  // console.log(resultArray);
+
   const open=document.getElementById("radio-open").checked;
   const school=document.getElementById("radio-school").checked;
   const college=document.getElementById("radio-college").checked;
@@ -301,10 +311,38 @@ const submitPopUpForm=()=>{
   else if(school && college) category="school-college";
   else if(school) category="school";
   else if(college) category="college";
-  var interests=getInterestList(category,array,GloballistofEvents);
+  console.log(category);
+  var interests=getInterestList(category,resultArray,GloballistofEvents);
   // console.log(interests);
   showSortedPopUp(interests);
 }
+
+// getting form data and submitting it after that we will call submitPopUpForm
+const submitGoForm=document.getElementById("submit-go");
+submitGoForm.addEventListener("submit",(event)=>{
+  event.preventDefault();
+  var xhr = new XMLHttpRequest();
+
+  // Set up the request
+  xhr.open('POST', 'auth/submit_go.php', true);
+  // Set up the callback function
+  xhr.onload = function() {
+    // Check if the request was successful
+    if (xhr.status === 200) {
+      // Handle the response here
+      console.log(xhr.responseText);
+      submitPopUpForm();
+    } else {
+      // Handle errors here
+      console.error(xhr.statusText);
+    }
+  };
+  // Get the form data
+  var formData = new FormData(submitGoForm);
+  // Send the form data as the request body
+  xhr.send(formData);
+});
+
 
 // rendering calender
 function renderFrontEnd(listofEvents){

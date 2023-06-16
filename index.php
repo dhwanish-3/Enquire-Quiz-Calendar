@@ -16,7 +16,7 @@ require 'backup/google.php';
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800&family=Varela+Round&display=swap" rel="stylesheet">
     <!-- the following bootstrap has conflicts with style.css -->
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <!-- this is for material-symbols-rounded -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
     <link rel="stylesheet" href="style.css"/>
@@ -188,28 +188,60 @@ require 'backup/google.php';
       </div>
       <!-- Ads Section -->
       <section class="advertisement">
+      <div id="carouselExampleControls" class="carousel slide bg-white" data-bs-ride="carousel">
         <div class="carousel-inner">
-          <div class="carousel-item active"></div>
-        <div class="ads-part">
-          <div class="heading">
-            <span>Popular Events</span>
+          <div class="carousel-item active">
+            <div class="ads-part">
+              <div class="heading">
+                <span>Popular Events</span>
+              </div>
+              <div class="poster">
+                <!-- <span id="prev" class="material-symbols-rounded">chevron_left</span> -->
+                <img src="images/poster.jpg" alt="">
+                <!-- <span id="next" class="material-symbols-rounded">chevron_right</span> -->
+              </div>
+              <div class="event-details">
+                <span>Event : Mega Quiz</span>
+                <span>Date : 12-06-2023</span>
+                <span>Venue : GHSS Paivalike Nagar, Paivalike</span>
+                <span>Type : Sci-Biz-Tech Quiz</span>
+                <span>Category : School & College</span>
+                <span>Quiz Masters : BatMan & SuperMan</span>
+                <span>Contact : 9876543210 </span>
+              </div>
+            </div>
           </div>
-          <div class="poster">
-            <span id="prev" class="material-symbols-rounded">chevron_left</span>
-            <img src="images/poster.jpg" alt="">
-            <span id="next" class="material-symbols-rounded">chevron_right</span>
-          </div>
-          <div class="event-details">
-            <span>Event : Mega Quiz</span>
-            <span>Date : 12-06-2023</span>
-            <span>Venue : GHSS Paivalike Nagar, Paivalike</span>
-            <span>Type : Sci-Biz-Tech Quiz</span>
-            <span>Category : School & College</span>
-            <span>Quiz Masters : BatMan & SuperMan</span>
-            <span>Contact : 9876543210 </span>
+          <div class="carousel-item">
+          <div class="ads-part">
+              <div class="heading">
+                <span>Popular Events</span>
+              </div>
+              <div class="poster">
+                <!-- <span id="prev" class="material-symbols-rounded">chevron_left</span> -->
+                <img src="images/poster.jpg" alt="">
+                <!-- <span id="next" class="material-symbols-rounded">chevron_right</span> -->
+              </div>
+              <div class="event-details">
+                <span>Event : Mega Quiz</span>
+                <span>Date : 12-06-2023</span>
+                <span>Venue : GHSS Paivalike Nagar, Paivalike</span>
+                <span>Type : Sci-Biz-Tech Quiz</span>
+                <span>Category : School & College</span>
+                <span>Quiz Masters : BatMan & SuperMan</span>
+                <span>Contact : 9876543210 </span>
+              </div>
+            </div>
           </div>
         </div>
-        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
         <div>
           <button class="button apply-button">Apply for Event</button>
         </div>
@@ -240,129 +272,132 @@ require 'backup/google.php';
           $sports=$_SESSION['sports'];
           $mela=$_SESSION['mela'];
           $category=$_SESSION['category'];
-          if($category=="open") $open=1;
-          else if($category=="school") $school=1;
-          else if($category=="college") $college=1;
+          if(strpos($category,"open")!==false) $open=1;
+          if(strpos($category,"school")!==false) $school=1;
+          if(strpos($category,"college")!==false) $college=1;
         }
       ?>
       <div class="pop-up-form">
-        <div class="slider-container">
-          <div class="range">
-            <label for="general">General</label>
-            <div class="slider">            
-              <div class="range-thumb" id="range-thumb1">
-                <div class="range-value">
-                  <div class="value-number" id="value-number1">
-                    <span id="range-number1"></span>
+        <!-- action="auth/submit_go.php" method="POST" -->
+        <form id="submit-go">
+          <div class="slider-container">
+            <div class="range">
+              <label for="general">General</label>
+              <div class="slider">            
+                <div class="range-thumb" id="range-thumb1">
+                  <div class="range-value">
+                    <div class="value-number" id="value-number1">
+                      <span id="range-number1"></span>
+                    </div>
                   </div>
                 </div>
+                <div class="range-slider">
+                  <span>0</span>
+                  <input type="range" class="range-input" id="range-input1" name="general" min="0" max="10" value="<?php echo $general; ?>" step="1">
+                  <span>10</span>
+                </div>
               </div>
-              <div class="range-slider">
-                <span>0</span>
-                <input type="range" class="range-input" id="range-input1" name="general" min="0" max="10" value="<?php echo $general; ?>" step="1">
-                <span>10</span>
+            </div>
+            <div class="range">
+              <label for="sci-tech">Sci-Tech</label>
+              <div class="slider">            
+                <div class="range-thumb" id="range-thumb2">
+                  <div class="range-value">
+                    <div class="value-number" id="value-number2">
+                      <span id="range-number2">5</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="range-slider">
+                  <span>0</span>
+                  <input type="range" class="range-input" id="range-input2" name="scitech" min="0" max="10" value="<?php echo $scitech; ?>" step="1">
+                  <span>10</span>
+                </div>
+              </div>
+            </div>
+            <div class="range">
+              <label for="business">Business</label>
+              <div class="slider">            
+                <div class="range-thumb" id="range-thumb3">
+                  <div class="range-value">
+                    <div class="value-number" id="value-number3">
+                      <span id="range-number3">5</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="range-slider">
+                  <span>0</span>
+                  <input type="range" class="range-input" id="range-input3" name="business" min="0" max="10" value="<?php echo $business; ?>" step="1">
+                  <span>10</span>
+                </div>
+              </div>
+            </div>
+            <div class="range">
+              <label for="sci-tech-biz">Sci-Biz-Tech</label>
+              <div class="slider">            
+                <div class="range-thumb" id="range-thumb4">
+                  <div class="range-value">
+                    <div class="value-number" id="value-number4">
+                      <span id="range-number4">5</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="range-slider">
+                  <span>0</span>
+                  <input type="range" class="range-input" id="range-input4" name="scitechbiz" min="0" max="10" value="<?php echo $scitechbiz; ?>" step="1">
+                  <span>10</span>
+                </div>
+              </div>
+            </div>
+            <div class="range">
+              <label for="sports">Sports</label>
+              <div class="slider">            
+                <div class="range-thumb" id="range-thumb5">
+                  <div class="range-value">
+                    <div class="value-number" id="value-number5">
+                      <span id="range-number5">5</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="range-slider">
+                  <span>0</span>
+                  <input type="range" class="range-input" id="range-input5" name="sports" min="0" max="10" value="<?php echo $sports; ?>" step="1">
+                  <span>10</span>
+                </div>
+              </div>
+            </div>
+            <div class="range">
+              <label for="mela">Mela</label>
+              <div class="slider">            
+                <div class="range-thumb" id="range-thumb6">
+                  <div class="range-value">
+                    <div class="value-number" id="value-number6">
+                      <span id="range-number6">5</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="range-slider">
+                  <span>0</span>
+                  <input type="range" class="range-input" id="range-input6" name="mela" min="0" max="10" value="<?php echo $mela; ?>" step="1">
+                  <span>10</span>
+                </div>
               </div>
             </div>
           </div>
-          <div class="range">
-            <label for="sci-tech">Sci-Tech</label>
-            <div class="slider">            
-              <div class="range-thumb" id="range-thumb2">
-                <div class="range-value">
-                  <div class="value-number" id="value-number2">
-                    <span id="range-number2">5</span>
-                  </div>
-                </div>
-              </div>
-              <div class="range-slider">
-                <span>0</span>
-                <input type="range" class="range-input" id="range-input2" name="scitech" min="0" max="10" value="<?php echo $scitech; ?>" step="1">
-                <span>10</span>
-              </div>
+          <div class="radios">
+            <span>Category :</span>
+            <div class="radio">
+              <input class="radio-input" type="checkbox" value="1" name="open" id="radio-open" <?php if($open) echo "checked"; ?>>
+              <label class="radio-label" for="radio-open">Open</label>
+              <input class="radio-input" type="checkbox" value="1" name="school" id="radio-school" <?php if($school) echo "checked"; ?>>
+              <label class="radio-label" for="radio-school">School</label>
+              <input class="radio-input" type="checkbox" value="1" name="college" id="radio-college" <?php if($college) echo "checked"; ?>>
+              <label class="radio-label" for="radio-college">College</label>
             </div>
           </div>
-          <div class="range">
-            <label for="business">Business</label>
-            <div class="slider">            
-              <div class="range-thumb" id="range-thumb3">
-                <div class="range-value">
-                  <div class="value-number" id="value-number3">
-                    <span id="range-number3">5</span>
-                  </div>
-                </div>
-              </div>
-              <div class="range-slider">
-                <span>0</span>
-                <input type="range" class="range-input" id="range-input3" name="business" min="0" max="10" value="<?php echo $business; ?>" step="1">
-                <span>10</span>
-              </div>
-            </div>
-          </div>
-          <div class="range">
-            <label for="sci-tech-biz">Sci-Biz-Tech</label>
-            <div class="slider">            
-              <div class="range-thumb" id="range-thumb4">
-                <div class="range-value">
-                  <div class="value-number" id="value-number4">
-                    <span id="range-number4">5</span>
-                  </div>
-                </div>
-              </div>
-              <div class="range-slider">
-                <span>0</span>
-                <input type="range" class="range-input" id="range-input4" name="scitechbiz" min="0" max="10" value="<?php echo $scitechbiz; ?>" step="1">
-                <span>10</span>
-              </div>
-            </div>
-          </div>
-          <div class="range">
-            <label for="sports">Sports</label>
-            <div class="slider">            
-              <div class="range-thumb" id="range-thumb5">
-                <div class="range-value">
-                  <div class="value-number" id="value-number5">
-                    <span id="range-number5">5</span>
-                  </div>
-                </div>
-              </div>
-              <div class="range-slider">
-                <span>0</span>
-                <input type="range" class="range-input" id="range-input5" name="sports" min="0" max="10" value="<?php echo $sports; ?>" step="1">
-                <span>10</span>
-              </div>
-            </div>
-          </div>
-          <div class="range">
-            <label for="mela">Mela</label>
-            <div class="slider">            
-              <div class="range-thumb" id="range-thumb6">
-                <div class="range-value">
-                  <div class="value-number" id="value-number6">
-                    <span id="range-number6">5</span>
-                  </div>
-                </div>
-              </div>
-              <div class="range-slider">
-                <span>0</span>
-                <input type="range" class="range-input" id="range-input6" name="mela" min="0" max="10" value="<?php echo $mela; ?>" step="1">
-                <span>10</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="radios">
-          <span>Category :</span>
-          <div class="radio">
-            <input class="radio-input" type="checkbox" value="1" name="open" id="radio-open">
-            <label class="radio-label" for="radio-open">Open</label>
-            <input class="radio-input" type="checkbox" value="1" name="school" id="radio-school">
-            <label class="radio-label" for="radio-school">School</label>
-            <input class="radio-input" type="checkbox" value="1" name="college" id="radio-college">
-            <label class="radio-label" for="radio-college">College</label>
-          </div>
-        </div>
-        <button class="button go-button" onclick="submitPopUpForm()">GO !</button>
-      </div>     
+          <button class="button go-button">GO !</button>
+        </form>
+      </div>
     </section>
     <section class="application-form">
       <div class="backdrop"></div>
@@ -449,10 +484,8 @@ require 'backup/google.php';
       </div>
     </section>
     <section class="footer"></section>
-    <!-- these are for carousel -->
+    <!-- these are for carousel buttons and auto-carousel-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <script src="script.js" defer></script>
 </body>
 </html>
