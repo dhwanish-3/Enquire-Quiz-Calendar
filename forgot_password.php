@@ -29,7 +29,7 @@ session_start();
         align-items: center;
         gap: 1rem;
         background-color: var(--textColor);
-        padding: 2rem 3rem;
+        padding: 2rem 2rem;
         border-radius: 1rem;
         width: fit-content;
     }
@@ -87,6 +87,7 @@ session_start();
         <?php
         if(isset($_SESSION['forgot-msg'])){
             echo "<span class='session-msg'>{$_SESSION['forgot-msg']}</span>";
+            unset($_SESSION['forgot-msg']);
         }
         ?>
         <form action="auth/recover_email.php" method="POST">

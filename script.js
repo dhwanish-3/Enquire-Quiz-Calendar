@@ -426,11 +426,12 @@ function renderFrontEnd(listofEvents){
         document.addEventListener("click", outsideClickHandler);
       }, 100);
       //dimming
-      const nonPopupElements = document.querySelectorAll("body > *:not(.pop-up)");
+      const nonPopupElements = document.querySelectorAll("body > *:not(.pop-up-section)");
       nonPopupElements.forEach((element) => {
         element.classList.add("blur-effect");
       });
-      document.body.appendChild(popUp);
+      const popUpSection=document.querySelector(".pop-up-section");
+      popUpSection.appendChild(popUp);
   }
 
   const renderCalendar = () => {

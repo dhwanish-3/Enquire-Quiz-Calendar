@@ -9,12 +9,12 @@ if(isset($_POST['submit'])){
         $username=$userdata['name'];
         $subject="Reset Password";
         $token=$userdata['token'];
-        $body="Hi, $username Click here to update your password\n
+        $body="Hi, $username Click here to update your password
         http://localhost/enquirecalendardhwanish/update_password.php?token=$token ";
         $sender_email="From: dhwani333sh@gmail.com";
 
         if(mail($email, $subject, $body , $sender_email)){
-            $_SESSION['forgot-msg']="check your mail to update your password";
+            $_SESSION['forgot-msg']="Check mail to update password";
         }else{
             $_SESSION['forgot-msg']="Failed to send mail...\nCheck the email entered and try again.";
         }

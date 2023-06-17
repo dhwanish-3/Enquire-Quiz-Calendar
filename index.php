@@ -16,9 +16,9 @@ require 'backup/google.php';
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800&family=Varela+Round&display=swap" rel="stylesheet">
     <!-- the following bootstrap has conflicts with style.css -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"> -->
     <!-- this is for material-symbols-rounded -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"> -->
     <link rel="stylesheet" href="style.css"/>
     <title>Enquire Quiz Calender</title>
 </head>
@@ -196,9 +196,7 @@ require 'backup/google.php';
                 <span>Popular Events</span>
               </div>
               <div class="poster">
-                <!-- <span id="prev" class="material-symbols-rounded">chevron_left</span> -->
                 <img src="images/poster.jpg" alt="">
-                <!-- <span id="next" class="material-symbols-rounded">chevron_right</span> -->
               </div>
               <div class="event-details">
                 <span>Event : Mega Quiz</span>
@@ -217,9 +215,7 @@ require 'backup/google.php';
                 <span>Popular Events</span>
               </div>
               <div class="poster">
-                <!-- <span id="prev" class="material-symbols-rounded">chevron_left</span> -->
                 <img src="images/poster.jpg" alt="">
-                <!-- <span id="next" class="material-symbols-rounded">chevron_right</span> -->
               </div>
               <div class="event-details">
                 <span>Event : Mega Quiz</span>
@@ -399,6 +395,7 @@ require 'backup/google.php';
         </form>
       </div>
     </section>
+    <section class="pop-up-section"></section>
     <section class="application-form">
       <div class="backdrop"></div>
       <div class="apply-container">

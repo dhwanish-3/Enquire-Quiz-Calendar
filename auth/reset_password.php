@@ -1,13 +1,13 @@
 <?php
-ob_start();
 require '../backup/config.php';
-if(isset($_POST['submit']) && isset($_SESSION['token'])){
+$newPassword=mysqli_real_escape_string($conn,$_POST['password']);
+$confirmPassword=mysqli_real_escape_string($conn,$_POST['cpassword']);
+if(isset($_SESSION['token'])){
     $token=$_SESSION['token'];
-    $newPassword=mysqli_real_escape_string($conn,$_POST['password']);
-    $confirmPassword=mysqli_real_escape_string($conn,$_POST['cpassword']);
     if($newPassword!=$confirmPassword){
         $_SESSION['update-msg']="Paswords do not match";
-        header('Location: ../forgot_password.php');
+        header("Location: ../update_password.php?token=$token");
+        exit();
     }
     $tokenQuery="SELECT * FROM user_details WHERE token='$token'";
     $query=mysqli_query($conn,$tokenQuery);
@@ -18,14 +18,16 @@ if(isset($_POST['submit']) && isset($_SESSION['token'])){
         if($query){
             $_SESSION['login-msg']="Your password has been updated";
             header('Location: ../index.php?login=password_updated');
+            exit();
         }else{
             $_SESSION['update-msg']="Could not update password.\nPlease try again.";
         }
     }else{
         $_SESSION['update-msg']="Account not found";
     }
+    header("Location: ../update_password.php?token=$token");
 }else{
-    $_SESSION['update-msg']="Could not get token for verification";
+    $_SESSION['update-msg']="Could not get token for verification\nPlease try again.";
+    header("Location: ../update_password.php");
 }
-header('Location: ../forgot_password.php');
 ?>
