@@ -93,7 +93,7 @@ if(isset($_GET["token"])){
         <?php
         if(isset($_SESSION['update-msg'])){
             echo "<span class='session-msg'>{$_SESSION['update-msg']}</span>";
-            // unset($_SESSION['update-msg']);
+            unset($_SESSION['update-msg']);
         }
         ?>
         <form action="auth/reset_password.php" method="POST">
