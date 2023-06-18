@@ -20,7 +20,7 @@ session_start();
         justify-content: center;
         align-items: center;
         width: 100%;
-        height: 700px;
+        height: 100vh;
     }
     .container{
         display: flex;

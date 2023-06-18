@@ -26,7 +26,7 @@ if(isset($_GET["token"])){
         justify-content: center;
         align-items: center;
         width: 100%;
-        height: 700px;
+        height: 100vh;
     }
     .container{
         display: flex;
@@ -117,16 +117,16 @@ if(isset($_GET["token"])){
     <script>
         pwShowHide = document.querySelectorAll(".pw_hide");
         pwShowHide.forEach((icon) => {
-        icon.addEventListener("click", () => {
-            let getPwInput = icon.parentElement.querySelector("input");
-            if (getPwInput.type === "password") {
-            getPwInput.type = "text";
-            icon.classList.replace("uil-eye-slash", "uil-eye");
-            } else {
-            getPwInput.type = "password";
-            icon.classList.replace("uil-eye", "uil-eye-slash");
-            }
-        });
+            icon.addEventListener("click", () => {
+                let getPwInput = icon.parentElement.querySelector("input");
+                if (getPwInput.type === "password") {
+                    getPwInput.type = "text";
+                    icon.classList.replace("uil-eye-slash", "uil-eye");
+                } else {
+                    getPwInput.type = "password";
+                    icon.classList.replace("uil-eye", "uil-eye-slash");
+                }
+            });
         });
     </script>
 </body>

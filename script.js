@@ -188,7 +188,6 @@ pwShowHide.forEach((icon) => {
 });
 
 
-
 // pop-up of sorted events
 function SortedPopupString(eventDetails){
   var popup=`<div class="backdrop"></div>
@@ -242,11 +241,12 @@ function showSortedPopUp(eventDetails) {
     document.addEventListener("click", outsideClickHandler);
   }, 100);
   //dimming
-  const nonPopupElements = document.querySelectorAll("body > *:not(.pop-up)");
+  const nonPopupElements = document.querySelectorAll("body > *:not(.pop-up-section)");
   nonPopupElements.forEach((element) => {
     element.classList.add("blur-effect");
   });
-  document.body.appendChild(popUp);
+  document.querySelector(".pop-up-section").appendChild(popUp);
+  document.querySelector(".pop-up-section").classList.add("show");
 }
 
 // getting interested events
@@ -344,7 +344,10 @@ submitGoForm.addEventListener("submit",(event)=>{
 });
 
 
-// rendering calender
+
+// functions for rendering calender
+
+// called after getting data(listofEvents) from ajax call
 function renderFrontEnd(listofEvents){
   GloballistofEvents=listofEvents;
   // getting new date, current year and month
@@ -355,7 +358,6 @@ function renderFrontEnd(listofEvents){
   // storing full name of all months in array
   const months = ["January", "February", "March", "April", "May", "June", "July",
                 "August", "September", "October", "November", "December"];
-
   // getting color to show 
   function getColor(date){
     let eventTypes=date.event_types;
@@ -376,6 +378,7 @@ function renderFrontEnd(listofEvents){
       return "active3";
     }
   }
+
   function PopupString(day,eventDetails){
     var popup=`<div class="backdrop"></div>
     <div id="popContainer">
@@ -401,72 +404,73 @@ function renderFrontEnd(listofEvents){
     popup=popup.concat(`</div`);
     return popup;
   }
+
   function showPopUp(day,eventDetails) {
-      const popUp = document.createElement("div");
-      popUp.classList.add("pop-up");
-      popUp.innerHTML = PopupString(day,eventDetails);
-      // Close the pop-up window when the close button is clicked
-      popUp.querySelector(".close-btn").addEventListener("click", () => {
-          popUp.remove();
-          document.removeEventListener("click", outsideClickHandler);
-          nonPopupElements.forEach((element) => {
-            element.classList.remove("blur-effect");
-          });
-      });
-      const outsideClickHandler = (event) => {
-        if (!popUp.contains(event.target)&& event.target !== popUp) {
-          popUp.remove();
-          nonPopupElements.forEach((element) => {
-            element.classList.remove("blur-effect");
-          });
-          document.removeEventListener("click", outsideClickHandler);
-        }
-      };
-      setTimeout(() => {
-        document.addEventListener("click", outsideClickHandler);
-      }, 100);
-      //dimming
-      const nonPopupElements = document.querySelectorAll("body > *:not(.pop-up-section)");
-      nonPopupElements.forEach((element) => {
-        element.classList.add("blur-effect");
-      });
-      const popUpSection=document.querySelector(".pop-up-section");
-      popUpSection.appendChild(popUp);
+    const popUp = document.createElement("div");
+    popUp.classList.add("pop-up");
+    popUp.innerHTML = PopupString(day,eventDetails);
+    // Close the pop-up window when the close button is clicked
+    popUp.querySelector(".close-btn").addEventListener("click", () => {
+        popUp.remove();
+        document.removeEventListener("click", outsideClickHandler);
+        nonPopupElements.forEach((element) => {
+          element.classList.remove("blur-effect");
+        });
+    });
+    const outsideClickHandler = (event) => {
+      if (!popUp.contains(event.target)&& event.target !== popUp) {
+        popUp.remove();
+        nonPopupElements.forEach((element) => {
+          element.classList.remove("blur-effect");
+        });
+        document.removeEventListener("click", outsideClickHandler);
+      }
+    };
+    setTimeout(() => {
+      document.addEventListener("click", outsideClickHandler);
+    }, 100);
+    //dimming
+    const nonPopupElements = document.querySelectorAll("body > *:not(.pop-up-section)");
+    nonPopupElements.forEach((element) => {
+      element.classList.add("blur-effect");
+    });
+    const popUpSection=document.querySelector(".pop-up-section");
+    popUpSection.appendChild(popUp);
+    popUpSection.classList.add("show");
   }
-
   const renderCalendar = () => {
-      let firstDayofMonth = new Date(currYear, currMonth, 1).getDay(), // getting first day of month
-      lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(), // getting last date of month
-      lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay(), // getting last day of month
-      lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate(); // getting last date of previous month
-      let liTag = "";
+    let firstDayofMonth = new Date(currYear, currMonth, 1).getDay(), // getting first day of month
+    lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(), // getting last date of month
+    lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay(), // getting last day of month
+    lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate(); // getting last date of previous month
+    let liTag = "";
 
-      for (let i = firstDayofMonth; i > 0; i--) { // creating li of previous month last days
-          liTag += `<li class="inactive">${lastDateofLastMonth - i + 1}</li>`;
-      }
-      for (let i = 1; i <= lastDateofMonth; i++) { // creating li of all days of current month
-          // adding active class to li if the current day, month, and year matched
-          let dayToday=`${currYear}-${currMonth}-${i}`;
-          console.log(listofEvents[0][i-1]["date"]);
-          var isToday=listofEvents[0][i-1]["date"]=="null"?"":getColor(JSON.parse(listofEvents[0][i-1]["date"]));
-          liTag += `<li class="${isToday}">${i}</li>`;
-      }
-      for (let i = lastDayofMonth; i < 6; i++) { // creating li of next month first days
-          liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`
-      }
-      currentDate.textContent = `${months[currMonth]} ${currYear}`; // passing current mon and yr as currentDate text
-      daysTag.innerHTML = liTag;
-      const dayElements = daysTag.querySelectorAll('li');
-      let i=1;
-      dayElements.forEach(dayElement => {
-          dayElement.addEventListener('click', () => {
-              const day = dayElement.innerText;
-              if(listofEvents[0][day-1]["date"]!='null'){
-                showPopUp(day,JSON.parse(listofEvents[0][day-1]["events"]));
-              }
-          });
-          i++;
-      }); 
+    for (let i = firstDayofMonth; i > 0; i--) { // creating li of previous month last days
+        liTag += `<li class="inactive">${lastDateofLastMonth - i + 1}</li>`;
+    }
+    for (let i = 1; i <= lastDateofMonth; i++) { // creating li of all days of current month
+        // adding active class to li if the current day, month, and year matched
+        let dayToday=`${currYear}-${currMonth}-${i}`;
+        console.log(listofEvents[0][i-1]["date"]);
+        var isToday=listofEvents[0][i-1]["date"]=="null"?"":getColor(JSON.parse(listofEvents[0][i-1]["date"]));
+        liTag += `<li class="${isToday}">${i}</li>`;
+    }
+    for (let i = lastDayofMonth; i < 6; i++) { // creating li of next month first days
+        liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`
+    }
+    currentDate.textContent = `${months[currMonth]} ${currYear}`; // passing current mon and yr as currentDate text
+    daysTag.innerHTML = liTag;
+    const dayElements = daysTag.querySelectorAll('li');
+    let i=1;
+    dayElements.forEach(dayElement => {
+        dayElement.addEventListener('click', () => {
+            const day = dayElement.innerText;
+            if(listofEvents[0][day-1]["date"]!='null'){
+              showPopUp(day,JSON.parse(listofEvents[0][day-1]["events"]));
+            }
+        });
+        i++;
+    }); 
   }
   renderCalendar();
   currMonth++;
@@ -507,6 +511,7 @@ function renderFrontEnd(listofEvents){
 }
 getCalenderDates(renderFrontEnd);
 
+
 // for showing the selected image
 const fileInput = document.getElementById('file-input');
 const fileContainer = document.querySelector('.image-container');
@@ -517,8 +522,7 @@ fileInput.addEventListener('change', () => {
   const selectedFile = fileInput.files[0];
   
   if (selectedFile) {
-    const reader = new FileReader();
-    
+    const reader = new FileReader();    
     reader.addEventListener('load', () => {
       previewImage.src = reader.result;
       previewImage.style.display = "block";
