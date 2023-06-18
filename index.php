@@ -187,61 +187,7 @@ require 'backup/google.php';
         </section>
       </div>
       <!-- Ads Section -->
-      <section class="advertisement">
-      <div id="carouselExampleControls" class="carousel slide bg-white" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="ads-part">
-              <div class="heading">
-                <span>Popular Events</span>
-              </div>
-              <div class="poster">
-                <img src="images/poster.jpg" alt="">
-              </div>
-              <div class="event-details">
-                <span>Event : Mega Quiz</span>
-                <span>Date : 12-06-2023</span>
-                <span>Venue : GHSS Paivalike Nagar, Paivalike</span>
-                <span>Type : Sci-Biz-Tech Quiz</span>
-                <span>Category : School & College</span>
-                <span>Quiz Masters : BatMan & SuperMan</span>
-                <span>Contact : 9876543210 </span>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-          <div class="ads-part">
-              <div class="heading">
-                <span>Popular Events</span>
-              </div>
-              <div class="poster">
-                <img src="images/poster.jpg" alt="">
-              </div>
-              <div class="event-details">
-                <span>Event : Mega Quiz</span>
-                <span>Date : 12-06-2023</span>
-                <span>Venue : GHSS Paivalike Nagar, Paivalike</span>
-                <span>Type : Sci-Biz-Tech Quiz</span>
-                <span>Category : School & College</span>
-                <span>Quiz Masters : BatMan & SuperMan</span>
-                <span>Contact : 9876543210 </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-        <div>
-          <button class="button apply-button">Apply for Event</button>
-        </div>
-      </section>
+      <section class="advertisement"></section>
     </section>
     <section class="fav-events">
       <div class="question">

@@ -344,7 +344,7 @@ a{
   align-items: center;
   width: 100%;
   gap: 2rem;
-  margin-top: 2rem;
+  /* margin-top: 1rem; */
 }
 
 .calendars header{
@@ -477,20 +477,6 @@ header .current-date{
   position: relative;
   width: 100%;
 }
-.pop-up-section::before{
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 100;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 2s ease-out;
-}
-.pop-up-section .show::before{
-  opacity: 1;
-  pointer-events: auto;
-}
 
 .pop-up{
   width: fit-content;
@@ -498,13 +484,13 @@ header .current-date{
   border-radius: 1.5rem;
   position: fixed;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%,-50%) scale(1);
+  top: 0;
+  transform: scale(0.2);
   text-align: center;
   padding: 0rem 1rem;
   color: black;
   visibility: visible;
-  transition: transform 1s ,top 1s;
+  transition: transform 0.5s ,top 0.5s;
   z-index: 100;
   opacity: 0;
   overflow: auto;
@@ -516,7 +502,7 @@ header .current-date{
 .pop-up-section.show .pop-up{
   opacity: 1;
   pointer-events: auto;
-  transform: translate(-50%,-50%) scale(1);
+  transform: translate(-50%,0) scale(1);
 }
 .backdrop {
   display: none;
@@ -863,8 +849,8 @@ header .current-date{
   max-width: 1000px;
   width: fit-content;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%) scale(1.1);
+  left: 90%;
+  transform: translate(-50%,-50%) scale(0.1);
   z-index: 101;
   background-color: white;
   padding: 1rem 3rem 2rem 3rem;
@@ -888,7 +874,7 @@ header .current-date{
 .application-form.show .apply-container{
   opacity: 1;
   pointer-events: auto;
-  transform: translate(-50%,-50%) scale(1);
+  transform: translate(-120%,-50%) scale(1);
 }
 
 .apply-top{
@@ -1258,7 +1244,7 @@ input[type="file"]{
     gap: 1rem;
   }
   .apply-top{
-    margin-top: 16rem;
+    margin-top: 16rem; /* dont know why in mobile screen heading is not visible or above the container so this makes it come below*/
   }
   .apply-header{
     margin: 0rem;

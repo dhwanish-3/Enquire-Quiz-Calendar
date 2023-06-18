@@ -132,7 +132,8 @@ const outsideClickHandlerforApply = (event) => {
     document.removeEventListener("click", outsideClickHandlerforApply);
   }
 };
-applyButton.addEventListener("click",()=>{  
+applyButton.addEventListener("click",()=>{
+  console.log("ckds");
   nonApplyPopupElements.forEach((element) => {
     element.classList.add("blur-effect");
   });
@@ -150,28 +151,6 @@ applyCloseButton.addEventListener("click",()=>{
   });
 });
 
-
-//calender event functions
-function getCalenderDates(callback){
-  var xhr = new XMLHttpRequest();
-
-  // Set up the request
-  xhr.open('GET', 'events/events.php',true);
-  // Set up the callback function
-  xhr.onload = function() {
-    // Check if the request was successful
-    if (xhr.status === 200) {
-      // Parse the response as JSON
-      var data = JSON.parse(xhr.responseText);
-      callback(data);
-    } else {
-      // Handle errors here
-      console.error(xhr.statusText);
-    }
-  };
-  // Send the request
-  xhr.send();
-}
 
 // password show and hide
 pwShowHide.forEach((icon) => {
@@ -204,11 +183,14 @@ function SortedPopupString(eventDetails){
       <p>Date : ${eventDetails[i].date}</p>
       <p>Venue : ${eventDetails[i].venue}</p>
       <p>Type : ${eventDetails[i].type}</p>
-      <p>Category : ${eventDetails[i].category}</p>
+      <p>Category : ${eventDetails[i].category}</p>`;
+    if(eventDetails[i].rules!=null) loop=loop.concat(`
+      <p>Rules : ${eventDetails[i].rules}</p>`);
+    loop=loop.concat(`
       <p>Quiz Masters : ${eventDetails[i].masters}</p>
       <p>Contact : ${eventDetails[i].contact}</p>
       <hr>
-    </div>`;
+    </div>`);
     popup=popup.concat(loop);
     i++;
   }
@@ -246,7 +228,10 @@ function showSortedPopUp(eventDetails) {
     element.classList.add("blur-effect");
   });
   document.querySelector(".pop-up-section").appendChild(popUp);
-  document.querySelector(".pop-up-section").classList.add("show");
+  setTimeout(() => {
+    document.querySelector(".pop-up-section").classList.add("show");
+  }, 100);
+  
 }
 
 // getting interested events
@@ -344,8 +329,27 @@ submitGoForm.addEventListener("submit",(event)=>{
 });
 
 
-
 // functions for rendering calender
+function getCalenderDates(callback){
+  var xhr = new XMLHttpRequest();
+
+  // Set up the request
+  xhr.open('GET', 'events/events.php',true);
+  // Set up the callback function
+  xhr.onload = function() {
+    // Check if the request was successful
+    if (xhr.status === 200) {
+      // Parse the response as JSON
+      var data = JSON.parse(xhr.responseText);
+      callback(data);
+    } else {
+      // Handle errors here
+      console.error(xhr.statusText);
+    }
+  };
+  // Send the request
+  xhr.send();
+}
 
 // called after getting data(listofEvents) from ajax call
 function renderFrontEnd(listofEvents){
@@ -393,11 +397,14 @@ function renderFrontEnd(listofEvents){
         <p>Name : ${eventDetails[i].name}</p>      
         <p>Venue : ${eventDetails[i].venue}</p>
         <p>Type : ${eventDetails[i].type}</p>
-        <p>Category : ${eventDetails[i].category}</p>
+        <p>Category : ${eventDetails[i].category}</p>`;
+      if(eventDetails[i].rules!=null) loop=loop.concat(`
+        <p>Rules : ${eventDetails[i].rules}</p>`);
+      loop=loop.concat(`
         <p>Quiz Masters : ${eventDetails[i].masters}</p>
         <p>Contact : ${eventDetails[i].contact}</p>
         <hr>
-      </div>`;
+      </div>`);
       popup=popup.concat(loop);
       i++;
     }
@@ -510,6 +517,96 @@ function renderFrontEnd(listofEvents){
   rendernextCalendar();
 }
 getCalenderDates(renderFrontEnd);
+
+// rendering the ads part
+function getAds(callback){
+  var xhr = new XMLHttpRequest();
+  // Set up the request
+  xhr.open('GET', 'ads/ads.php',true);
+  xhr.onload = function() {
+    // Check if the request was successful
+    if (xhr.status === 200) {
+      var data = JSON.parse(xhr.responseText);
+      callback(data);
+    } else {
+      // Handle errors here
+      console.error(xhr.statusText);
+    }
+  };
+  // Send the request
+  xhr.send();
+}
+
+const showAds=(listofAds)=>{
+  if(listofAds.length==0) return;
+  const adsPart=document.querySelector(".advertisement");
+  let loopedString=``;
+  let i=1;
+  while(i<listofAds.length){
+    loopedString=loopedString.concat(`
+    <div class="carousel-item">
+      <div class="ads-part">
+        <div class="heading">
+          <span>Popular Events</span>
+        </div>
+        <div class="poster">
+          <img src="${listofAds[i].imageUrl}" alt="">
+        </div>
+        <div class="event-details">
+          <span>Event : ${listofAds[i].name}</span>
+          <span>Date : ${listofAds[i].date}</span>
+          <span>Venue : ${listofAds[i].venue}</span>
+          <span>Type : ${listofAds[i].type}</span>
+          <span>Category : ${listofAds[i].category}</span>`);
+    if(listofAds[i].rules!=null) loopedString=loopedString.concat(`
+          <span>Rules : ${listofAds[i].rules}</span>`);
+    loopedString=loopedString.concat(`
+          <span>Quiz Masters : ${listofAds[i].quiz_masters}</span>
+          <span>Contact : ${listofAds[i].contact} </span>
+        </div>
+      </div>
+    </div>`);
+    i++;
+  }
+  let innerHTML=`
+  <div id="carouselExampleControls" class="carousel slide bg-white" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="ads-part">
+          <div class="heading">
+            <span>Popular Events</span>
+          </div>
+          <div class="poster">
+            <img src="${listofAds[0].imageUrl}" alt="">
+          </div>
+          <div class="event-details">
+            <span>Event : ${listofAds[0].name}</span>
+            <span>Date : ${listofAds[0].date}</span>
+            <span>Venue : ${listofAds[0].venue}</span>
+            <span>Type : ${listofAds[0].type}</span>
+            <span>Category : ${listofAds[0].category}</span>`;
+  if(listofAds[0].rules!=null) innerHTML=innerHTML.concat(`
+            <span>Rules : ${listofAds[0].rules}</span>`);
+  innerHTML=innerHTML.concat(`
+            <span>Quiz Masters : ${listofAds[0].quiz_masters}</span>
+            <span>Contact : ${listofAds[0].contact} </span>
+          </div>
+        </div>
+      </div>
+      ${loopedString}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>`);
+  adsPart.innerHTML=innerHTML;
+}
+getAds(showAds);
 
 
 // for showing the selected image
