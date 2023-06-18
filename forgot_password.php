@@ -77,6 +77,21 @@ session_start();
         display: flex;
         gap: 0.5rem;
     }
+    @media screen and (max-width: 450px) {
+        *{
+            font-size: 0.9rem;
+        }
+        .container{
+            padding: 1rem;
+        }
+        .container header{
+            font-size: 1.2rem;
+        }
+        .form-field{
+            width: 16rem;
+        }
+        
+    }
 </style>
 <body>
     <div class="container">

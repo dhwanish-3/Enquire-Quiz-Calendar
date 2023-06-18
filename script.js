@@ -166,6 +166,7 @@ pwShowHide.forEach((icon) => {
   });
 });
 
+const popUpSection=document.querySelector(".pop-up-section");
 
 // pop-up of sorted events
 function SortedPopupString(eventDetails){
@@ -186,6 +187,8 @@ function SortedPopupString(eventDetails){
       <p>Category : ${eventDetails[i].category}</p>`;
     if(eventDetails[i].rules!=null) loop=loop.concat(`
       <p>Rules : ${eventDetails[i].rules}</p>`);
+    if(eventDetails[i].link!=null) loop=loop.concat(`
+      <p>Link : <a href="${eventDetails[i].link}">${eventDetails[i].link}</a></p>`);
     loop=loop.concat(`
       <p>Quiz Masters : ${eventDetails[i].masters}</p>
       <p>Contact : ${eventDetails[i].contact}</p>
@@ -209,10 +212,12 @@ function showSortedPopUp(eventDetails) {
       nonPopupElements.forEach((element) => {
         element.classList.remove("blur-effect");
       });
+      popUpSection.classList.remove("show");
   });
   const outsideClickHandler = (event) => {
     if (!popUp.contains(event.target)&& event.target !== popUp) {
       popUp.remove();
+      popUpSection.classList.remove("show");
       nonPopupElements.forEach((element) => {
         element.classList.remove("blur-effect");
       });
@@ -227,11 +232,10 @@ function showSortedPopUp(eventDetails) {
   nonPopupElements.forEach((element) => {
     element.classList.add("blur-effect");
   });
-  document.querySelector(".pop-up-section").appendChild(popUp);
+  popUpSection.appendChild(popUp);
   setTimeout(() => {
-    document.querySelector(".pop-up-section").classList.add("show");
+    popUpSection.classList.add("show");
   }, 100);
-  
 }
 
 // getting interested events
@@ -400,6 +404,8 @@ function renderFrontEnd(listofEvents){
         <p>Category : ${eventDetails[i].category}</p>`;
       if(eventDetails[i].rules!=null) loop=loop.concat(`
         <p>Rules : ${eventDetails[i].rules}</p>`);
+      if(eventDetails[i].link!=null) loop=loop.concat(`
+        <p>Link : <a href="${eventDetails[i].link}">${eventDetails[i].link}</a></p>`);
       loop=loop.concat(`
         <p>Quiz Masters : ${eventDetails[i].masters}</p>
         <p>Contact : ${eventDetails[i].contact}</p>
@@ -419,6 +425,7 @@ function renderFrontEnd(listofEvents){
     // Close the pop-up window when the close button is clicked
     popUp.querySelector(".close-btn").addEventListener("click", () => {
         popUp.remove();
+        popUpSection.classList.remove("show");
         document.removeEventListener("click", outsideClickHandler);
         nonPopupElements.forEach((element) => {
           element.classList.remove("blur-effect");
@@ -427,6 +434,7 @@ function renderFrontEnd(listofEvents){
     const outsideClickHandler = (event) => {
       if (!popUp.contains(event.target)&& event.target !== popUp) {
         popUp.remove();
+        popUpSection.classList.remove("show");
         nonPopupElements.forEach((element) => {
           element.classList.remove("blur-effect");
         });
@@ -441,9 +449,10 @@ function renderFrontEnd(listofEvents){
     nonPopupElements.forEach((element) => {
       element.classList.add("blur-effect");
     });
-    const popUpSection=document.querySelector(".pop-up-section");
     popUpSection.appendChild(popUp);
-    popUpSection.classList.add("show");
+    setTimeout(() => {
+      popUpSection.classList.add("show");
+    }, 100);
   }
   const renderCalendar = () => {
     let firstDayofMonth = new Date(currYear, currMonth, 1).getDay(), // getting first day of month
@@ -560,6 +569,8 @@ const showAds=(listofAds)=>{
           <span>Category : ${listofAds[i].category}</span>`);
     if(listofAds[i].rules!=null) loopedString=loopedString.concat(`
           <span>Rules : ${listofAds[i].rules}</span>`);
+    if(listofAds[i].link!=null) loopedString=loopedString.concat(`
+          <span>Link : <a href="${listofAds[i].link}">${listofAds[i].link}</a></span>`);
     loopedString=loopedString.concat(`
           <span>Quiz Masters : ${listofAds[i].quiz_masters}</span>
           <span>Contact : ${listofAds[i].contact} </span>
@@ -587,6 +598,8 @@ const showAds=(listofAds)=>{
             <span>Category : ${listofAds[0].category}</span>`;
   if(listofAds[0].rules!=null) innerHTML=innerHTML.concat(`
             <span>Rules : ${listofAds[0].rules}</span>`);
+  if(listofAds[0].link!=null) innerHTML=innerHTML.concat(`
+            <span>Link : <a href="${listofAds[0].link}">${listofAds[0].link}</a></span>`);
   innerHTML=innerHTML.concat(`
             <span>Quiz Masters : ${listofAds[0].quiz_masters}</span>
             <span>Contact : ${listofAds[0].contact} </span>
