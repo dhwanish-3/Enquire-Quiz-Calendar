@@ -4,7 +4,7 @@
   --containerColor: #dedede;
   --textColor: white;
   --headerColor: #472867;
-  --mainColor: #351263;
+  --mainColor: #5f16bf;
   --comboColor: #19e4ff;
   --footerColor: #3a3a3a;
   --range-width: 199px;
@@ -344,7 +344,7 @@ a{
   align-items: center;
   width: 100%;
   gap: 2rem;
-  /* margin-top: 1rem; */
+  margin-top: 2rem;
 }
 
 .calendars header{
@@ -588,7 +588,7 @@ header .current-date{
   flex: 3;
   display: flex;
   flex-direction: column;  
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   gap: 2rem;
 }
@@ -602,16 +602,23 @@ header .current-date{
   background-color: white;
   border-radius: 20px;
   padding: 1.3rem 0.5rem;
-  height: fit-content;
+  /* height: fit-content; */
+  max-height: 620px;
+  overflow-y: auto;
   width: 23rem;
 }
 
 .ads-part .heading{
+  position: sticky;
+  top: 0;
   font-size: 1.3rem;
   font-weight: bold;
+  /* margin-top: 11rem; */
 }
 
-.ads-part img{
+.ads-part .poster img{
+  position: relative;
+  top: 5rem;
   width: 18rem;
   border-radius: 1rem;
 }
@@ -640,6 +647,8 @@ header .current-date{
   border-radius: 50%;
 }
 .ads-part .event-details{
+  position: relative;
+  top: 5rem;
   padding: 0rem 1rem;
 }
 .event-details{
@@ -1164,6 +1173,53 @@ input[type="file"]{
   background-color: var(--footerColor);
 }
 
+@media screen and (max-width:1100px){
+  .advertisement{
+    justify-content: start;
+  }
+  .ads-part{
+    max-height: none;
+    width: 21rem;
+  }
+  .ads-part .heading{
+    position: static;
+    margin: 0;
+  }
+  .ads-part .poster img{
+    position: static;
+  }
+  .ads-part .event-details{
+    position: static;
+  }
+  .calendars{
+    margin-top: 1rem;
+  }
+  .two-calendars{
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .category-buttons{
+    position: absolute;
+    left: 50%;
+    right: 50%;
+    top: 65rem;
+  }
+  .question{
+    margin-top: 10rem;
+  }
+  .apply-container{
+    padding: 1rem 2rem 2rem 2rem;
+  }
+  .image-container{
+    width: 21rem;
+  }
+  .form-field{
+    width: 21rem;
+  }
+  .pop-up-form{
+    width: 45rem;
+  }
+}
 @media screen and (max-width:700px){
   .enquire img{
     width: 4rem;
@@ -1204,7 +1260,12 @@ input[type="file"]{
   .wrapper header{
     font-size: 0.7rem;
   }
-
+  .category-buttons{
+    position: static;
+  }
+  .question{
+    margin-top: 0;
+  }
   /* Pop up */
   .pop-up{
     width: 90%;
@@ -1216,6 +1277,7 @@ input[type="file"]{
   }
   #popContainer .event-details{
     gap: 0.3rem;
+    font-size: 1rem;
   }
 
   /* Category-buttons */
@@ -1245,7 +1307,7 @@ input[type="file"]{
   }
   .pop-up-form{
     padding: 0rem 1rem 2rem 1rem;
-    width: fit-content;
+    width: 85%;
   }
   .slider-container{
     grid-template-columns: repeat(1,1fr);
@@ -1345,8 +1407,9 @@ input[type="file"]{
     height: 30px;
     width: 30px;
   }
+
   .event-details{
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
   .event-details span{
     line-height: 15px;
@@ -1356,6 +1419,9 @@ input[type="file"]{
   }
   .ads-part{
     width: 18rem;
+  }
+  .ads-part .poster img{
+    width: 16rem;
   }
   .pop-up-form{
     padding: 1rem 0.5rem;
