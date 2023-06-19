@@ -355,7 +355,7 @@ require_once 'backup/google.php';
           </div>
           <button class="apply-close-button">&times;</button>
         </div>
-        <form action="event_apply.php" method="POST" enctype="multipart/form-data">
+        <form action="events/event_apply.php" method="POST" enctype="multipart/form-data">
           <div class="super-row">
             <div class="left-side">
               <div class="image-container">
