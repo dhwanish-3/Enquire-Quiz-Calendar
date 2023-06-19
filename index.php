@@ -1,5 +1,5 @@
 <?php
-require 'backup/google.php';
+require_once 'backup/google.php';
 ?>
 
 <!DOCTYPE html>

@@ -133,7 +133,6 @@ const outsideClickHandlerforApply = (event) => {
   }
 };
 applyButton.addEventListener("click",()=>{
-  console.log("ckds");
   nonApplyPopupElements.forEach((element) => {
     element.classList.add("blur-effect");
   });
@@ -355,6 +354,8 @@ function getCalenderDates(callback){
   xhr.send();
 }
 
+
+
 // called after getting data(listofEvents) from ajax call
 function renderFrontEnd(listofEvents){
   GloballistofEvents=listofEvents;
@@ -468,8 +469,10 @@ function renderFrontEnd(listofEvents){
         // adding active class to li if the current day, month, and year matched
         let dayToday=`${currYear}-${currMonth}-${i}`;
         console.log(listofEvents[0][i-1]["date"]);
-        var isToday=listofEvents[0][i-1]["date"]=="null"?"":getColor(JSON.parse(listofEvents[0][i-1]["date"]));
-        liTag += `<li class="${isToday}">${i}</li>`;
+        var isEventToday=listofEvents[0][i-1]["date"]=="null"?"":getColor(JSON.parse(listofEvents[0][i-1]["date"]));
+        let isToday = i === date.getDate() && currMonth === new Date().getMonth() 
+                      && currYear === new Date().getFullYear() ? "today" : "";
+        liTag += `<li class="${isEventToday==""?isToday:isEventToday}">${i}</li>`;
     }
     for (let i = lastDayofMonth; i < 6; i++) { // creating li of next month first days
         liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`
@@ -504,8 +507,8 @@ function renderFrontEnd(listofEvents){
         // adding active class to li if the current day, month, and year matched
         let dayToday=`${currYear}-${currMonth}-${i}`;
         console.log(listofEvents[1][i-1]["date"]);
-        var isToday=listofEvents[1][i-1]["date"]=="null"?"":getColor(JSON.parse(listofEvents[1][i-1]["date"]));
-        liTag += `<li class="${isToday}">${i}</li>`;
+        var isEventToday=listofEvents[1][i-1]["date"]=="null"?"":getColor(JSON.parse(listofEvents[1][i-1]["date"]));
+        liTag += `<li class="${isEventToday}">${i}</li>`;
     }
     for (let i = lastDayofMonth; i < 6; i++) { // creating li of next month first days
         liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`

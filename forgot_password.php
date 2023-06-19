@@ -105,7 +105,7 @@ session_start();
             unset($_SESSION['forgot-msg']);
         }
         ?>
-        <form action="auth/recover_email.php" method="POST">
+        <form action="send_mail.php" method="POST">
             <div class="form-field">
                 <i class="uil uil-envelope-alt email"></i>
                 <input type="email" placeholder="Email address" required name="email">

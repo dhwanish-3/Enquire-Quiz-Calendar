@@ -471,6 +471,19 @@ header .current-date{
 .days li:not(.active):not(.active2):not(.active3)::not(.active4):not(.active5):not(.active6):not(.active7)hover::before{
   background: #f2f2f2;
 }
+.days li{
+  transition: all 0.4s;
+}
+.days li.today{
+  color: #fff;
+  
+}
+.days li.today::before{ /*today*/
+  background: var(--mainColor);  
+}
+.days li:hover{
+  transform: scale(1.1);
+}
 
 /* Pop-up */
 .pop-up-section{

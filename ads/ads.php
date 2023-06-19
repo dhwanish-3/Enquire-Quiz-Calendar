@@ -1,5 +1,5 @@
 <?php
-require "../backup/config.php";
+require_once "../backup/config.php";
 $listofAds=array();
 $query="SELECT * FROM ads";
 $result=$conn->query($query);

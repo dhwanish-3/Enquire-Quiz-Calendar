@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require 'config.php';
+    require '../backup/config.php';
     $interestedEvents=array();
     if(isset($_POST["go"])){
         if(isset($_SESSION["general"])){

@@ -1,5 +1,5 @@
 <?php
-require "../backup/config.php";  
+require_once "../backup/config.php";  
 $listofEvents=array();
 $listofDates = array();
 function getEvents($date){
