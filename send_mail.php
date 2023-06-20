@@ -30,7 +30,7 @@ if(isset($_POST['submit'])){
 
             $mail->isHTML(true);
             $mail->Subject='Reset Password';
-            $mail->Body="<h3> Hi '$username',
+            $mail->Body="<h3>Hi $username,
             Click here to update your password
             $hostUri/update_password.php?token=$token</h3>";
             $mail->send();

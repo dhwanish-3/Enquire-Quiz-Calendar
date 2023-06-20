@@ -27,7 +27,7 @@ if(isset($_GET['code'])){
         // checking user already exists or not
         $get_user = mysqli_query($conn, "SELECT * FROM user_details WHERE email='$email'");
         if(mysqli_num_rows($get_user) > 0){
-            $row=mysqli_fetch_array($get_user);
+            $row=mysqli_fetch_assoc($get_user);
             $_SESSION['email'] = $email;
             $_SESSION['name'] = $row['name']; 
             $_SESSION['general'] = $row['general']; 
