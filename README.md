@@ -1,3 +1,3 @@
-# EnQuireCalendarDhwanish
+# Enquire Quiz Calendar
 
-This is the best form of Enquire Quiz Calendar by Dhwanish
+This is the quiz calendar for Enquire quiz club NITC Calicut
