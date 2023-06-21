@@ -27,14 +27,14 @@ require_once 'backup/google.php';
   <!-- Header -->
   <section class="header">
     <div class="enquire">
-      <img src="./images/logo.png" alt="">
+      <img src="images/logo.png" alt="">
       <span>ENQUIRE QUIZ CLUB<span>
     </div>
     <div class="menu">
       <?php
         // Check if the user is logged in
       if (isset($_SESSION['email'])) {
-        echo "<span>Hello, {$_SESSION['name']}</span>"
+        echo "<span>Hello, {$_SESSION['name']}</span>";
       ?>
         <button class="button" onclick="window.location.href = 'auth/logout.php'">LOGOUT</button>
       <?php
@@ -44,8 +44,8 @@ require_once 'backup/google.php';
       }
       ?>
       <div>
-    <button class="button apply-button">APPLY</button>
-  </div>
+        <button class="button apply-button">APPLY</button>
+      </div>
     </div>
   </section>
 
