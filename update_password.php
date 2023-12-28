@@ -1,14 +1,15 @@
 <?php
 session_start();
-if(isset($_GET["token"])){
-    $_SESSION['token']=$_GET['token'];
-}else{
-    $_SESSION['update-msg']="Could not get token for verification";
+if (isset($_GET["token"])) {
+    $_SESSION['token'] = $_GET['token'];
+} else {
+    $_SESSION['update-msg'] = "Could not get token for verification";
     unset($_SESSION['update-msg']);
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,7 +20,7 @@ if(isset($_GET["token"])){
     <title>Update Password</title>
 </head>
 <style>
-    body{
+    body {
         background-color: var(--grey);
         display: flex;
         flex-direction: column;
@@ -28,7 +29,8 @@ if(isset($_GET["token"])){
         width: 100%;
         height: 100vh;
     }
-    .container{
+
+    .container {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -39,26 +41,30 @@ if(isset($_GET["token"])){
         border-radius: 1rem;
         width: fit-content;
     }
-    .heading{
+
+    .heading {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
     }
-    .container header{
+
+    .container header {
         font-size: 1.5rem;
         margin-bottom: 10px;
         font-weight: 600;
     }
-    .container form{
+
+    .container form {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 1rem;       
+        gap: 1rem;
         background-color: var(--textColor);
     }
-    .form-field{
+
+    .form-field {
         width: 18rem;
         height: 2.5rem;
         border-radius: 0.5rem;
@@ -66,39 +72,48 @@ if(isset($_GET["token"])){
         outline: none;
         border: 2px solid var(--darkGrey);
     }
-    .form-field:focus{
+
+    .form-field:focus {
         border-color: var(--mainColor);
         color: var(--mainColor);
     }
-    .form-field input{
+
+    .form-field input {
         width: 100%;
         height: 100%;
         font-size: 1rem;
         border: none;
     }
-    .go-button{
+
+    .go-button {
         font-size: 1rem;
     }
-    .row{
+
+    .row {
         display: flex;
         gap: 0.5rem;
     }
+
     @media screen and (max-width: 450px) {
-        *{
+        * {
             font-size: 0.9rem;
         }
-        .container{
+
+        .container {
             padding: 1rem;
         }
-        .container header{
+
+        .container header {
             font-size: 1.2rem;
         }
-        .form-field{
+
+        .form-field {
             width: 16rem;
         }
-        
+
     }
 </style>
+
 <body>
     <div class="container">
         <div class="heading">
@@ -106,7 +121,7 @@ if(isset($_GET["token"])){
             <span>Please enter a new password</span>
         </div>
         <?php
-        if(isset($_SESSION['update-msg'])){
+        if (isset($_SESSION['update-msg'])) {
             echo "<span class='session-msg'>{$_SESSION['update-msg']}</span>";
             unset($_SESSION['update-msg']);
         }
@@ -145,4 +160,5 @@ if(isset($_GET["token"])){
         });
     </script>
 </body>
+
 </html>
