@@ -3,6 +3,7 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,7 +14,7 @@ session_start();
     <title>Forgot Password</title>
 </head>
 <style>
-    body{
+    body {
         background-color: var(--grey);
         display: flex;
         flex-direction: column;
@@ -22,7 +23,8 @@ session_start();
         width: 100%;
         height: 100vh;
     }
-    .container{
+
+    .container {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -33,26 +35,30 @@ session_start();
         border-radius: 1rem;
         width: fit-content;
     }
-    .heading{
+
+    .heading {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
     }
-    .container header{
+
+    .container header {
         font-size: 1.5rem;
         margin-bottom: 10px;
         font-weight: 600;
     }
-    .container form{
+
+    .container form {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 1rem;       
+        gap: 1rem;
         background-color: var(--textColor);
     }
-    .form-field{
+
+    .form-field {
         width: 18rem;
         height: 2.5rem;
         border-radius: 0.5rem;
@@ -60,39 +66,48 @@ session_start();
         outline: none;
         border: 2px solid var(--darkGrey);
     }
-    .form-field:focus{
+
+    .form-field:focus {
         border-color: var(--mainColor);
         color: var(--mainColor);
     }
-    .form-field input{
+
+    .form-field input {
         width: 100%;
         height: 100%;
         font-size: 1rem;
         border: none;
     }
-    .go-button{
+
+    .go-button {
         font-size: 1rem;
     }
-    .row{
+
+    .row {
         display: flex;
         gap: 0.5rem;
     }
+
     @media screen and (max-width: 450px) {
-        *{
+        * {
             font-size: 0.9rem;
         }
-        .container{
+
+        .container {
             padding: 1rem;
         }
-        .container header{
+
+        .container header {
             font-size: 1.2rem;
         }
-        .form-field{
+
+        .form-field {
             width: 16rem;
         }
-        
+
     }
 </style>
+
 <body>
     <div class="container">
         <div class="heading">
@@ -100,7 +115,7 @@ session_start();
             <span>Please fill your email id properly</span>
         </div>
         <?php
-        if(isset($_SESSION['forgot-msg'])){
+        if (isset($_SESSION['forgot-msg'])) {
             echo "<span class='session-msg'>{$_SESSION['forgot-msg']}</span>";
             unset($_SESSION['forgot-msg']);
         }
@@ -109,7 +124,7 @@ session_start();
             <div class="form-field">
                 <i class="uil uil-envelope-alt email"></i>
                 <input type="email" placeholder="Email address" required name="email">
-            </div>            
+            </div>
             <button class="button go-button" name="submit">Send Mail</button>
         </form>
         <div class="row">
@@ -118,4 +133,5 @@ session_start();
         </div>
     </div>
 </body>
+
 </html>
